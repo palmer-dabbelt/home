@@ -1,0 +1,31 @@
+# I don't care about any of these
+/.ICEauthority
+/.Xauthority
+/.Xilinx/
+/.bash_history
+/.bashrc
+/.cache/
+/.config/
+/.dbus/
+/.emacs.d/
+/.flexlmrc
+/.gitconfig
+/.ivy2/
+/.java/
+/.lesshst
+/.local/bin
+/.local/share
+/.nano_history
+/.sbt/
+/.snapshot/
+/.ssh/id_*
+/.thumbnails
+/.viminfo
+/.xsession-*
+*.swp
+
+# These are manually tracked as git submodules
+/public_html
+
+# Everything below here comes from make's $(CLEAN)
+# ...
