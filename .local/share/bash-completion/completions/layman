@@ -1,0 +1,70 @@
+# Gentoo Linux Layman Command Completion
+#
+# $Id$
+#
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+#
+# Originally licensed as 'public-domain'
+# Originally written by: Peter "Link" Sterk <link@penguindevelopment.org>
+
+
+_layman() {
+    local cur prev opts r_overlays l_overlays splitopt
+
+    COMPREPLY=()
+
+    opts="--version -h --help -a --add -d --delete -s --sync -i --info
+        -S --sync-all -L --list -l --list-local -n --nofetch -p --priority
+        -c --config -O --overlay_defs -o --overlays -v --verbose -q --quiet
+        -N --nocolor -Q --quietness -W --width -k --nocheck --debug-level"
+    r_overlays="$(layman -LkNq 2>/dev/null | grep -v '^$' | cut -d' ' -f3)"
+    l_overlays="$(layman -lkNq 2>/dev/null | grep -v '^$' | cut -d' ' -f3)"
+    splitopt=false
+
+    _get_comp_words_by_ref -n = cur prev
+    _split_longopt && splitopt=true
+
+    case ${prev} in
+        --version|-h|--help|-W|--width|-o|--overlays)
+            # these end processing or require an arg we can't complete on
+            return 0
+            ;;
+        -a|--add|-i|--info)
+            COMPREPLY=( $(compgen -W "${r_overlays}" -- "${cur}") )
+            return 0
+            ;;
+        -d|--delete)
+            COMPREPLY=( $(compgen -W "${l_overlays}" -- "${cur}") )
+            return 0
+            ;;
+        -s|--sync)
+            COMPREPLY=( $(compgen -W "${l_overlays} ALL" -- "${cur}") )
+            return 0
+            ;;
+        -p|--priority)
+            # this seems excessive
+            COMPREPLY=( $(compgen -W "$(seq 0 100)" -- "${cur}") )
+            return 0
+            ;;
+        -Q|--quietness)
+            COMPREPLY=( $(compgen -W "$(seq 0 4)" -- "${cur}") )
+            return 0
+            ;;
+        --debug-level)
+            COMPREPLY=( $(compgen -W "$(seq 0 10)" -- "${cur}") )
+            return 0
+            ;;
+        -c|--config|-O|--overlay_defs)
+            _filedir
+            return 0
+            ;;
+    esac
+
+    $splitopt && return 0
+
+    COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+} &&
+complete -F _layman layman
+
+# vim: ft=sh:et:ts=4:sw=4:tw=80
