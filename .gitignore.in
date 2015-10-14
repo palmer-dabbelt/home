@@ -9,6 +9,7 @@
 /.emacs.d/
 /.flexlmrc
 /.gitconfig
+/.google_authenticator
 /.ivy2/
 /.java/
 /.lesshst
