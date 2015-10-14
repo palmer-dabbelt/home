@@ -6,6 +6,7 @@ CONFIG_PP ?= $(BIN_DIR)/config_pp
 
 # "make all"
 ALL = \
+	.local/bin/e \
 	.ssh/config \
 	.gitignore
 .PHONY: all
@@ -21,7 +22,7 @@ clean:
 
 # These programs can be manually installed so I can use my home drive
 # transparently when on other systems.
-$(CONFIG_PP): $(HOME)/.local/src/config_pp.bash
+.local/bin/%: $(HOME)/.local/src/local-scripts/%.bash
 	mkdir -p $(dir $@)
 	cp $^ $@
 	chmod +x $@
