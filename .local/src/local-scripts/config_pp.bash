@@ -6,7 +6,7 @@ set -o pipefail
 input_files=[]
 input_files_count=0
 
-output_file=""
+output_file="/dev/stdout"
 
 while [[ "$1" != "" ]]
 do

@@ -24,8 +24,14 @@
 *.swp
 
 # These are manually tracked as git submodules
+/.gnupg/
+/.local/share/passwords/
 /public_html
 /media
+
+# These are generated, but in a way such that they don't automatically show up
+#
+*.in.d
 
 # Everything below here comes from make's $(CLEAN)
 # ...
