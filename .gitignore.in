@@ -25,6 +25,7 @@
 
 # These are manually tracked as git submodules
 /public_html
+/media
 
 # Everything below here comes from make's $(CLEAN)
 # ...
