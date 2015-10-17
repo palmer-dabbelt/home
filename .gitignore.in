@@ -10,10 +10,12 @@
 /.flexlmrc
 /.gitconfig
 /.google_authenticator
+/.gpg-agent-info
 /.ivy2/
 /.java/
 /.lesshst
 /.local/bin
+/.local/var
 /.nano_history
 /.sbt/
 /.snapshot/
