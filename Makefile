@@ -46,3 +46,4 @@ clean:
 .gitignore: .gitignore.in Makefile
 	cat .gitignore.in > .gitignore
 	echo "$(CLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> .gitignore 
+	chmod oug-w $@
