@@ -29,7 +29,6 @@
 /.gnupg/
 /.local/share/passwords/
 /public_html
-/media
 
 # These are generated, but in a way such that they don't automatically show up
 #

@@ -12,8 +12,11 @@ ALL = \
 	.megarc \
 	.ssh/config \
 	.gitignore
+ALL_NOCLEAN = \
+	media \
+	scratch
 .PHONY: all
-all: $(ALL)
+all: $(ALL) $(ALL_NOCLEAN)
 
 # "make clean" -- use CLEAN, so your output gets in .gitignore
 CLEAN = \
@@ -22,6 +25,13 @@ CLEAN = \
 .PHONY: clean
 clean:
 	rm -rf $(CLEAN)
+
+# Some directories on this system might actually be symlinks somewhere else, if
+# I'm on a system where $HOME isn't a big disk.
+media:
+	if test -d /global/$(USER)@dabbelt.com/media; then ln -s /global/$(USER)@dabbelt.com/media $@; else mkdir -p $@; fi
+scratch:
+	if test -d /scratch/$(USER); then ln -s /scratch/$(USER) $@; else mkdir -p $@; fi
 
 # These programs can be manually installed so I can use my home drive
 # transparently when on other systems.
@@ -44,6 +54,8 @@ clean:
 
 # This particular file is actually generated from a make variable
 .gitignore: .gitignore.in Makefile
-	cat .gitignore.in > .gitignore
-	echo "$(CLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> .gitignore 
+	rm -f $@
+	cat $< > $@
+	echo "$(CLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> $@
+	echo "$(ALL_NOCLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> $@
 	chmod oug-w $@
