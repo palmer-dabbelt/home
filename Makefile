@@ -49,7 +49,7 @@ scratch:
 
 # Some special dependency logic for .in files
 -include $(patsubst %,%.in.d,$(ALL))
-%.in.d: %.in $(LOOKUP_PASSWORDS)
+%.in.d: %.in
 	$(LOOKUP_PASSWORDS) -d $^ $(patsubst %.in.d,%,$^) > $@ 
 
 # This particular file is actually generated from a make variable
