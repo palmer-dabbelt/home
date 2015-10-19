@@ -16,6 +16,7 @@
 /.lesshst
 /.local/bin/
 /.local/var/
+/.parallel/tmp/
 /.nano_history
 /.sbt/
 /.snapshot/

@@ -11,6 +11,7 @@ ALL = \
 	$(BIN_DIR)/e \
 	.megarc \
 	.ssh/config \
+	.parallel/will-cite \
 	.gitignore
 ALL_NOCLEAN = \
 	media \
@@ -65,3 +66,8 @@ work:
 	echo "$(CLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> $@
 	echo "$(ALL_NOCLEAN)" | sed 's@ @\n@g' | sed 's@^@/@g' >> $@
 	chmod oug-w $@
+
+# GNU porallel is super annoying
+.parallel/will-cite:
+	mkdir -p $(dir $@)
+	touch $@
