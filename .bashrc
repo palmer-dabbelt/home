@@ -7,14 +7,26 @@ then
 fi
 
 # Attempt to setup a keychain
-if test -x /usr/bin/keychain
+if test -x $HOME/.local/bin/keychain
 then
-	find .ssh -iname "id_*" | grep -v ".pub$" | xargs \
-	keychain \
-		--agents gpg,ssh \
-		--confhost \
-		--dir $HOME/.local/var/keychain \
-		--quiet
+	if test -x /usr/bin/ssh-agent
+	then
+		find $HOME/.ssh -iname "id_*" | grep -v ".pub$" | xargs \
+		keychain \
+			--agents ssh \
+			--confhost \
+			--dir $HOME/.local/var/keychain \
+			--quiet
+	fi
+
+	if test -x /usr/bin/gpg-agent
+	then
+		keychain \
+			--agents gpg \
+			--confhost \
+			--dir $HOME/.local/var/keychain \
+			--quiet
+	fi
 fi
 
 if test -r $HOME/.local/var/keychain/$HOSTNAME-sh
