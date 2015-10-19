@@ -14,8 +14,8 @@
 /.ivy2/
 /.java/
 /.lesshst
-/.local/bin
-/.local/var
+/.local/bin/
+/.local/var/
 /.nano_history
 /.sbt/
 /.snapshot/
