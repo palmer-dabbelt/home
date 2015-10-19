@@ -14,7 +14,9 @@ ALL = \
 	.gitignore
 ALL_NOCLEAN = \
 	media \
-	scratch
+	scratch \
+	life \
+	work
 .PHONY: all
 all: $(ALL) $(ALL_NOCLEAN)
 
@@ -32,6 +34,10 @@ media:
 	if test -d /global/$(USER)@dabbelt.com/media; then ln -s /global/$(USER)@dabbelt.com/media $@; else mkdir -p $@; fi
 scratch:
 	if test -d /scratch/$(USER); then ln -s /scratch/$(USER) $@; else mkdir -p $@; fi
+life:
+	mkdir $@
+work:
+	if test -d /scratch/$(USER)/work; then ln -s /scratch/$(USER)/work $@; else mkdir -p $@; fi
 
 # These programs can be manually installed so I can use my home drive
 # transparently when on other systems.
