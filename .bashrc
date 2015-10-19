@@ -9,7 +9,7 @@ fi
 # Attempt to setup a keychain
 if test -x /usr/bin/keychain
 then
-	find .ssh -iname "id_*" | xargs \
+	find .ssh -iname "id_*" | grep -v ".pub$" | xargs \
 	keychain \
 		--agents gpg,ssh \
 		--confhost \
