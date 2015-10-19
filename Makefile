@@ -1,14 +1,19 @@
+# Configuration variables
+KEYCHAIN_VERSION ?= 2.8.1
+
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
 BIN_DIR ?= .local/bin
 
 CONFIG_PP ?= $(BIN_DIR)/config_pp
+KEYCHAIN ?= $(BIN_DIR)/keychain
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
 # "make all"
 ALL = \
 	$(BIN_DIR)/e \
+	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -46,6 +51,31 @@ work:
 	mkdir -p $(dir $@)
 	cp $^ $@
 	chmod +x $@
+
+# Check to see if keychain needs to be installed, and if so fetch/install it
+ifeq (,$(wildcard /usr/bin/keychain))
+CLEAN += .local/var/distfiles/keychain-$(KEYCHAIN_VERSION).tar.bz2
+CLEAN += .local/src/keychain/
+
+$(KEYCHAIN): .local/src/keychain/keychain
+	mkdir -p $(dir $@)
+	cp $< $@
+	chmod +x $@
+
+.local/src/keychain/keychain: .local/var/distfiles/keychain-$(KEYCHAIN_VERSION).tar.bz2
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -xjf $< -C $(dir $@) --strip-components=1
+
+.local/var/distfiles/keychain-$(KEYCHAIN_VERSION).tar.bz2:
+	mkdir -p $(dir $@)
+	wget http://www.funtoo.org/distfiles/keychain/keychain-$(KEYCHAIN_VERSION).tar.bz2 -O $@
+
+else
+$(KEYCHAIN):
+	mkdir -p $(dir $@)
+	ln -s $< $@
+endif
 
 # Many files should be processed by some internal scripts
 %: %.in $(CONFIG_PP) %.in.d
