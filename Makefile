@@ -80,16 +80,11 @@ $(KEYCHAIN):
 endif
 
 # Many files should be processed by some internal scripts
-%: %.in $(CONFIG_PP) %.in.d
+%: %.in $(CONFIG_PP)
 	mkdir -p $(dir $@)
 	rm -f $@
 	$(CONFIG_PP) $< | $(LOOKUP_PASSWORDS) > $@
 	chmod oug-w $@
-
-# Some special dependency logic for .in files
--include $(patsubst %,%.in.d,$(ALL))
-%.in.d: %.in
-	$(LOOKUP_PASSWORDS) -d $^ $(patsubst %.in.d,%,$^) > $@ 
 
 # This particular file is actually generated from a make variable
 .gitignore: .gitignore.in Makefile
