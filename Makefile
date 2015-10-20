@@ -13,6 +13,7 @@ LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 # "make all"
 ALL = \
 	$(BIN_DIR)/e \
+	$(BIN_DIR)/mbacklight \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
