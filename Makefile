@@ -75,7 +75,8 @@ $(KEYCHAIN): .local/src/keychain/keychain
 else
 $(KEYCHAIN):
 	mkdir -p $(dir $@)
-	ln -s $< $@
+	rm -f $@
+	ln -s /usr/bin/keychain $@
 endif
 
 # Many files should be processed by some internal scripts
