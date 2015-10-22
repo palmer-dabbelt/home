@@ -8,6 +8,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Setup my personal shell variables that are the same everywhere
 export EDITOR="e"
+export BROWSER="firefox"
+export GIT_EDITOR="vim"
+export MHNG_EDITOR="vim"
 alias no=ls
 
 # MH aliases
