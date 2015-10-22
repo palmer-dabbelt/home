@@ -44,7 +44,7 @@ alias mal="mhng-hud"
 alias mhng-log="tail -n40 ~/.mhng/daemon.log"
 
 # These are quick ways to access my common machines
-alias hurricane='ssh bwrcrdsl-6.eecs.berkeley.edu -t "screen -x hurricane-chip"'
+alias hurricane='ssh bwrcrdsl-2.eecs.berkeley.edu -t "screen -x hurricane-chip"'
 
 # Some shell variables are different on different machines
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
