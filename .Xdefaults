@@ -1,0 +1,29 @@
+Xft.antialias: 1
+Xft.rgba:      rgb
+Xft.autohint:  0
+Xft.lcdfilter: lcddefault
+Xft.hinting:   1
+Xft.hintstyle: full
+
+URxvt.scrollBar: false
+URxvt.font: xft:Liberation Mono:size=8.9
+URxvt.letterSpace: -2
+
+Emacs.font: Liberation Mono-8.9
+
+!URxvt.termName: rxvt-unicode-256color
+URxvt*color0:  #000000
+URxvt*color1:  #AA0000
+URxvt*color2:  #008200
+URxvt*color3:  #AA5500
+URxvt*color4:  #0000AA
+URxvt*color5:  #AA00AA
+URxvt*color6:  #00AAAA
+URxvt*color7:  #AAAAAA
+URxvt*color8:  #555555
+URxvt*color9:  #FF5555
+URxvt*color10: #2DC92D
+URxvt*color11: #FFFF55
+URxvt*color12: #5555FF
+URxvt*color13: #FF55FF
+URxvt*color14: #55FFFF

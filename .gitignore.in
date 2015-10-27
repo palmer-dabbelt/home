@@ -8,6 +8,7 @@
 /.dbus/
 /.emacs.d/
 /.flexlmrc
+/.fltk/
 /.gitconfig
 /.google_authenticator
 /.gpg-agent-info
@@ -15,16 +16,26 @@
 /.java/
 /.lesshst
 /.local/bin/
+/.local/lib/
+/.local/log/
+/.local/share/
 /.local/var/
 /.parallel/tmp/
+/.mhng/
+/.mozilla/
+/.msmtprc
+/.pulse-cookie
 /.nano_history
 /.sbt/
 /.snapshot/
 /.ssh/id_*
 /.thumbnails
 /.viminfo
+/.x2go/
+/.x2goclient/
 /.xsession-*
 *.swp
+.swo
 
 # These are manually tracked as git submodules
 /.gnupg/
