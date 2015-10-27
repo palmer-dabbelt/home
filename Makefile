@@ -120,6 +120,7 @@ $(TMUX): .local/src/tmux/build/tmux
 endif
 
 # Fetch libevent
+ifeq (,$(wildcard /usr/lib/libevent.so))
 CLEAN += .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz
 CLEAN += .local/src/libevent/
 CLEAN += .local/include/event.h
@@ -154,6 +155,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 
 .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz:
 	wget https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/libevent-$(LIBEVENT_VERSION)-stable.tar.gz -O $@
+endif
 
 # Many files should be processed by some internal scripts
 %: %.in $(CONFIG_PP)
