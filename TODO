@@ -1,9 +1,11 @@
-* Fix the SRAMs on Hurricane
- - Waiting on /tools/designs to come back up, probably INITN
-
 * UCB-BAR website
+ - Fix publications
+ - People page
+ - Content
 
 * Fix Scott's Linux hang
- - Can't reproduce
+ - Different on different hart counts
 
-* kosta-buildbot.dabbelt.com email
+* kosta-buildbot.dabbelt.com
+
+* riscv-linux for raven3p5
