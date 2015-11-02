@@ -26,6 +26,7 @@ ALL = \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
+	.gitconfig \
 	.gitignore
 ALL_NOCLEAN = \
 	media \

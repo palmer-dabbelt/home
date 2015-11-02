@@ -1,0 +1,13 @@
+[user]
+	name = Palmer Dabbelt
+	email = palmer@dabbelt.com
+
+[push]
+	default = simple
+
+[alias]
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	fap = fetch --all --prune --verbose
+
+[pretty]
+        fixes = Fixes: %h (\"%s\")
