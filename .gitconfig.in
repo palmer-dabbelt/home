@@ -2,6 +2,10 @@
 	name = Palmer Dabbelt
 	email = palmer@dabbelt.com
 
+[sendemail]
+	smtpencryption = tls
+	smtpserver = /usr/bin/mhng-pipe-comp_stdin
+
 [push]
 	default = simple
 
