@@ -3,9 +3,21 @@
  - People page
  - Content
 
+* Howie's rocket/chisel/gcc bug
+
+* Fix Henry's commit
+
+* bar-benchmarks
+
+* Rebase binutils
+
 * Fix Scott's Linux hang
  - Different on different hart counts
 
 * kosta-buildbot.dabbelt.com
+ - email
 
 * riscv-linux for raven3p5
+ - blocked on assembly tests running
+
+* Bump riscv-linux
