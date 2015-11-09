@@ -1,11 +1,10 @@
 * UCB-BAR website
- - Fix publications
- - People page
  - Content
 
 * bar-benchmarks
 
 * Rebase binutils
+ - Submitted to sw-dev@
 
 * Fix Scott's Linux hang
  - Different on different hart counts
