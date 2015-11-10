@@ -19,3 +19,5 @@
  - blocked on assembly tests running
 
 * Bump riscv-linux
+
+* FIX TORQUE
