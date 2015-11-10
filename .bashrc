@@ -46,6 +46,9 @@ alias mhng-log="tail -n40 ~/.mhng/daemon.log"
 # These are quick ways to access my common machines
 alias hurricane='ssh bwrcrdsl-2.eecs.berkeley.edu -t "screen -x hurricane-chip"'
 
+# Other aliases
+alias todo='$GIT_EDITOR ~/TODO'
+
 # Some shell variables are different on different machines
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
 
