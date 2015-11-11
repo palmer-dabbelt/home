@@ -1,13 +1,15 @@
-* Upstream Linux patches
- - These was a bug here, I need to re-submit
-
 * UCB-BAR website
  - Content
+
+* Upstream Linux patches
+ - Submitted
 
 * bar-benchmarks
 
 * Rebase binutils
  - Submitted to sw-dev@
+
+* Chisel3 for rocket chip
 
 * Fix Scott's Linux hang
  - Different on different hart counts
