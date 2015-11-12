@@ -107,7 +107,7 @@ $(TMUX): .local/src/tmux/build/tmux
 
 .local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && CPPFLAGS="-I$(HOME)/$(HDR_DIR)" LDFLAGS="-L$(HOME)/$(LIB_DIR)" ../configure
+	cd $(dir $@) && CPPFLAGS="-I$(HOME)/$(HDR_DIR)" LDFLAGS="-L$(HOME)/$(LIB_DIR) -Wl,-rpath,$(HOME)/$(LIB_DIR)" ../configure
 
 .local/src/tmux/configure: .local/var/distfiles/tmux-$(TMUX_VERSION).tar.gz
 	rm -rf $(dir $@)
