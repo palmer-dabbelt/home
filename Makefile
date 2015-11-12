@@ -162,7 +162,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 endif
 
 # Fetch make
-ifeq (3.82,$(lastword $(sort $(shell /usr/bin/make --version | head -n1 | cut -d' ' -f3) 3.82)))
+ifeq ($(GMAKE_VERSION),$(lastword $(sort $(shell /usr/bin/make --version | head -n1 | cut -d' ' -f3) $(GMAKE_VERSION))))
 CLEAN += .local/src/make
 CLEAN += .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
 
