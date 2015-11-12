@@ -4,6 +4,9 @@
 
 * Upstream Linux patches
  - Submitted
+ 
+* Fix make clean in rocket-chip/vsim
+ - Shouldn't need to compiler rocket-chip first
 
 * bar-benchmarks
 
