@@ -12,6 +12,9 @@
 
 * Rebase binutils
  - Submitted to sw-dev@
+ 
+* Update vlsi-mem-gen to be more automated
+ - Take in .conf files from rocket-chip
 
 * Chisel3 for rocket chip
 
