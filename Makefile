@@ -1,6 +1,6 @@
 # Configuration variables
 KEYCHAIN_VERSION ?= 2.8.1
-TMUX_VERSION ?= 1.9a
+TMUX_BIN_VERSION ?= 1.9a
 LIBEVENT_VERSION ?= 2.0.22
 GMAKE_VERSION ?= 3.82
 
@@ -12,7 +12,7 @@ HDR_DIR ?= .local/include
 
 CONFIG_PP ?= $(BIN_DIR)/config_pp
 KEYCHAIN ?= $(BIN_DIR)/keychain
-TMUX ?= $(BIN_DIR)/tmux
+TMUX_BIN ?= $(BIN_DIR)/tmux
 LIBEVENT ?= $(LIB_DIR)/libevent.so
 GMAKE ?= $(BIN_DIR)/make
 
@@ -23,7 +23,7 @@ ALL = \
 	$(BIN_DIR)/e \
 	$(BIN_DIR)/mbacklight \
 	$(KEYCHAIN) \
-	$(TMUX) \
+	$(TMUX_BIN) \
 	$(LIBEVENT) \
 	$(GMAKE) \
 	.megarc \
@@ -98,10 +98,10 @@ endif
 
 # Fetch tmux
 ifeq (,$(wildcard /usr/bin/tmux))
-CLEAN += .local/var/distfiles/tmux-$(TMUX_VERSION).tar.bz2
+CLEAN += .local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.bz2
 CLEAN += .local/src/tmux/
 
-$(TMUX): .local/src/tmux/build/tmux
+$(TMUX_BIN): .local/src/tmux/build/tmux
 	mkdir -p $(dir $@)
 	cp -Lf $< $@
 
@@ -112,15 +112,15 @@ $(TMUX): .local/src/tmux/build/tmux
 	mkdir -p $(dir $@)
 	cd $(dir $@) && CPPFLAGS="-I$(HOME)/$(HDR_DIR)" LDFLAGS="-L$(HOME)/$(LIB_DIR) -Wl,-rpath,$(HOME)/$(LIB_DIR)" ../configure
 
-.local/src/tmux/configure: .local/var/distfiles/tmux-$(TMUX_VERSION).tar.gz
+.local/src/tmux/configure: .local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.gz
 	rm -rf $(dir $@)
 	mkdir -p $(dir $@)
 	tar -xzf $< -C $(dir $@) --strip-components=1
 	touch $@
 
-.local/var/distfiles/tmux-$(TMUX_VERSION).tar.gz:
+.local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.gz:
 	mkdir -p $(dir $@)
-	wget https://github.com/tmux/tmux/releases/download/$(TMUX_VERSION)/tmux-$(TMUX_VERSION).tar.gz -O $@
+	wget https://github.com/tmux/tmux/releases/download/$(TMUX_BIN_VERSION)/tmux-$(TMUX_BIN_VERSION).tar.gz -O $@
 endif
 
 # Fetch libevent
