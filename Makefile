@@ -2,6 +2,7 @@
 KEYCHAIN_VERSION ?= 2.8.1
 TMUX_VERSION ?= 1.9a
 LIBEVENT_VERSION ?= 2.0.22
+GMAKE_VERSION ?= 3.82
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -13,6 +14,7 @@ CONFIG_PP ?= $(BIN_DIR)/config_pp
 KEYCHAIN ?= $(BIN_DIR)/keychain
 TMUX ?= $(BIN_DIR)/tmux
 LIBEVENT ?= $(LIB_DIR)/libevent.so
+GMAKE ?= $(BIN_DIR)/make
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -23,6 +25,7 @@ ALL = \
 	$(KEYCHAIN) \
 	$(TMUX) \
 	$(LIBEVENT) \
+	$(GMAKE) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -156,6 +159,32 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 
 .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz:
 	wget https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/libevent-$(LIBEVENT_VERSION)-stable.tar.gz -O $@
+endif
+
+# Fetch make
+ifeq (3.82,$(lastword $(sort $(MAKE_VERSION) 3.82)))
+CLEAN += .local/src/make
+CLEAN += .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
+
+$(GMAKE): .local/src/make/build/make
+	cp -Lf $< $@
+
+.local/src/make/build/make: .local/src/make/build/Makefile
+	$(MAKE) -C $(dir $@) $(notdir $@)
+
+.local/src/make/build/Makefile: .local/src/make/configure
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	cd $(dir $@) && ../configure
+
+.local/src/make/configure: .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -xzpf $< -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/make-$(GMAKE_VERSION).tar.gz:
+	wget http://ftp.gnu.org/gnu/make/make-$(GMAKE_VERSION).tar.gz -O $@
 endif
 
 # Many files should be processed by some internal scripts
