@@ -74,7 +74,7 @@ then
 	if test -x /usr/bin/ssh-agent
 	then
 		find $HOME/.ssh -iname "id_*" | grep -v ".pub$" | xargs \
-		keychain \
+		$HOME/.local/bin/keychain \
 			--agents ssh \
 			--confhost \
 			--dir $HOME/.local/var/keychain \
@@ -83,7 +83,7 @@ then
 
 	if test -x /usr/bin/gpg-agent
 	then
-		keychain \
+		$HOME/.local/bin/keychain \
 			--agents gpg \
 			--confhost \
 			--dir $HOME/.local/var/keychain \
