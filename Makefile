@@ -3,6 +3,7 @@ KEYCHAIN_VERSION ?= 2.8.1
 TMUX_BIN_VERSION ?= 1.9a
 LIBEVENT_VERSION ?= 2.0.22
 GMAKE_VERSION ?= 3.82
+GIT_VERSION ?= 2.4.1
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -15,6 +16,7 @@ KEYCHAIN ?= $(BIN_DIR)/keychain
 TMUX_BIN ?= $(BIN_DIR)/tmux
 LIBEVENT ?= $(LIB_DIR)/libevent.so
 GMAKE ?= $(BIN_DIR)/make
+GIT ?= $(BIN_DIR)/git
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -26,6 +28,7 @@ ALL = \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
 	$(GMAKE) \
+	$(GIT) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -185,6 +188,34 @@ $(GMAKE): .local/src/make/build/make
 
 .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz:
 	wget http://ftp.gnu.org/gnu/make/make-$(GMAKE_VERSION).tar.gz -O $@
+endif
+
+# Fetch git
+ifeq ($(GIT_VERSION),$(lastword $(sort $(shell /usr/bin/git --version | cut -d' ' -f3)) $(GIT_VERSION)))
+CLEAN += .local/src/git
+CLEAN += .local/var/distfiles/git-$(GIT_VERSION).tar.gz
+CLEAN += .local/libexec/git-core/
+
+$(GIT): .local/src/git/git
+	$(MAKE) -C $(dir $<) install
+	touch $@
+
+.local/src/git/git: .local/src/git/Makefile
+	$(MAKE) -C $(dir $@)
+	touch $@
+
+.local/src/git/Makefile: .local/src/git/configure
+	cd $(dir $@) && ./configure --prefix=$(HOME)/.local/
+	touch $@
+
+.local/src/git/configure: .local/var/distfiles/git-$(GIT_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -xpf $< -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/git-$(GIT_VERSION).tar.gz:
+	wget http://www.kernel.org/pub/software/scm/git/git-$(GIT_VERSION).tar.gz -O $@
 endif
 
 # Many files should be processed by some internal scripts
