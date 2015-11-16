@@ -1,4 +1,7 @@
 * VLSI for ISCA
+ - Floorplan goes through, but is bad QOR
+ - L2 tags between L2 data
+ - Hwacha on left (RF on right), rocket in middle, L2 on right
 
 * UCB-BAR website
  - Sent email about content request
