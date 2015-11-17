@@ -165,7 +165,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 endif
 
 # Fetch make
-INSTALLED_MAKE_VERSION = $(shell echo -e "$(GMAKE_VERSION)\n`/usr/bin/make --version`" | head -n1 | cut -d' ' -f3 | sort --version-sort | head -n1)
+INSTALLED_MAKE_VERSION = $(shell echo -e "$(GMAKE_VERSION)\n`/usr/bin/make --version | head -n1 | cut -d' ' -f3`" | sort --version-sort | head -n1)
 ifneq ($(GMAKE_VERSION),$(INSTALLED_MAKE_VERSION))
 CLEAN += .local/src/make
 CLEAN += .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
