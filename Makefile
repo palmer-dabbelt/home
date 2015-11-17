@@ -3,7 +3,7 @@ KEYCHAIN_VERSION ?= 2.8.1
 TMUX_BIN_VERSION ?= 1.9a
 LIBEVENT_VERSION ?= 2.0.22
 GMAKE_VERSION ?= 3.82
-GIT_VERSION ?= 2.4.1
+GIT_VERSION ?= 2.4.10
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
