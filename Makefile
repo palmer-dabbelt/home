@@ -4,6 +4,7 @@ TMUX_BIN_VERSION ?= 1.9a
 LIBEVENT_VERSION ?= 2.0.22
 GMAKE_VERSION ?= 3.82
 GIT_VERSION ?= 2.4.10
+PCONFIGURE_VERSION ?= 0.10.5
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -17,6 +18,7 @@ TMUX_BIN ?= $(BIN_DIR)/tmux
 LIBEVENT ?= $(LIB_DIR)/libevent.so
 GMAKE ?= $(BIN_DIR)/make
 GIT ?= $(BIN_DIR)/git
+PCONFIGURE ?= $(BIN_DIR)/pconfigure
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -29,6 +31,7 @@ ALL = \
 	$(LIBEVENT) \
 	$(GMAKE) \
 	$(GIT) \
+	$(PCONFIGURE) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -218,6 +221,36 @@ $(GIT): .local/src/git/git
 
 .local/var/distfiles/git-$(GIT_VERSION).tar.gz:
 	wget http://www.kernel.org/pub/software/scm/git/git-$(GIT_VERSION).tar.gz -O $@
+endif
+
+# Fetch pconfigure
+ifeq (,$(wildcard /usr/bin/pconfigure))
+CLEAN += .local/src/pconfigure
+CLEAN += .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
+
+$(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
+	$(MAKE) -C .local/src/pconfigure install
+
+.local/src/pconfigure/bin/pconfigure: .local/src/pconfigure/Makefile
+	$(MAKE) -C .local/src/pconfigure
+
+.local/src/pconfigure/Makefile: .local/src/pconfigure/Configfile .local/src/pconfigure/Configfile.local
+	cd $(dir $@) && ./bootstrap.sh
+
+.local/src/pconfigure/Configfile.local:
+	mkdir -p $(dir $@)
+	rm -f $@
+	echo "PREFIX = $(HOME)/.local" >> $@
+
+.local/src/pconfigure/Configfile: .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
+	rm -rf $(dir $@)i
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xzf $< --strip-components=1
+	touch $@
+
+.local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz:
+	wget https://github.com/palmer-dabbelt/pconfigure/archive/v$(PCONFIGURE_VERSION).tar.gz -O $@
+
 endif
 
 # Many files should be processed by some internal scripts
