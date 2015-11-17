@@ -165,7 +165,8 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 endif
 
 # Fetch make
-ifeq ($(GMAKE_VERSION),$(lastword $(sort $(shell /usr/bin/make --version | head -n1 | cut -d' ' -f3) $(GMAKE_VERSION))))
+INSTALLED_MAKE_VERSION = $(shell echo -e "$(GMAKE_VERSION)\n`/usr/bin/make --version`" | head -n1 | cut -d' ' -f3 | sort --version-sort | head -n1)
+ifneq ($(GMAKE_VERSION),$(INSTALLED_MAKE_VERSION))
 CLEAN += .local/src/make
 CLEAN += .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
 
@@ -191,7 +192,8 @@ $(GMAKE): .local/src/make/build/make
 endif
 
 # Fetch git
-ifeq ($(GIT_VERSION),$(lastword $(sort $(shell /usr/bin/git --version | cut -d' ' -f3)) $(GIT_VERSION)))
+INSTALLED_GIT_VERSION = $(shell echo -e "$(GIT_VERSION)\n`/usr/bin/git --version | cut -d' ' -f3`" | sort --version-sort | head -n1)
+ifneq ($(GIT_VERSION),$(INSTALLED_GIT_VERSION))
 CLEAN += .local/src/git
 CLEAN += .local/var/distfiles/git-$(GIT_VERSION).tar.gz
 CLEAN += .local/libexec/git-core/
