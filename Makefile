@@ -5,6 +5,7 @@ LIBEVENT_VERSION ?= 2.0.22
 GMAKE_VERSION ?= 3.82
 GIT_VERSION ?= 2.4.10
 PCONFIGURE_VERSION ?= 0.10.5
+PSHS_VERSION ?= 0.3
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -19,6 +20,7 @@ LIBEVENT ?= $(LIB_DIR)/libevent.so
 GMAKE ?= $(BIN_DIR)/make
 GIT ?= $(BIN_DIR)/git
 PCONFIGURE ?= $(BIN_DIR)/pconfigure
+PSHS ?= $(BIN_DIR)/pshs
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -32,6 +34,7 @@ ALL = \
 	$(GMAKE) \
 	$(GIT) \
 	$(PCONFIGURE) \
+	$(PSHS) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -250,7 +253,30 @@ $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
 
 .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz:
 	wget https://github.com/palmer-dabbelt/pconfigure/archive/v$(PCONFIGURE_VERSION).tar.gz -O $@
+endif
 
+# Fetch pshs
+ifeq (,$(wildcard /usr/bin/pshs))
+CLEAN += .local/src/pshs
+CLEAN += .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2
+
+$(PSHS): .local/src/pshs/build/pshs
+	cp -Lf $< $@
+
+.local/src/pshs/build/pshs: .local/src/pshs/build/Makefile
+	$(MAKE) -C $(dir $@) $(notdir $@)
+
+.local/src/pshs/build/Makefile: .local/src/pshs/configure
+	mkdir -p $(dir $@)
+	cd $(dir $@) && PKG_CONFIG_PATH="$(HOME)/.local/lib/pkgconfig" ../configure
+
+.local/src/pshs/configure: .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xpf $< --strip-components=1
+
+.local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2:
+	wget https://bitbucket.org/mgorny/pshs/downloads/pshs-$(PSHS_VERSION).tar.bz2 -O $@
 endif
 
 # Many files should be processed by some internal scripts
