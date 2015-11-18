@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# I always want the devtoolset stuff on RedHat
+if test -e /opt/rh/devtoolset-2/enable
+then
+    source /opt/rh/devtoolset-2/enable
+fi
+
 # Enable all bash completions
 source ~/.local/share/bash-completion/bash_completion
 
