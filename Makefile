@@ -274,6 +274,7 @@ $(PSHS): .local/src/pshs/build/pshs
 	rm -rf $(dir $@)
 	mkdir -p $(dir $@)
 	tar -C $(dir $@) -xpf $< --strip-components=1
+	touch $@
 
 .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2:
 	wget https://bitbucket.org/mgorny/pshs/downloads/pshs-$(PSHS_VERSION).tar.bz2 -O $@
