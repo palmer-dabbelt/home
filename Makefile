@@ -232,7 +232,7 @@ CLEAN += .local/src/pconfigure
 CLEAN += .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
 
 $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
-	$(MAKE) -C .local/src/pconfigure install
+	PATH=$(HOME)/.local/src/pconfigure/bin:$(PATH) $(MAKE) -C .local/src/pconfigure install
 
 .local/src/pconfigure/bin/pconfigure: .local/src/pconfigure/Makefile
 	$(MAKE) -C .local/src/pconfigure
