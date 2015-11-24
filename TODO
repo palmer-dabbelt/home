@@ -1,14 +1,3 @@
-* Designs
- - ISCA2016HOVB4Config: running on a1
- - ISCA2016LOVB4Config: running on a2
- - ISCA2016HOVB8Config
- - ISCA2016LOVB8Config
-
-* VLSI for ISCA
- - Synthesis for L2, L4
- - PAR for L1 (and maybe L2, L4)
- - benchmarks on L1
-
 * UCB-BAR website
  - Sent email about content request
  - Alan Turing. Riding bear.
