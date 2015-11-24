@@ -1,3 +1,5 @@
+* Chisel3 for rocket chip
+
 * UCB-BAR website
  - Sent email about content request
  - Alan Turing. Riding bear.
@@ -12,8 +14,6 @@
  
 * Update vlsi-mem-gen to be more automated
  - Take in .conf files from rocket-chip
-
-* Chisel3 for rocket chip
 
 * Fix Scott's Linux hang
  - Different on different hart counts
