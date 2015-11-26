@@ -6,6 +6,7 @@ GMAKE_VERSION ?= 3.82
 GIT_VERSION ?= 2.4.10
 PCONFIGURE_VERSION ?= 0.10.5
 PSHS_VERSION ?= 0.3
+PV_VERSION ?= 1.6.0
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -21,6 +22,7 @@ GMAKE ?= $(BIN_DIR)/make
 GIT ?= $(BIN_DIR)/git
 PCONFIGURE ?= $(BIN_DIR)/pconfigure
 PSHS ?= $(BIN_DIR)/pshs
+PV ?= $(BIN_DIR)/pv
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -35,6 +37,7 @@ ALL = \
 	$(GIT) \
 	$(PCONFIGURE) \
 	$(PSHS) \
+	$(PV) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -278,6 +281,32 @@ $(PSHS): .local/src/pshs/build/pshs
 
 .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2:
 	wget https://bitbucket.org/mgorny/pshs/downloads/pshs-$(PSHS_VERSION).tar.bz2 -O $@
+endif
+
+# Fetch pv
+ifeq (,$(wildcard /usr/bin/pv))
+CLEAN += .local/src/pv
+CLEAN += .local/var/distfiles/pv-$(PV_VERSION).tar.gz
+
+$(PV): .local/src/pv/build/pv
+	cp -Lf $< $@
+
+.local/src/pv/build/pv: .local/src/pv/build/Makefile
+	$(MAKE) -C $(dir $@) $(notdir $@)
+
+.local/src/pv/build/Makefile: .local/src/pv/configure
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	cd $(dir $@) && ../configure
+
+.local/src/pv/configure: .local/var/distfiles/pv-$(PV_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xpf $< --strip-components=1
+	touch $@
+
+.local/var/distfiles/pv-$(PV_VERSION).tar.gz:
+	wget http://www.ivarch.com/programs/sources/pv-$(PV_VERSION).tar.gz -O $@
 endif
 
 # Many files should be processed by some internal scripts
