@@ -1,28 +1,23 @@
 * Chisel3 for rocket chip
+ - Get Jack's parser
 
 * UCB-BAR website
  - Sent email about content request
- - Alan Turing. Riding bear.
+  * Re-send email, for Rick
 
 * Upstream Linux patches
  - Submitted
+ - Bump to 4.5, no response
  
 * bar-benchmarks
 
 * Rebase binutils
  - Submitted to sw-dev@
+ - Bump to upstream
+ - Send copyright assignment stuff
  
-* Update vlsi-mem-gen to be more automated
- - Take in .conf files from rocket-chip
-
-* Fix Scott's Linux hang
- - Different on different hart counts
-
 * kosta-buildbot.dabbelt.com
  - email
-
-* riscv-linux for raven3p5
- - blocked on assembly tests running
 
 * Bump riscv-linux
 
