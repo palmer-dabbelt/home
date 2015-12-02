@@ -6,8 +6,6 @@
  - Get Jack's parser
 
 * UCB-BAR website
- - Sent email about content request
-  * Re-send email, for Rick
 
 * Upstream Linux patches
  - Submitted
@@ -16,9 +14,7 @@
 * bar-benchmarks
 
 * Rebase binutils
- - Submitted to sw-dev@
- - Bump to upstream
- - Send copyright assignment stuff
+ - Wait until Dec 7th for upstream again
  
 * kosta-buildbot.dabbelt.com
  - email
