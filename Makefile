@@ -7,6 +7,8 @@ GIT_VERSION ?= 2.4.10
 PCONFIGURE_VERSION ?= 0.10.5
 PSHS_VERSION ?= 0.3
 PV_VERSION ?= 1.6.0
+PUTIL_VERSION ?= 0.0.3
+GITDATE_VERSION ?= 0.0.1
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -24,6 +26,8 @@ GIT ?= $(BIN_DIR)/git
 PCONFIGURE ?= $(BIN_DIR)/pconfigure
 PSHS ?= $(BIN_DIR)/pshs
 PV ?= $(BIN_DIR)/pv
+LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
+LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -39,6 +43,7 @@ ALL = \
 	$(PCONFIGURE) \
 	$(PSHS) \
 	$(PV) \
+	$(LIBPUTIL) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -308,6 +313,62 @@ $(PV): .local/src/pv/build/pv
 
 .local/var/distfiles/pv-$(PV_VERSION).tar.gz:
 	wget http://www.ivarch.com/programs/sources/pv-$(PV_VERSION).tar.gz -O $@
+endif
+
+# Fetch putil
+ifeq (,$(wildcard /usr/lib/libputil.so))
+CLEAN += .local/src/putil
+CLEAN += .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
+
+$(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
+	$(MAKE) -C .local/src/putil install
+
+.local/src/putil/lib/pkgconfig/libputil.pc: .local/src/putil/Makefile
+	$(MAKE) -C .local/src/putil
+
+.local/src/putil/Makefile: .local/src/putil/Configfile .local/src/putil/Configfile.local $(PCONFIGURE) $(LIBGITDATE)
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose
+
+.local/src/putil/Configfile: .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -xpf $< --strip-components=1 -C $(dir $@)
+	touch $@
+
+.local/src/putil/Configfile.local: .local/src/putil/Configfile
+	rm -f $@
+	echo "PREFIX = $(HOME)/.local" >> $@
+
+.local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz:
+	wget http://github.com/palmer-dabbelt/putil/archive/v$(PUTIL_VERSION).tar.gz -O $@
+endif
+
+# Fetch gitdate
+ifeq (,$(wildcard /usr/lib/libgitdate.so))
+CLEAN += .local/src/gitdate
+CLEAN += .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz
+
+$(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
+	$(MAKE) -C .local/src/gitdate install
+
+.local/src/gitdate/lib/libgitdate.so: .local/src/gitdate/Makefile
+	$(MAKE) -C .local/src/gitdate
+
+.local/src/gitdate/Makefile: .local/src/gitdate/Configfile .local/src/gitdate/Configfile.local $(PCONFIGURE)
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose
+
+.local/src/gitdate/Configfile: .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir -p $(dir $@)
+	tar -xpf $< --strip-components=1 -C $(dir $@)
+	touch $@
+
+.local/src/gitdate/Configfile.local: .local/src/gitdate/Configfile
+	rm -f $@
+	echo "PREFIX = $(HOME)/.local" >> $@
+
+.local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz:
+	wget http://github.com/palmer-dabbelt/gitdate/archive/v$(GITDATE_VERSION).tar.gz -O $@
 endif
 
 # Many files should be processed by some internal scripts
