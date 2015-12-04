@@ -270,7 +270,7 @@ $(PSHS): .local/src/pshs/build/pshs
 .local/src/pshs/build/pshs: .local/src/pshs/build/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
 
-.local/src/pshs/build/Makefile: .local/src/pshs/configure
+.local/src/pshs/build/Makefile: .local/src/pshs/configure $(LIBEVENT)
 	mkdir -p $(dir $@)
 	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) ../configure --prefix=$(HOME)/.local
 
