@@ -13,6 +13,7 @@ PV_VERSION ?= 1.6.0
 BIN_DIR ?= .local/bin
 LIB_DIR ?= .local/lib
 HDR_DIR ?= .local/include
+PC_DIR ?= .local/lib/pkgconfig
 
 CONFIG_PP ?= $(BIN_DIR)/config_pp
 KEYCHAIN ?= $(BIN_DIR)/keychain
@@ -271,7 +272,7 @@ $(PSHS): .local/src/pshs/build/pshs
 
 .local/src/pshs/build/Makefile: .local/src/pshs/configure
 	mkdir -p $(dir $@)
-	cd $(dir $@) && PKG_CONFIG_PATH="$(HOME)/.local/lib/pkgconfig" ../configure
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) ../configure --prefix=$(HOME)/.local
 
 .local/src/pshs/configure: .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2
 	rm -rf $(dir $@)
