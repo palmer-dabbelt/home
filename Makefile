@@ -128,7 +128,7 @@ $(TMUX_BIN): .local/src/tmux/build/tmux
 
 .local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && CPPFLAGS="-I$(HOME)/$(HDR_DIR)" LDFLAGS="-L$(HOME)/$(LIB_DIR) -Wl,-rpath,$(HOME)/$(LIB_DIR)" ../configure
+	cd $(dir $@) && CPPFLAGS="-I$(abspath $(HDR_DIR))" LDFLAGS="-L$(abspath $(LIB_DIR)) -Wl,-rpath,$(abspath $(LIB_DIR))" ../configure
 
 .local/src/tmux/configure: .local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.gz
 	rm -rf $(dir $@)
@@ -167,7 +167,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 
 .local/src/libevent/build/Makefile: .local/src/libevent/configure
 	mkdir -p $(dir $@)
-	cd $(dir $@) && ../configure --prefix=$(HOME)/.local
+	cd $(dir $@) && ../configure --prefix=$(abspath .local)
 
 .local/src/libevent/configure: .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz
 	rm -rf $(dir $@)
@@ -194,7 +194,7 @@ $(GMAKE): .local/src/make/build/make
 .local/src/make/build/Makefile: .local/src/make/configure
 	rm -rf $(dir $@)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && ../configure --prefix=$(HOME)/.local
+	cd $(dir $@) && ../configure --prefix=$(abspath .local)
 
 .local/src/make/configure: .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
 	rm -rf $(dir $@)
@@ -222,7 +222,7 @@ $(GIT): .local/src/git/git
 	touch $@
 
 .local/src/git/Makefile: .local/src/git/configure
-	cd $(dir $@) && ./configure --prefix=$(HOME)/.local/
+	cd $(dir $@) && ./configure --prefix=$(abspath .local/)
 	touch $@
 
 .local/src/git/configure: .local/var/distfiles/git-$(GIT_VERSION).tar.gz
@@ -241,7 +241,7 @@ CLEAN += .local/src/pconfigure
 CLEAN += .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
 
 $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
-	PATH=$(HOME)/.local/src/pconfigure/bin:$(PATH) $(MAKE) -C .local/src/pconfigure install
+	PATH=$(abspath .local/src/pconfigure/bin):$(PATH) $(MAKE) -C .local/src/pconfigure install
 
 .local/src/pconfigure/bin/pconfigure: .local/src/pconfigure/Makefile
 	$(MAKE) -C .local/src/pconfigure
@@ -252,7 +252,7 @@ $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
 .local/src/pconfigure/Configfile.local:
 	mkdir -p $(dir $@)
 	rm -f $@
-	echo "PREFIX = $(HOME)/.local" >> $@
+	echo "PREFIX = $(abspath .local)" >> $@
 
 .local/src/pconfigure/Configfile: .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
 	rm -rf $(dir $@)i
@@ -277,7 +277,7 @@ $(PSHS): .local/src/pshs/build/pshs
 
 .local/src/pshs/build/Makefile: .local/src/pshs/configure $(LIBEVENT)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) ../configure --prefix=$(HOME)/.local
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) ../configure --prefix=$(abspath .local)
 
 .local/src/pshs/configure: .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2
 	rm -rf $(dir $@)
@@ -337,7 +337,7 @@ $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 
 .local/src/putil/Configfile.local: .local/src/putil/Configfile
 	rm -f $@
-	echo "PREFIX = $(HOME)/.local" >> $@
+	echo "PREFIX = $(abspath .local)" >> $@
 
 .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz:
 	wget http://github.com/palmer-dabbelt/putil/archive/v$(PUTIL_VERSION).tar.gz -O $@
@@ -365,7 +365,7 @@ $(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
 
 .local/src/gitdate/Configfile.local: .local/src/gitdate/Configfile
 	rm -f $@
-	echo "PREFIX = $(HOME)/.local" >> $@
+	echo "PREFIX = $(abspath .local)" >> $@
 
 .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz:
 	wget http://github.com/palmer-dabbelt/gitdate/archive/v$(GITDATE_VERSION).tar.gz -O $@
