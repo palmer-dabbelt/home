@@ -242,7 +242,7 @@ $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
 	$(MAKE) -C .local/src/pconfigure
 
 .local/src/pconfigure/Makefile: .local/src/pconfigure/Configfile .local/src/pconfigure/Configfile.local
-	cd $(dir $@) && ./bootstrap.sh
+	+cd $(dir $@) && ./bootstrap.sh
 
 .local/src/pconfigure/Configfile.local:
 	mkdir -p $(dir $@)
