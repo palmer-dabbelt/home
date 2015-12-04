@@ -189,7 +189,7 @@ $(GMAKE): .local/src/make/build/make
 .local/src/make/build/Makefile: .local/src/make/configure
 	rm -rf $(dir $@)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && ../configure
+	cd $(dir $@) && ../configure --prefix=$(HOME)/.local
 
 .local/src/make/configure: .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz
 	rm -rf $(dir $@)
