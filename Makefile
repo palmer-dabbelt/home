@@ -176,6 +176,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 	touch $@
 
 .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/libevent-$(LIBEVENT_VERSION)-stable.tar.gz -O $@
 endif
 
@@ -203,6 +204,7 @@ $(GMAKE): .local/src/make/build/make
 	touch $@
 
 .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget http://ftp.gnu.org/gnu/make/make-$(GMAKE_VERSION).tar.gz -O $@
 endif
 
@@ -232,6 +234,7 @@ $(GIT): .local/src/git/git
 	touch $@
 
 .local/var/distfiles/git-$(GIT_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget http://www.kernel.org/pub/software/scm/git/git-$(GIT_VERSION).tar.gz -O $@
 endif
 
@@ -261,6 +264,7 @@ $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
 	touch $@
 
 .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget https://github.com/palmer-dabbelt/pconfigure/archive/v$(PCONFIGURE_VERSION).tar.gz -O $@
 endif
 
@@ -286,6 +290,7 @@ $(PSHS): .local/src/pshs/build/pshs
 	touch $@
 
 .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2:
+	mkdir -p $(dir $@)
 	wget https://bitbucket.org/mgorny/pshs/downloads/pshs-$(PSHS_VERSION).tar.bz2 -O $@
 endif
 
@@ -312,6 +317,7 @@ $(PV): .local/src/pv/build/pv
 	touch $@
 
 .local/var/distfiles/pv-$(PV_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget http://www.ivarch.com/programs/sources/pv-$(PV_VERSION).tar.gz -O $@
 endif
 
@@ -340,6 +346,7 @@ $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 	echo "PREFIX = $(abspath .local)" >> $@
 
 .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget http://github.com/palmer-dabbelt/putil/archive/v$(PUTIL_VERSION).tar.gz -O $@
 endif
 
@@ -368,6 +375,7 @@ $(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
 	echo "PREFIX = $(abspath .local)" >> $@
 
 .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz:
+	mkdir -p $(dir $@)
 	wget http://github.com/palmer-dabbelt/gitdate/archive/v$(GITDATE_VERSION).tar.gz -O $@
 endif
 
