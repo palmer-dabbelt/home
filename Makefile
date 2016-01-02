@@ -8,7 +8,7 @@ PCONFIGURE_VERSION ?= 0.10.5
 PSHS_VERSION ?= 0.3
 PV_VERSION ?= 1.6.0
 PUTIL_VERSION ?= 0.0.3
-GITDATE_VERSION ?= 0.0.1
+GITDATE_VERSION ?= 0.0.2
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
