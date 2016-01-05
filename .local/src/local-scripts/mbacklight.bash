@@ -19,5 +19,14 @@ then
 fi
 
 sensor="$(cat /sys/devices/platform/applesmc.768/light | sed 's/(\([0-9]*\),[0-9]*)/\1/')"
+if [[ "$sensor" -gt "$SENSOR_MAX" ]]
+then
+	sensor="$SENSOR_MAX"
+fi
+if [[ "$sensor" -lt "$SENSOR_MIN" ]]
+then
+	sensor="$SENSOR_MIN"
+fi
+
 backlight="$((BACKLIGHT_MIN + (BACKLIGHT_MAX - BACKLIGHT_MIN) * (sensor - SENSOR_MIN) / (SENSOR_MAX - SENSOR_MIN)))"
 xbacklight -set $backlight -time $ADJUST_TIME -steps $ADJUST_STEPS
