@@ -1,23 +1,15 @@
-* Chisel2 PRs
-
-* Chisel3 PRs
-
-* Halide
-
 * Chisel3 for rocket chip
  - Get Jack's parser
 
-* UCB-BAR website
-
+* Rebase binutils
+ - Wait until Dec 7th for upstream again
+ 
 * Upstream Linux patches
  - Submitted
  - Bump to 4.5, no response
  
 * bar-benchmarks
 
-* Rebase binutils
- - Wait until Dec 7th for upstream again
- 
 * kosta-buildbot.dabbelt.com
  - email
 
