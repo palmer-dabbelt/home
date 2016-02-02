@@ -9,12 +9,20 @@ endfunction
 au BufNewFile,BufRead /tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
 
 " This is my style: 4-space indent, no tab characters
-function STYLE_mine()
+function STYLE_mycxx()
   setlocal ts=4
   setlocal expandtab
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal filetype=cpp
+endfunction
+
+" The style I use for bash
+function STYLE_mybash()
+  setlocal ts=4
+  setlocal expandtab
+  setlocal tabstop=4
+  setlocal shiftwidth=4
 endfunction
 
 " This is Andrew's style
@@ -26,10 +34,12 @@ function STYLE_andrew()
   set autoindent
 endfunction
 
-" My default style for C++ files -- these come first, so they can be
+" My default style for various languages -- these come first, so they can be
 " overridden
-au BufNewFile,BufRead *.c++ call STYLE_mine()
-au BufNewFile,BufRead *.h++ call STYLE_mine()
+au BufNewFile,BufRead *.c++ call STYLE_mycxx()
+au BufNewFile,BufRead *.h++ call STYLE_mycxx()
+
+au FileType bash call STYLE_mybash()
 
 " Andrew's file needs to be set for some files
 au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
