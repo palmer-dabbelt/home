@@ -206,6 +206,7 @@ $(GMAKE): .local/src/make/build/make
 .local/var/distfiles/make-$(GMAKE_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget http://ftp.gnu.org/gnu/make/make-$(GMAKE_VERSION).tar.gz -O $@
+	touch $@
 endif
 
 # Fetch git
