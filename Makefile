@@ -35,6 +35,7 @@ LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 ALL = \
 	$(BIN_DIR)/e \
 	$(BIN_DIR)/mbacklight \
+	$(BIN_DIR)/term \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
