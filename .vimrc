@@ -25,6 +25,14 @@ function STYLE_mybash()
   setlocal shiftwidth=4
 endfunction
 
+function STYLE_mylatex()
+  call STYLE_mine()
+  setlocal ts=4
+  setlocal tabstop=2
+  setlocal shiftwidth=2
+  setlocal filetype=tex
+endfunction
+
 " This is Andrew's style
 function STYLE_andrew()
   setlocal ts=2
@@ -40,6 +48,9 @@ au BufNewFile,BufRead *.c++ call STYLE_mycxx()
 au BufNewFile,BufRead *.h++ call STYLE_mycxx()
 
 au FileType bash call STYLE_mybash()
+
+" LaTeX files want a slightly different format
+au BufNewFile,BufRead *.tex call STYLE_mylatex()
 
 " Andrew's file needs to be set for some files
 au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
