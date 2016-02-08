@@ -32,11 +32,11 @@ then
     xrandr --dpi 125
 fi
 
-if test -f /etc/acpi/actions/xrandr.sh
+if test -f /etc/acpi/scripts/xrandr.sh
 then
     xhost +localhost
     xhost +local:
-    /etc/acpi/actions/xrandr.sh &
+    /etc/acpi/scripts/xrandr.sh &
 fi
 
 if test -f ~/.local/etc/redshift/$HOSTNAME.conf
