@@ -72,6 +72,10 @@ then
 	export GPG_TTY="$SSH_TTY"
 fi
 
+# I want address sanitizer to output stack traces
+export ASAN_SYMBOLIZER_PATH=/usr/bin/llvm-symbolizer
+export ASAN_OPTIONS=symbolize=1
+
 # Attempt to setup a keychain
 if test -x $HOME/.local/bin/keychain
 then
