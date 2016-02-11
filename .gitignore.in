@@ -47,6 +47,10 @@
 *.swp
 .swo
 
+# These are directories I do care about, but are for osme reason ruled out by
+# the above (probably because they're close to what I don't care about).
+!/.config/awesome/
+
 # These are manually tracked as git submodules
 /.gnupg/
 /.local/share/passwords/
