@@ -26,8 +26,8 @@ function STYLE_mybash()
 endfunction
 
 function STYLE_mylatex()
-  call STYLE_mine()
   setlocal ts=4
+  setlocal expandtab
   setlocal tabstop=2
   setlocal shiftwidth=2
   setlocal filetype=tex
