@@ -54,6 +54,7 @@ alias hurricane='ssh bwrcrdsl-2.eecs.berkeley.edu -t "screen -x hurricane-chip"'
 
 # Other aliases
 alias todo='$GIT_EDITOR ~/TODO'
+alias bwrcfont='printf '"'"'\33]50;%s\007'"'"' "xft:Liberation Mono-7"'
 
 # Some shell variables are different on different machines
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
