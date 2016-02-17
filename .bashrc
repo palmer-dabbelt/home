@@ -6,6 +6,11 @@ then
     source /opt/rh/devtoolset-2/enable
 fi
 
+if test -e /tools/support/lsf/conf/profile.lsf
+then
+    source /tools/support/lsf/conf/profile.lsf
+fi
+
 # Enable all bash completions
 source ~/.local/share/bash-completion/bash_completion
 
