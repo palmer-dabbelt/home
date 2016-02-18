@@ -37,6 +37,7 @@ ALL = \
 	$(BIN_DIR)/mbacklight \
 	$(BIN_DIR)/term \
 	$(BIN_DIR)/parsetorture \
+	$(BIN_DIR)/mkenter \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
