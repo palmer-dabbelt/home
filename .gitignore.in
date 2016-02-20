@@ -23,6 +23,7 @@
 /.java/
 /.lesshst
 /.local/bin/
+/.local/include
 /.local/lib/
 /.local/lib64/
 /.local/log/
