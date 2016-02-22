@@ -180,7 +180,7 @@ $(LIBEVENT): .local/src/libevent/build/.libs/libevent.so
 
 .local/var/distfiles/libevent-$(LIBEVENT_VERSION).tar.gz:
 	mkdir -p $(dir $@)
-	wget https://sourceforge.net/projects/levent/files/libevent/libevent-2.0/libevent-$(LIBEVENT_VERSION)-stable.tar.gz -O $@
+	wget https://github.com/libevent/libevent/releases/download/release-$(LIBEVENT_VERSION)-stable/libevent-$(LIBEVENT_VERSION)-stable.tar.gz -O $@
 endif
 
 # Fetch make
