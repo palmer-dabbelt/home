@@ -1,6 +1,3 @@
-" Always start at the top of git commits
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
 " Enter email messages in insert mode
 function STYLE_mhng_comp()
   normal! $
@@ -33,6 +30,15 @@ function STYLE_mylatex()
   setlocal filetype=tex
 endfunction
 
+function STYLE_mygit()
+  setlocal ts=8
+  setlocal expandtab
+  setlocal tabstop=8
+  setlocal shiftwidth=8
+  setlocal tw=72
+  call setpos('.', [0, 1, 1, 0])
+endfunction
+
 " This is Andrew's style
 function STYLE_andrew()
   setlocal ts=2
@@ -51,6 +57,9 @@ au FileType bash call STYLE_mybash()
 
 " LaTeX files want a slightly different format
 au BufNewFile,BufRead *.tex call STYLE_mylatex()
+
+" Always start at the top of git commits
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call STYLE_mygit()
 
 " Andrew's file needs to be set for some files
 au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
