@@ -65,7 +65,7 @@ alias bwrcfont='printf '"'"'\33]50;%s\007'"'"' "xft:Liberation Mono-7"'
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
 
 # A nicer-looking prompt
-if test -f /usr/bin/mhng-bud
+if [[ "$HOSTNAME" == "palmer-mbp2014" ]]
 then
     export PS1="\[\e[0;0m\e[32m\]\u \[\e[31m\]\h \[\e[34m\]\W \[\e[1;31m\]\`mhng-bud\`\[\e[0;32m\]\\$\[\e[0m\] "
 else
