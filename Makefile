@@ -9,6 +9,7 @@ PSHS_VERSION ?= 0.3
 PV_VERSION ?= 1.6.0
 PUTIL_VERSION ?= 0.0.3
 GITDATE_VERSION ?= 0.0.2
+UNITS_VERSION ?= 2.12
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -28,6 +29,7 @@ PSHS ?= $(BIN_DIR)/pshs
 PV ?= $(BIN_DIR)/pv
 LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
 LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
+UNITS ?= $(BIN_DIR)/units
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -47,6 +49,7 @@ ALL = \
 	$(PSHS) \
 	$(PV) \
 	$(LIBPUTIL) \
+	$(UNITS) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -402,3 +405,27 @@ endif
 .parallel/will-cite:
 	mkdir -p $(dir $@)
 	touch $@
+
+# Fetch units
+ifeq (,$(wildcard /usr/bin/units))
+CLEAN += .local/src/units
+CLEAN += .local/var/distfiles/units-$(UNITS_VERSION).tar.gz
+
+$(UNITS): .local/src/units/units
+	$(MAKE) -C $(dir $^) install
+
+.local/src/units/units: .local/src/units/Makefile
+	$(MAKE) -C $(dir $@) $(notdir $@)
+
+.local/src/units/Makefile: .local/src/units/configure
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local
+
+.local/src/units/configure: .local/var/distfiles/units-$(UNITS_VERSION).tar.gz
+	rm -rf $(dir $@)
+	mkdir $(dir $@)
+	tar -xzf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/units-$(UNITS_VERSION).tar.gz:
+	wget http://ftp.gnu.org/gnu/units/units-$(UNITS_VERSION).tar.gz -O $@
+endif
