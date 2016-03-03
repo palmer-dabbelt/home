@@ -53,6 +53,8 @@ endfunction
 au BufNewFile,BufRead *.c++ call STYLE_mycxx()
 au BufNewFile,BufRead *.h++ call STYLE_mycxx()
 
+au BufNewFile,BufRead *.scala call STYLE_andrew()
+
 au FileType bash call STYLE_mybash()
 
 " LaTeX files want a slightly different format
