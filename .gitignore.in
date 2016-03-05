@@ -45,6 +45,7 @@
 /.x2go/
 /.x2goclient/
 /.xsession-*
+/synopsys*
 *.swp
 .swo
 
