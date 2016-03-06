@@ -40,6 +40,7 @@ ALL = \
 	$(BIN_DIR)/term \
 	$(BIN_DIR)/parsetorture \
 	$(BIN_DIR)/mkenter \
+	$(BIN_DIR)/fixhttpssubmodules \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
