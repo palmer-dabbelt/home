@@ -26,7 +26,9 @@
 /.local/include
 /.local/lib/
 /.local/lib64/
+/.local/libexec/
 /.local/log/
+/.local/run/
 /.local/share/
 /.local/var/
 /.parallel/tmp/
@@ -39,6 +41,7 @@
 /.sbt/
 /.snapshot/
 /.ssh/id_*
+/.steam*
 /.synopsys*
 /.thumbnails
 /.viminfo
