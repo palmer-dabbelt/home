@@ -3,6 +3,13 @@
 # This is a login shell
 source $HOME/.bash_profile
 
+# I need to set the DPI before entering awesome, so GUI applications behave.
+if [[ "$HOSTNAME" == "palmer-mbp2014" ]]
+then
+    xrandr --dpi 157
+    export GDK_SCALE=2
+fi
+
 # There's a bunch of directories that I want to always have 
 mkdir -p ~/.local/log/mbacklight/
 mkdir -p ~/.local/log/mhng-daemon/
@@ -17,7 +24,6 @@ mkdir -p ~/.local/log/mhng-notify/
 #########################################################
 if [[ "$HOSTNAME" == "palmer-mbp2014" ]]
 then
-    xrandr --dpi 157
 
     ( while true
       do
