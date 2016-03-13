@@ -10,6 +10,7 @@ PV_VERSION ?= 1.6.0
 PUTIL_VERSION ?= 0.0.3
 GITDATE_VERSION ?= 0.0.2
 UNITS_VERSION ?= 2.12
+VCDDIFF_VERSION ?= 0.0.5
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -30,6 +31,7 @@ PV ?= $(BIN_DIR)/pv
 LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
 LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
 UNITS ?= $(BIN_DIR)/units
+VCDDIFF ?= $(BIN_DIR)/vcddiff
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -51,6 +53,7 @@ ALL = \
 	$(PV) \
 	$(LIBPUTIL) \
 	$(UNITS) \
+	$(VCDDIFF) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
@@ -429,4 +432,34 @@ $(UNITS): .local/src/units/units
 
 .local/var/distfiles/units-$(UNITS_VERSION).tar.gz:
 	wget http://ftp.gnu.org/gnu/units/units-$(UNITS_VERSION).tar.gz -O $@
+endif
+
+# Fetch vcddiff
+ifeq (,$(wildcard /usr/bin/vcddiff))
+CLEAN += .local/src/vcddiff
+CLEAN += .local/var/distfiles/vcddiff-$(VCDDIFF_VERSION).tar.gz
+
+$(VCDDIFF): .local/src/vcddiff/bin/vcddiff
+	$(MAKE) -C .local/src/vcddiff install
+
+.local/src/vcddiff/bin/vcddiff: .local/src/vcddiff/Makefile
+	$(MAKE) -C .local/src/vcddiff
+
+.local/src/vcddiff/Makefile: .local/src/vcddiff/Configfile .local/src/vcddiff/Configfile.local
+	+cd $(dir $@) && pconfigure
+
+.local/src/vcddiff/Configfile.local:
+	mkdir -p $(dir $@)
+	rm -f $@
+	echo "PREFIX = $(abspath .local)" >> $@
+
+.local/src/vcddiff/Configfile: .local/var/distfiles/vcddiff-$(VCDDIFF_VERSION).tar.gz
+	rm -rf $(dir $@)i
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xzf $< --strip-components=1
+	touch $@
+
+.local/var/distfiles/vcddiff-$(VCDDIFF_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://github.com/palmer-dabbelt/vcddiff/archive/v$(VCDDIFF_VERSION).tar.gz -O $@
 endif
