@@ -31,7 +31,7 @@ PV ?= $(BIN_DIR)/pv
 LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
 LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
 UNITS ?= $(BIN_DIR)/units
-VCDDIFF ?= $(BIN_DIR)/vcddiff
+VIMURA ?= $(BIN_DIR)/vimura
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -43,6 +43,7 @@ ALL = \
 	$(BIN_DIR)/parsetorture \
 	$(BIN_DIR)/mkenter \
 	$(BIN_DIR)/fixhttpssubmodules \
+	$(BIN_DIR)/vimura \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
