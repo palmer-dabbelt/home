@@ -45,6 +45,7 @@
 /.synopsys*
 /.thumbnails
 /.viminfo
+/.vim/
 /.x2go/
 /.x2goclient/
 /.xsession-*
