@@ -1,9 +1,3 @@
-* TSMC chip
- - FRAM view in ICC
-
-* Chisel3 for rocket chip
- - Get Jack's parser
-
 * Rebase binutils
  - Waiting on Andrew's patches
  
