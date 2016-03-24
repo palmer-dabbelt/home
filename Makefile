@@ -127,7 +127,7 @@ endif
 
 # Fetch tmux
 INSTALLED_TMUX_VERSION = $(shell echo -e "$(GMAKE_VERSION)\n`/usr/bin/tmux -V | head -n1 | cut -d' ' -f2`" | sort --version-sort | head -n1)
-ifneq ($(INSTALLED_TMUX_VERSION),$(TMUX_VERSION))
+ifneq ($(INSTALLED_TMUX_VERSION),$(TMUX_BIN_VERSION))
 CLEAN += .local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.bz2
 CLEAN += .local/src/tmux/
 
