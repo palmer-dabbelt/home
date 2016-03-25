@@ -1,5 +1,3 @@
-* Rocket Chip Chisel 3 merge
-
 * Rocket Chip Verilator
 
 * Move riscv-gnu-toolchain to a binutils submodule
