@@ -44,6 +44,7 @@ ALL = \
 	$(BIN_DIR)/mkenter \
 	$(BIN_DIR)/fixhttpssubmodules \
 	$(BIN_DIR)/vimura \
+	$(BIN_DIR)/pmake \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
