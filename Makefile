@@ -45,6 +45,7 @@ ALL = \
 	$(BIN_DIR)/fixhttpssubmodules \
 	$(BIN_DIR)/vimura \
 	$(BIN_DIR)/pmake \
+	$(BIN_DIR)/speedtest-cli \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
@@ -466,3 +467,7 @@ $(VCDDIFF): .local/src/vcddiff/bin/vcddiff
 	mkdir -p $(dir $@)
 	wget https://github.com/palmer-dabbelt/vcddiff/archive/v$(VCDDIFF_VERSION).tar.gz -O $@
 endif
+
+$(BIN_DIR)/speedtest-cli:
+	wget -O $@ https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py
+	chmod +x $@
