@@ -63,6 +63,11 @@ then
       done ) &
 fi
 
+if test -f /usr/bin/chromium
+then
+    chromium &
+fi
+
 #########################################################
 # Notification Daemons
 #########################################################
