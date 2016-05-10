@@ -64,6 +64,9 @@ alias bwrcfont='printf '"'"'\33]50;%s\007'"'"' "xft:Liberation Mono-7"'
 # Some shell variables are different on different machines
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
 
+# Zathura doesn't support GDK_SCALE
+alias zathura='GDK_SCALE=1 zathura'
+
 # A nicer-looking prompt
 if test -S $HOME/.mhng/daemon.socket
 then
