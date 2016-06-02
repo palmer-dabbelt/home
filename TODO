@@ -1,7 +1,5 @@
 * Rocket Chip Verilator
 
-* Move riscv-gnu-toolchain to a binutils submodule
-
 * Code review on GCC
  
 * Upstream Linux patches
