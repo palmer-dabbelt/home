@@ -53,7 +53,7 @@ alias forw="mhng-forw"
 alias repl="mhng-repl"
 alias detach="mhng-detach"
 alias hud="watch mhng-hud"
-alias gmail="$BROWSER \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g')\""
+alias gmail="$BROWSER \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
 alias mal="mhng-hud"
 alias mhng-log="tail -n40 ~/.mhng/daemon.log"
 
