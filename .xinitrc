@@ -54,15 +54,6 @@ then
       done ) &
 fi
 
-if test -f /usr/bin/compton
-then
-    ( while true
-      do
-          compton --backend glx --vsync opengl-swc
-	  sleep 1s
-      done ) &
-fi
-
 if test -f /usr/bin/chromium
 then
     chromium &
