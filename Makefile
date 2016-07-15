@@ -46,6 +46,7 @@ ALL = \
 	$(BIN_DIR)/vimura \
 	$(BIN_DIR)/pmake \
 	$(BIN_DIR)/speedtest-cli \
+	$(BIN_DIR)/hfipip \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
