@@ -20,6 +20,9 @@ shopt -s histappend
 # Use my local programs
 export PATH="$HOME/.local/bin:$PATH"
 
+# Some machines don't have proper terminfo databases
+export TERMINFO="$HOME/.local/share/terminfo"
+
 # Setup my personal shell variables that are the same everywhere
 export EDITOR="e"
 export BROWSER="chromium"
