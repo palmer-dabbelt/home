@@ -71,15 +71,6 @@ then
       done ) &
 fi
 
-if test -f /usr/bin/cbatticon &
-then
-    ( while true
-      do
-          /usr/bin/cbatticon --hide-notification
-          sleep 1s
-      done ) &
-fi
-
 if test -f ~/.mhng/username
 then
     ( while true
