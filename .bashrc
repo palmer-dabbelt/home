@@ -60,6 +60,13 @@ alias gmail="$BROWSER \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(
 alias mal="mhng-hud"
 alias mhng-log="tail -n40 ~/.mhng/daemon.log"
 
+# Aliases to "cd ../../.. ..."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
 # These are quick ways to access my common machines
 alias hurricane='ssh bwrcrdsl-2.eecs.berkeley.edu -t "screen -x hurricane-chip"'
 
