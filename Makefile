@@ -307,7 +307,7 @@ $(PSHS): .local/src/pshs/build/pshs
 
 .local/var/distfiles/pshs-$(PSHS_VERSION).tar.bz2:
 	mkdir -p $(dir $@)
-	wget https://bitbucket.org/mgorny/pshs/downloads/pshs-$(PSHS_VERSION).tar.bz2 -O $@
+	wget https://github.com/mgorny/pshs/releases/download/v$(PSHS_VERSION)/pshs-$(PSHS_VERSION).tar.bz2 -O $@
 endif
 
 # Fetch pv
