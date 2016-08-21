@@ -11,6 +11,7 @@ PUTIL_VERSION ?= 0.0.4
 GITDATE_VERSION ?= 0.0.2
 UNITS_VERSION ?= 2.12
 VCDDIFF_VERSION ?= 0.0.5
+NCURSES_VERSION ?= 5.9
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -32,6 +33,7 @@ LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
 LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
 UNITS ?= $(BIN_DIR)/units
 VIMURA ?= $(BIN_DIR)/vimura
+LIBCURSES ?= $(LIB_DIR)/libncurses.so
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -50,6 +52,7 @@ ALL = \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(LIBEVENT) \
+	$(LIBCURSES) \
 	$(GMAKE) \
 	$(GIT) \
 	$(PCONFIGURE) \
@@ -141,9 +144,9 @@ $(TMUX_BIN): .local/src/tmux/build/tmux
 .local/src/tmux/build/tmux: .local/src/tmux/build/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@) 
 
-.local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT)
+.local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT) $(LIBCURSES)
 	mkdir -p $(dir $@)
-	cd $(dir $@) && CPPFLAGS="-I$(abspath $(HDR_DIR))" LDFLAGS="-L$(abspath $(LIB_DIR)) -Wl,-rpath,$(abspath $(LIB_DIR))" ../configure
+	cd $(dir $@) && CPPFLAGS="-I$(abspath $(HDR_DIR)) -I$(abspath $(HDR_DIR)/ncurses)" LDFLAGS="-L$(abspath $(LIB_DIR)) -Wl,-rpath,$(abspath $(LIB_DIR))" ../configure
 
 .local/src/tmux/configure: .local/var/distfiles/tmux-$(TMUX_BIN_VERSION).tar.gz
 	rm -rf $(dir $@)
@@ -469,6 +472,28 @@ $(VCDDIFF): .local/src/vcddiff/bin/vcddiff
 	wget https://github.com/palmer-dabbelt/vcddiff/archive/v$(VCDDIFF_VERSION).tar.gz -O $@
 endif
 
+# A simple speedtest
 $(BIN_DIR)/speedtest-cli:
 	wget -O $@ https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py
 	chmod +x $@
+
+# Fetch ncurses
+CLEAN += .local/src/ncurses-$(NCURSES_VERSION)
+$(LIBCURSES): .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/ncurses-$(NCURSES_VERSION) install
+
+.local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so: .local/src/ncurses-$(NCURSES_VERSION)/Makefile
+	$(MAKE) -C $(dir $@)
+
+.local/src/ncurses-$(NCURSES_VERSION)/Makefile: .local/src/ncurses-$(NCURSES_VERSION)/configure
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --with-shared
+
+.local/src/ncurses-$(NCURSES_VERSION)/configure: .local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz
+	mkdir -p $(dir $@)
+	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://ftp.gnu.org/gnu/ncurses/ncurses-$(NCURSES_VERSION).tar.gz -O $@
