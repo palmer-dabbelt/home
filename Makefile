@@ -12,6 +12,7 @@ GITDATE_VERSION ?= 0.0.2
 UNITS_VERSION ?= 2.12
 VCDDIFF_VERSION ?= 0.0.5
 NCURSES_VERSION ?= 5.9
+ZLIB_VERSION ?= 1.2.8
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -34,6 +35,7 @@ LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
 UNITS ?= $(BIN_DIR)/units
 VIMURA ?= $(BIN_DIR)/vimura
 LIBCURSES ?= $(LIB_DIR)/libncurses.so
+LIBZ ?= $(LIB_DIR)/libz.so
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -144,7 +146,7 @@ $(TMUX_BIN): .local/src/tmux/build/tmux
 .local/src/tmux/build/tmux: .local/src/tmux/build/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@) 
 
-.local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT) $(LIBCURSES)
+.local/src/tmux/build/Makefile: .local/src/tmux/configure $(LIBEVENT) $(LIBCURSES) $(LIBZ)
 	mkdir -p $(dir $@)
 	cd $(dir $@) && CPPFLAGS="-I$(abspath $(HDR_DIR)) -I$(abspath $(HDR_DIR)/ncurses)" LDFLAGS="-L$(abspath $(LIB_DIR)) -Wl,-rpath,$(abspath $(LIB_DIR))" ../configure
 
@@ -235,15 +237,15 @@ CLEAN += .local/var/distfiles/git-$(GIT_VERSION).tar.gz
 CLEAN += .local/libexec/git-core/
 
 $(GIT): .local/src/git/git
-	$(MAKE) -C $(dir $<) install
+	$(MAKE) NO_TCLTK=YesPlease NO_GETTEXT=YesPlease -C $(dir $<) install
 	touch $@
 
 .local/src/git/git: .local/src/git/Makefile
-	$(MAKE) -C $(dir $@)
+	$(MAKE) NO_TCLTK=YesPlease NO_GETTEXT=YesPlease -C $(dir $@)
 	touch $@
 
-.local/src/git/Makefile: .local/src/git/configure
-	cd $(dir $@) && ./configure --prefix=$(abspath .local/)
+.local/src/git/Makefile: .local/src/git/configure $(ZLIB)
+	cd $(dir $@) && CFLAGS="-I$(abspath $(HDR_DIR))" LDFLAGS="-L$(abspath $(LIB_DIR))" ./configure --prefix=$(abspath .local/)
 	touch $@
 
 .local/src/git/configure: .local/var/distfiles/git-$(GIT_VERSION).tar.gz
@@ -497,3 +499,24 @@ $(LIBCURSES): .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so
 .local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget https://ftp.gnu.org/gnu/ncurses/ncurses-$(NCURSES_VERSION).tar.gz -O $@
+
+# Fetch zlib
+CLEAN += .local/src/zlib-$(ZLIB_VERSION)
+$(LIBZ): .local/src/zlib-$(ZLIB_VERSION)/libz.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/zlib-$(ZLIB_VERSION) install
+
+.local/src/zlib-$(ZLIB_VERSION)/libz.so: .local/src/zlib-$(ZLIB_VERSION)/Makefile
+	$(MAKE) -C .local/src/zlib-$(ZLIB_VERSION)
+
+.local/src/zlib-$(ZLIB_VERSION)/Makefile: .local/src/zlib-$(ZLIB_VERSION)/configure
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --enable-shared
+
+.local/src/zlib-$(ZLIB_VERSION)/configure: .local/var/distfiles/zlib-$(ZLIB_VERSION).tar.gz
+	mkdir -p $(dir $@)
+	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/zlib-$(ZLIB_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget http://zlib.net/zlib-$(ZLIB_VERSION).tar.gz -O $@
