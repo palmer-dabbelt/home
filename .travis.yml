@@ -1,0 +1,11 @@
+language: c++
+
+matrix:
+  include:
+    - addons:
+      apt:
+        packages:
+          build-essential
+
+script:
+  - make
