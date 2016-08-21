@@ -53,8 +53,6 @@ ALL = \
 	$(BIN_DIR)/hfipip \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
-	$(LIBEVENT) \
-	$(LIBCURSES) \
 	$(GMAKE) \
 	$(GIT) \
 	$(PCONFIGURE) \
@@ -486,7 +484,7 @@ $(LIBCURSES): .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so
 	$(MAKE) -C .local/src/ncurses-$(NCURSES_VERSION) install
 
 .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so: .local/src/ncurses-$(NCURSES_VERSION)/Makefile
-	$(MAKE) -C $(dir $@)
+	$(MAKE) -C .local/src/ncurses-$(NCURSES_VERSION)
 
 .local/src/ncurses-$(NCURSES_VERSION)/Makefile: .local/src/ncurses-$(NCURSES_VERSION)/configure
 	cd $(dir $@); ./configure --prefix=$(HOME)/.local --with-shared
