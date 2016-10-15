@@ -51,6 +51,7 @@ ALL = \
 	$(BIN_DIR)/pmake \
 	$(BIN_DIR)/speedtest-cli \
 	$(BIN_DIR)/hfipip \
+	$(BIN_DIR)/whenis \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \
