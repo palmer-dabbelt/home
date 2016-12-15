@@ -2,8 +2,8 @@
 function STYLE_mhng_comp()
   normal! $
   startinsert
+  setlocal spell
 endfunction
-au BufNewFile,BufRead /tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
 
 " This is my style: 4-space indent, no tab characters
 function STYLE_mycxx()
@@ -47,6 +47,9 @@ function STYLE_andrew()
   set smarttab
   set autoindent
 endfunction
+
+" I like to write mail
+au BufNewFile,BufRead /tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
 
 " My default style for various languages -- these come first, so they can be
 " overridden
