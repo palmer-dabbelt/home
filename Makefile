@@ -342,7 +342,7 @@ $(PV): .local/src/pv/build/pv
 endif
 
 # Fetch putil
-ifeq (,$(wildcard /usr/lib/libputil.so))
+ifeq (,$(wildcard /usr/lib/libputil-*.so))
 CLEAN += .local/src/putil
 CLEAN += .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
 
