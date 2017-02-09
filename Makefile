@@ -59,7 +59,6 @@ ALL = \
 	$(PCONFIGURE) \
 	$(PSHS) \
 	$(PV) \
-	$(LIBPUTIL) \
 	$(UNITS) \
 	$(VCDDIFF) \
 	.megarc \
