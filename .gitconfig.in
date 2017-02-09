@@ -15,3 +15,7 @@
 
 [pretty]
 	fixes = Fixes: %h (\"%s\")
+
+[merge "merge-changelog"]
+	name = GNU-style ChangeLog merge driver
+	driver = /usr/bin/git-merge-changelog %O %A %B
