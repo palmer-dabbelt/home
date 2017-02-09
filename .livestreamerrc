@@ -1,0 +1,4 @@
+player=mpv
+player-no-close
+default-stream=best
+hls-segment-threads=4
