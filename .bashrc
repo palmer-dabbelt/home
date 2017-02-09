@@ -19,6 +19,7 @@ shopt -s histappend
 
 # Use my local programs
 export PATH="$HOME/.local/bin:$PATH"
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Some machines don't have proper terminfo databases
 export TERMINFO="$HOME/.local/share/terminfo"
@@ -31,6 +32,7 @@ export MHNG_EDITOR="vim"
 alias no=ls
 
 # MH aliases
+alias hscan="mhng-scan | head"
 alias scan="mhng-scan"
 alias inbox="mhng-scan inbox"
 alias rss="mhng-scan rss"
@@ -40,6 +42,7 @@ alias drafts="mhng-scan drafts"
 alias sent="mhng-scan sent"
 alias trash="mhng-scan trash"
 alias lkml="mhng-scan linux"
+alias upstream="mhng-scan linux"
 alias post="mhng-post"
 alias rmm="mhng-rmm"
 alias mime="mhng-mime"
