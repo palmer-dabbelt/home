@@ -111,18 +111,9 @@ fi
 #########################################################
 # Applications
 #########################################################
-# My home Lulu laptop wants Firefox to run so I can talk to Lulu on
-# the phone
-if [[ "$HOSTNAME" == "palmer-x220" ]]
+if [[ "$HOSTNAME" == "palmer-mbp2014" ]]
 then
-    firefox &
-fi
-
-# My work Lulu laptop wants hexchat to run so I can talk to Lulu over
-# IM
-if [[ "$HOSTNAME" == "palmer-cb1101" ]]
-then
-    hexchat &
+    pulseaudio -D
 fi
 
 #########################################################
