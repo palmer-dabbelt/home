@@ -12,7 +12,7 @@ GITDATE_VERSION ?= 0.0.3
 UNITS_VERSION ?= 2.12
 VCDDIFF_VERSION ?= 0.0.5
 NCURSES_VERSION ?= 5.9
-ZLIB_VERSION ?= 1.2.8
+ZLIB_VERSION ?= 1.2.11
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
