@@ -38,6 +38,12 @@ then
     xrandr --dpi 125
 fi
 
+if [[ "$HOSTNAME" == "palmer-si-x1c4" ]]
+then
+    xbacklight -set 30
+    xrandr --dpi 105
+fi
+
 if test -f /etc/acpi/scripts/xrandr.sh
 then
     xhost +localhost
