@@ -13,6 +13,13 @@ UNITS_VERSION ?= 2.12
 VCDDIFF_VERSION ?= 0.0.5
 NCURSES_VERSION ?= 5.9
 ZLIB_VERSION ?= 1.2.11
+MHNG_VERSION ?= 0.2.4
+GNUTLS_VERSION ?= 3.3
+GNUTLS_PATCH_VERSION ?= 3.3.26
+NETTLE_VERSION ?= 3.2
+LIBBASE64_VERSION ?= 1.0.0_p4
+PSQLITE_VERSION ?= 0.0.5
+SQLITE_VERSION ?= 3170000
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -36,6 +43,12 @@ UNITS ?= $(BIN_DIR)/units
 VIMURA ?= $(BIN_DIR)/vimura
 LIBCURSES ?= $(LIB_DIR)/libncurses.so
 LIBZ ?= $(LIB_DIR)/libz.so
+MHNG_INSTALL ?= $(BIN_DIR)/mhng-install
+LIBGNUTLS ?= $(LIB_DIR)/libgnutls.so
+LIBNETTLE ?= $(LIB_DIR)/libnettle.so
+LIBBASE64 ?= $(LIB_DIR)/libbase64.so
+LIBPSQLITE ?= $(LIB_DIR)/libpsqlite.so
+LIBSQLITE ?= $(LIB_DIR)/libsqlite3.so
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -52,6 +65,7 @@ ALL = \
 	$(BIN_DIR)/speedtest-cli \
 	$(BIN_DIR)/hfipip \
 	$(BIN_DIR)/whenis \
+	$(BIN_DIR)/mhng-install \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \
@@ -91,7 +105,9 @@ scratch:
 life:
 	mkdir $@
 work:
-	if test -d /scratch/$(USER)/work; then ln -s /scratch/$(USER)/work $@; else mkdir -p $@; fi
+	if test -d /scratch/$(USER)/work; then ln -s /scratch/$(USER)/work $@; fi
+	if test -d /work/$(USER); then ln -s /work/$(USER) $@; fi
+	mkdir -p $@
 
 # These programs can be manually installed so I can use my home drive
 # transparently when on other systems.
@@ -347,12 +363,15 @@ CLEAN += .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
 
 $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 	$(MAKE) -C .local/src/putil install
+	touch $@
 
 .local/src/putil/lib/pkgconfig/libputil.pc: .local/src/putil/Makefile
 	$(MAKE) -C .local/src/putil
+	touch $@
 
 .local/src/putil/Makefile: .local/src/putil/Configfile .local/src/putil/Configfile.local $(PCONFIGURE) $(LIBGITDATE)
 	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose
+	touch $@
 
 .local/src/putil/Configfile: .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
 	rm -rf $(dir $@)
@@ -363,10 +382,12 @@ $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 .local/src/putil/Configfile.local: .local/src/putil/Configfile
 	rm -f $@
 	echo "PREFIX = $(abspath .local)" >> $@
+	touch $@
 
 .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget http://github.com/palmer-dabbelt/putil/archive/v$(PUTIL_VERSION).tar.gz -O $@
+	touch $@
 endif
 
 # Fetch gitdate
@@ -487,7 +508,7 @@ $(LIBCURSES): .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so
 	$(MAKE) -C .local/src/ncurses-$(NCURSES_VERSION)
 
 .local/src/ncurses-$(NCURSES_VERSION)/Makefile: .local/src/ncurses-$(NCURSES_VERSION)/configure
-	cd $(dir $@); ./configure --prefix=$(HOME)/.local --with-shared
+	cd $(dir $@); CPPFLAGS="-P" ./configure --prefix=$(HOME)/.local --with-shared
 
 .local/src/ncurses-$(NCURSES_VERSION)/configure: .local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz
 	mkdir -p $(dir $@)
@@ -518,3 +539,172 @@ $(LIBZ): .local/src/zlib-$(ZLIB_VERSION)/libz.so
 .local/var/distfiles/zlib-$(ZLIB_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget http://zlib.net/zlib-$(ZLIB_VERSION).tar.gz -O $@
+
+# Fetch nettle
+CLEAN += .local/src/nettle-$(NETTLE_VERSION)
+$(LIBNETTLE): .local/src/nettle-$(NETTLE_VERSION)/libnettle.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/nettle-$(NETTLE_VERSION) install
+
+.local/src/nettle-$(NETTLE_VERSION)/libnettle.so: .local/src/nettle-$(NETTLE_VERSION)/Makefile
+	$(MAKE) -C .local/src/nettle-$(NETTLE_VERSION)
+
+.local/src/nettle-$(NETTLE_VERSION)/Makefile: \
+		.local/src/nettle-$(NETTLE_VERSION)/configure
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --libdir=$(HOME)/.local/lib --enable-shared
+
+.local/src/nettle-$(NETTLE_VERSION)/configure: .local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz
+	mkdir -p $(dir $@)
+	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz:
+	mkdir -p $(dir $@)
+	wget https://ftp.gnu.org/gnu/nettle/nettle-$(NETTLE_VERSION).tar.gz -O $@
+
+# Fetch gnutls
+CLEAN += .local/src/gnutls-$(GNUTLS_PATCH_VERSION)
+$(LIBGNUTLS): .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/gnutls-$(GNUTLS_PATCH_VERSION) install
+	touch $@
+
+.local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so: .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/Makefile
+	$(MAKE) -C .local/src/gnutls-$(GNUTLS_PATCH_VERSION)
+	touch $@
+
+.local/src/gnutls-$(GNUTLS_PATCH_VERSION)/Makefile: \
+		.local/src/gnutls-$(GNUTLS_PATCH_VERSION)/configure \
+		$(LIBNETTLE)
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --enable-shared
+	touch $@
+
+.local/src/gnutls-$(GNUTLS_PATCH_VERSION)/configure: .local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz
+	mkdir -p $(dir $@)
+	tar -xvJpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz:
+	mkdir -p $(dir $@)
+	wget https://www.gnupg.org/ftp/gcrypt/gnutls/v$(GNUTLS_VERSION)/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz -O $@
+
+# Fetch libbase64
+CLEAN += .local/src/libbase64-$(LIBBASE64_VERSION)
+$(LIBBASE64): .local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/libbase64-$(LIBBASE64_VERSION) install
+	touch $@
+
+.local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so: .local/src/libbase64-$(LIBBASE64_VERSION)/Makefile
+	$(MAKE) -C .local/src/libbase64-$(LIBBASE64_VERSION)
+	touch $@
+
+.local/src/libbase64-$(LIBBASE64_VERSION)/Makefile: \
+		.local/src/libbase64-$(LIBBASE64_VERSION)/configure \
+		$(LIBNETTLE)
+	cd $(dir $@); autoreconf -i; ./configure --prefix=$(abspath .local)
+	touch $@
+
+.local/src/libbase64-$(LIBBASE64_VERSION)/configure: .local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz
+	mkdir -p $(dir $@)
+	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://github.com/palmer-dabbelt/libbase64/archive/v$(LIBBASE64_VERSION).tar.gz -O $@
+
+# Fetch sqlite3
+CLEAN += .local/src/sqlite3-$(SQLITE_VERSION)
+$(LIBSQLITE): .local/src/sqlite3-$(SQLITE_VERSION)/.libs/libsqlite3.so
+	mkdir -p $(dir $@)
+	$(MAKE) -C .local/src/sqlite3-$(SQLITE_VERSION) install
+	touch $@
+
+.local/src/sqlite3-$(SQLITE_VERSION)/.libs/libsqlite3.so: .local/src/sqlite3-$(SQLITE_VERSION)/Makefile
+	$(MAKE) -C .local/src/sqlite3-$(SQLITE_VERSION)
+	touch $@
+
+.local/src/sqlite3-$(SQLITE_VERSION)/Makefile: \
+		.local/src/sqlite3-$(SQLITE_VERSION)/configure \
+		$(LIBNETTLE)
+	cd $(dir $@); ./configure --prefix=$(abspath .local)
+	touch $@
+
+.local/src/sqlite3-$(SQLITE_VERSION)/configure: .local/var/distfiles/sqlite3-$(SQLITE_VERSION).tar.gz
+	mkdir -p $(dir $@)
+	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	touch $@
+
+.local/var/distfiles/sqlite3-$(SQLITE_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://sqlite.org/2017/sqlite-autoconf-$(SQLITE_VERSION).tar.gz -O $@
+
+# Fetch psqlite
+ifeq (,$(wildcard /usr/lib/libpsqlite.so))
+CLEAN += .local/src/psqlite
+CLEAN += .local/var/distfiles/psqlite-$(PSQLITE_VERSION).tar.gz
+
+$(LIBPSQLITE): .local/src/psqlite/lib/libpsqlite.so
+	$(MAKE) -C .local/src/psqlite install
+
+.local/src/psqlite/lib/libpsqlite.so: .local/src/psqlite/Makefile
+	$(MAKE) -C .local/src/psqlite
+
+.local/src/psqlite/Makefile: \
+		.local/src/psqlite/Configfile \
+		.local/src/psqlite/Configfile.local \
+		$(LIBSQLITE)
+	+cd $(dir $@) && pconfigure
+
+.local/src/psqlite/Configfile.local:
+	mkdir -p $(dir $@)
+	rm -f $@
+	echo "PREFIX = $(abspath .local)" >> $@
+
+.local/src/psqlite/Configfile: .local/var/distfiles/psqlite-$(PSQLITE_VERSION).tar.gz
+	rm -rf $(dir $@)i
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xzf $< --strip-components=1
+	touch $@
+
+.local/var/distfiles/psqlite-$(PSQLITE_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://github.com/palmer-dabbelt/psqlite/archive/v$(PSQLITE_VERSION).tar.gz -O $@
+endif
+
+# Fetch mhng
+ifeq (,$(wildcard /usr/bin/mhng-install))
+CLEAN += .local/src/mhng
+CLEAN += .local/var/distfiles/mhng-$(MHNG_VERSION).tar.gz
+
+$(MHNG_INSTALL): .local/src/mhng/bin/mhng-install
+	$(MAKE) -C .local/src/mhng install
+
+.local/src/mhng/bin/mhng-install: .local/src/mhng/Makefile
+	$(MAKE) -C .local/src/mhng
+
+.local/src/mhng/Makefile: \
+		.local/src/mhng/Configfile \
+		.local/src/mhng/Configfile.local \
+		$(LIBPUTIL) \
+		$(LIBGNUTLS) \
+		$(LIBBASE64) \
+		$(LIBPSQLITE)
+	+cd $(dir $@) && pconfigure
+
+.local/src/mhng/Configfile.local:
+	mkdir -p $(dir $@)
+	rm -f $@
+	echo "PREFIX = $(abspath .local)" >> $@
+
+.local/src/mhng/Configfile: .local/var/distfiles/mhng-$(MHNG_VERSION).tar.gz
+	rm -rf $(dir $@)i
+	mkdir -p $(dir $@)
+	tar -C $(dir $@) -xzf $< --strip-components=1
+	touch $@
+
+.local/var/distfiles/mhng-$(MHNG_VERSION).tar.gz:
+	mkdir -p $(dir $@)
+	wget https://github.com/palmer-dabbelt/mhng/archive/v$(MHNG_VERSION).tar.gz -O $@
+endif
