@@ -10,6 +10,18 @@ then
     export GDK_SCALE=2
 fi
 
+if [[ "$HOSTNAME" == "palmer-x220" ]]
+then
+    xbacklight -set 70
+    xrandr --dpi 125
+fi
+
+if [[ "$HOSTNAME" == "palmer-si-x1c4" ]]
+then
+    xbacklight -set 30
+    xrandr --dpi 105
+fi
+
 # There's a bunch of directories that I want to always have 
 mkdir -p ~/.local/log/mbacklight/
 mkdir -p ~/.local/log/mhng-daemon/
@@ -30,18 +42,6 @@ then
           mbacklight &>> ~/.local/log/mbacklight/$HOSTNAME.log
 	  sleep 5m
       done ) &
-fi
-
-if [[ "$HOSTNAME" == "palmer-x220" ]]
-then
-    xbacklight -set 70
-    xrandr --dpi 125
-fi
-
-if [[ "$HOSTNAME" == "palmer-si-x1c4" ]]
-then
-    xbacklight -set 30
-    xrandr --dpi 105
 fi
 
 if test -f /etc/acpi/scripts/xrandr.sh
