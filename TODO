@@ -1,3 +1,7 @@
+* OpenOCD and Spike for debug-0.13
+
+* https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79912
+
 * Upstream Linux
  - Sort out spike/qemu configs (just nuke qemu?)
  - Move 64-bit atomics to atomic64
