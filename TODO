@@ -1,0 +1,13 @@
+* Upstream Linux
+ - Sort out spike/qemu configs (just nuke qemu?)
+ - Move 64-bit atomics to atomic64
+ - Are asm/bitops.h just all broken?
+ - Why is L1_CACHE_SHIFT just hard-coded?
+ - Should we have include/asm/io.h?
+ - Do we need include/asm/mmu_context.h?
+ - Can we remove include/asm/sbi.h?
+ - include/asm/serial.h should die.
+ - syscall_rollback()
+ - sys_sysriscv()
+ - flush_tlb_mm() and flush_tlb_kernel_range()
+ - riscv_timer_set_oneshot()
