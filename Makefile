@@ -63,6 +63,7 @@ ALL = \
 	$(BIN_DIR)/term \
 	$(BIN_DIR)/parsetorture \
 	$(BIN_DIR)/mkenter \
+	$(BIN_DIR)/findenter \
 	$(BIN_DIR)/fixhttpssubmodules \
 	$(BIN_DIR)/vimura \
 	$(BIN_DIR)/pmake \

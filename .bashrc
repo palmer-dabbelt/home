@@ -85,6 +85,9 @@ alias zathura='GDK_SCALE=1 zathura'
 
 alias sps='sleep 10s; sudo pm-suspend'
 
+# Setup my environment variables for this tree
+alias enter='source $(findenter)'
+
 # A nicer-looking prompt
 if test -S $HOME/.mhng/daemon.socket
 then
