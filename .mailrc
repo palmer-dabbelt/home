@@ -19,14 +19,25 @@ alias unclejohn John Kennedy <johnwkennedy009@comcast.net>
 
 # SiFive
 alias si        Palmer Dabbelt <palmer@sifive.com>
-alias si-asw    Andrew Waterman <andrew@sifive.com>
-alias si-david  David Johnson <davidj@sifive.com>
+alias asw       Andrew Waterman <andrew@sifive.com>
+alias david     David Johnson <davidj@sifive.com>
+alias yunsup    Yunsup Lee <yunsup@sifive.com>
+alias megan     Megan Wachs <megan@sifive.com>
+alias renxin    Renxin Xia <renxin@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
 alias bin-2.28  Tristan Gingold <gingold@adacore.com>
+alias nickc     Nick Clifton <nickc@redhat.com>
+
+# RISC-V
+alias arun      Arun Thomas <arun.thomas@gmail.com>
+alias asb       Alex Bradbury <asb@asbradbury.org>
 
 # Mailing Lists
 alias binutils     binutils@sourceware.org
 alias gcc-patches  gcc-patches@gcc.gnu.org
 alias riscv-sw     sw-dev@groups.riscv.org
+
+alias patch-bin    binutils@sourceware.org
+alias patch-gcc    gcc-patches@gcc.gnu.org
