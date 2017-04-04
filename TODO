@@ -2,6 +2,10 @@
 
 * https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79912
 
+* GDB XML Files
+
+* GDB v4
+
 * Upstream Linux
  - Sort out spike/qemu configs (just nuke qemu?)
  - Move 64-bit atomics to atomic64
@@ -15,3 +19,5 @@
  - sys_sysriscv()
  - flush_tlb_mm() and flush_tlb_kernel_range()
  - riscv_timer_set_oneshot()
+ - statx
+ - jitterentropy
