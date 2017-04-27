@@ -7,7 +7,7 @@
 * GDB v4
 
 * Upstream Linux
- - Copyright
+ - Copyright from albert
  - RV32I
  - Sort out spike/qemu configs (just nuke qemu?)
  - Move 64-bit atomics to atomic64
