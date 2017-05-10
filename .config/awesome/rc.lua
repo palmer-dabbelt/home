@@ -283,17 +283,29 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, ";",     function() awful.client.focus.history.previous() end),
 
     -- I use two base variants of my layouts
-    awful.key({ modkey }, "[", function()
+    awful.key({ modkey, "Control" }, "[", function()
+    		 awful.layout.set(awful.layout.suit.tile.left)
                  awful.tag.setnmaster(0)
                  awful.tag.setncol(4)
+                              end),
+    awful.key({ modkey }, "[", function()
+    		 awful.layout.set(awful.layout.suit.tile.left)
+                 awful.tag.setnmaster(0)
+                 awful.tag.setncol(2)
                               end),
     awful.key({ modkey, "Shift" }, "[", function()
                  awful.tag.setnmaster(0)
                  awful.tag.setncol(3)
                               end),
-    awful.key({ modkey}, "]", function()
+    awful.key({ modkey, "Control" }, "]", function()
+    		 awful.layout.set(awful.layout.suit.tile.left)
                  awful.tag.setnmaster(1)
-                 awful.tag.setncol(1)
+                 awful.tag.setncol(2)
+                              end),
+    awful.key({ modkey }, "]", function()
+    		 awful.layout.set(awful.layout.suit.tile.top)
+                 awful.tag.setnmaster(1)
+                 awful.tag.setncol(2)
                               end),
     awful.key({ modkey, "Shift" }, "]", function()
                  awful.tag.setnmaster(1)
