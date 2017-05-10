@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 # Configuration variables
 KEYCHAIN_VERSION ?= 2.8.1
 TMUX_BIN_VERSION ?= 2.2
