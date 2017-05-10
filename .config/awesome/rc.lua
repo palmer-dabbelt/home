@@ -250,8 +250,36 @@ globalkeys = awful.util.table.join(
     -- Use the arrows to move around
     awful.key({ modkey }, "Down",  function() awful.client.focus.bydirection('down' ) end),
     awful.key({ modkey }, "Up",    function() awful.client.focus.bydirection('up'   ) end),
-    awful.key({ modkey }, "Left",  function() awful.client.focus.bydirection('left' ) end),
-    awful.key({ modkey }, "Right", function() awful.client.focus.bydirection('right') end),
+    awful.key({ modkey }, "Left",  function()
+    		old_focus = client.focus
+    		awful.client.focus.bydirection('left')
+		focus = client.focus
+		if old_focus == focus then
+		  awful.screen.focus_relative(1)
+		  old_focus = nil
+		  focus = client.focus
+		  while focus ~= nil and focus ~= old_focus do
+    		    awful.client.focus.bydirection('right')
+		    old_focus = focus
+		    focus = client.focus
+		  end
+		end
+	end),
+    awful.key({ modkey }, "Right", function()
+    		old_focus = client.focus
+    		awful.client.focus.bydirection('right')
+		focus = client.focus
+		if old_focus == focus then
+		  awful.screen.focus_relative(-1)
+		  old_focus = nil
+		  focus = client.focus
+		  while focus ~= nil and focus ~= old_focus do
+    		    awful.client.focus.bydirection('left')
+		    old_focus = focus
+		    focus = client.focus
+		  end
+		end
+	end),
     awful.key({ modkey }, ";",     function() awful.client.focus.history.previous() end),
 
     -- I use two base variants of my layouts
