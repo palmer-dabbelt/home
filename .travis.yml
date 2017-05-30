@@ -7,6 +7,7 @@ matrix:
         packages:
           - build-essential
           - nettle
+          - nettle-dev
 
 script:
   - make
