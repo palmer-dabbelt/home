@@ -139,6 +139,12 @@ work:
 	mkdir -p $(dir $@)
 	cp -Lf $< $@
 
+.local/lib:
+	mkdir -p $(dir $@)
+
+.local/lib64 .local/lib32: .local/lib
+	cd $(dir $@); ln -s $(notdir $<) $(notdir $@)
+
 # Fetch keychain
 ifeq (,$(wildcard /usr/bin/keychain))
 CLEAN += .local/var/distfiles/keychain-$(KEYCHAIN_VERSION).tar.bz2
@@ -560,12 +566,14 @@ $(LIBNETTLE): .local/src/nettle-$(NETTLE_VERSION)/libnettle.so
 	mkdir -p $(dir $@)
 	$(MAKE) -C .local/src/nettle-$(NETTLE_VERSION) install
 
-.local/src/nettle-$(NETTLE_VERSION)/libnettle.so: .local/src/nettle-$(NETTLE_VERSION)/Makefile
+.local/src/nettle-$(NETTLE_VERSION)/libnettle.so: \
+		.local/src/nettle-$(NETTLE_VERSION)/Makefile \
+		.local/lib64 .local/lib32
 	$(MAKE) -C .local/src/nettle-$(NETTLE_VERSION)
 
 .local/src/nettle-$(NETTLE_VERSION)/Makefile: \
 		.local/src/nettle-$(NETTLE_VERSION)/configure
-	cd $(dir $@); ./configure --prefix=$(HOME)/.local --libdir=$(HOME)/.local/lib --enable-shared
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --enable-shared
 
 .local/src/nettle-$(NETTLE_VERSION)/configure: .local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz
 	mkdir -p $(dir $@)
