@@ -104,6 +104,9 @@ clean:
 PATH:="$(abspath .local/bin):$(PATH)"
 export PATH
 
+# All the arguments to pass to pconfigure
+PCONFIGURE_WITH_ARGS=$(abspath $(PCONFIGURE)) --phc $(abspath $(PHC)) --ppkg-config $(abspath $(PPKG_CONFIG))
+
 # Some directories on this system might actually be symlinks somewhere else, if
 # I'm on a system where $HOME isn't a big disk.
 media:
@@ -381,7 +384,7 @@ $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 	touch $@
 
 .local/src/putil/Makefile: .local/src/putil/Configfile .local/src/putil/Configfile.local $(PCONFIGURE) $(LIBGITDATE)
-	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(PCONFIGURE_WITH_ARGS)
 	touch $@
 
 .local/src/putil/Configfile: .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
@@ -413,7 +416,7 @@ $(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
 	$(MAKE) -C .local/src/gitdate
 
 .local/src/gitdate/Makefile: .local/src/gitdate/Configfile .local/src/gitdate/Configfile.local $(PCONFIGURE)
-	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose --phc "$(abspath $(PHC))" --ppkg-config "$(abspath $(PPKG_CONFIG))"
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(PCONFIGURE_WITH_ARGS)
 
 .local/src/gitdate/Configfile: .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz
 	rm -rf $(dir $@)
