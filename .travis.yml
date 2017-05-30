@@ -5,7 +5,8 @@ matrix:
     - addons:
       apt:
         packages:
-          build-essential
+          - build-essential
+          - nettle
 
 script:
   - make
