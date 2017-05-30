@@ -590,7 +590,7 @@ $(LIBGNUTLS): .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so
 .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/Makefile: \
 		.local/src/gnutls-$(GNUTLS_PATCH_VERSION)/configure \
 		$(LIBNETTLE)
-	cd $(dir $@); ./configure --prefix=$(HOME)/.local --enable-shared
+	cd $(dir $@); ./configure --prefix=$(HOME)/.local --enable-shared --with-nettle=$(LIBNETTLE) || (cat $(dir $@)/config.log; exit 1)
 	touch $@
 
 .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/configure: .local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz

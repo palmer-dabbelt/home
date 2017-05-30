@@ -6,8 +6,6 @@ matrix:
       apt:
         packages:
           - build-essential
-          - nettle
-          - nettle-dev
 
 script:
   - make
