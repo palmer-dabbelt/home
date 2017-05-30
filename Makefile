@@ -526,7 +526,7 @@ $(LIBCURSES): .local/src/ncurses-$(NCURSES_VERSION)/lib/libncurses.so
 
 .local/src/ncurses-$(NCURSES_VERSION)/configure: .local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz
 	mkdir -p $(dir $@)
-	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	tar -xzpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/ncurses-$(NCURSES_VERSION).tar.gz:
@@ -547,7 +547,7 @@ $(LIBZ): .local/src/zlib-$(ZLIB_VERSION)/libz.so
 
 .local/src/zlib-$(ZLIB_VERSION)/configure: .local/var/distfiles/zlib-$(ZLIB_VERSION).tar.gz
 	mkdir -p $(dir $@)
-	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	tar -xzpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/zlib-$(ZLIB_VERSION).tar.gz:
@@ -569,7 +569,7 @@ $(LIBNETTLE): .local/src/nettle-$(NETTLE_VERSION)/libnettle.so
 
 .local/src/nettle-$(NETTLE_VERSION)/configure: .local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz
 	mkdir -p $(dir $@)
-	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	tar -xzpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz:
@@ -621,7 +621,7 @@ $(LIBBASE64): .local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so
 
 .local/src/libbase64-$(LIBBASE64_VERSION)/configure: .local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz
 	mkdir -p $(dir $@)
-	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	tar -xzpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz:
@@ -647,7 +647,7 @@ $(LIBSQLITE): .local/src/sqlite3-$(SQLITE_VERSION)/.libs/libsqlite3.so
 
 .local/src/sqlite3-$(SQLITE_VERSION)/configure: .local/var/distfiles/sqlite3-$(SQLITE_VERSION).tar.gz
 	mkdir -p $(dir $@)
-	tar -xvzpf $^ -C $(dir $@) --strip-components=1
+	tar -xzpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/sqlite3-$(SQLITE_VERSION).tar.gz:
