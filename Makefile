@@ -51,6 +51,7 @@ LIBNETTLE ?= $(LIB_DIR)/libnettle.so
 LIBBASE64 ?= $(LIB_DIR)/libbase64.so
 LIBPSQLITE ?= $(LIB_DIR)/libpsqlite.so
 LIBSQLITE ?= $(LIB_DIR)/libsqlite3.so
+PHC ?= $(BIN_DIR)/phc
 
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
@@ -284,6 +285,9 @@ ifeq (,$(wildcard /usr/bin/pconfigure))
 CLEAN += .local/src/pconfigure
 CLEAN += .local/var/distfiles/pconfigure-$(PCONFIGURE_VERSION).tar.gz
 
+$(PHC): $(PCONFIGURE)
+	touch -c $@
+
 $(PCONFIGURE): .local/src/pconfigure/bin/pconfigure
 	PATH=$(abspath .local/src/pconfigure/bin):$(PATH) $(MAKE) -C .local/src/pconfigure install
 
@@ -408,7 +412,7 @@ $(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
 	$(MAKE) -C .local/src/gitdate
 
 .local/src/gitdate/Makefile: .local/src/gitdate/Configfile .local/src/gitdate/Configfile.local $(PCONFIGURE)
-	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose
+	cd $(dir $@) && PKG_CONFIG_PATH=$(abspath $(PC_DIR)) $(abspath $(PCONFIGURE)) --verbose --phc "$(abspath $(PHC))"
 
 .local/src/gitdate/Configfile: .local/var/distfiles/gitdate-$(GITDATE_VERSION).tar.gz
 	rm -rf $(dir $@)
