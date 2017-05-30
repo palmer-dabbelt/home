@@ -99,7 +99,7 @@ clean:
 	rm -rf $(CLEAN)
 
 # I want to use the tools I build
-PATH="$(abspath .local/bin):$(PATH)"
+PATH:="$(abspath .local/bin):$(PATH)"
 export PATH
 
 # Some directories on this system might actually be symlinks somewhere else, if
