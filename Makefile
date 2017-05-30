@@ -595,7 +595,7 @@ $(LIBGNUTLS): .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so
 
 .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/configure: .local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz
 	mkdir -p $(dir $@)
-	tar -xvJpf $^ -C $(dir $@) --strip-components=1
+	tar -xJpf $^ -C $(dir $@) --strip-components=1
 	touch $@
 
 .local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz:

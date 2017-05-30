@@ -80,5 +80,8 @@
 #
 *.in.d
 
+# I want to store my mailrc
+!/.local/share/pim
+
 # Everything below here comes from make's $(CLEAN)
 # ...
