@@ -10,7 +10,6 @@ alias palmer    Palmer Dabbelt <palmer@dabbelt.com>
 alias lulu      Lulu Li <lilulu6@gmail.com>
 alias cma       Charlie Ma <cma1681@gmail.com>
 alias eric      Eric Love <ericlove@gmail.com>
-alias andrew    Andrew Waterman <aswaterman@gmail.com>
 
 # Family
 alias dad       Dan Dabbelt <dan@dabbelt.com>
@@ -19,25 +18,30 @@ alias unclejohn John Kennedy <johnwkennedy009@comcast.net>
 
 # SiFive
 alias si        Palmer Dabbelt <palmer@sifive.com>
-alias asw       Andrew Waterman <andrew@sifive.com>
+alias andrew    Andrew Waterman <andrew@sifive.com>
 alias david     David Johnson <davidj@sifive.com>
 alias yunsup    Yunsup Lee <yunsup@sifive.com>
 alias megan     Megan Wachs <megan@sifive.com>
 alias renxin    Renxin Xia <renxin@sifive.com>
+alias wes       Wesley Terpstra <wesley@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
 alias bin-2.28  Tristan Gingold <gingold@adacore.com>
 alias nickc     Nick Clifton <nickc@redhat.com>
+alias olof      Olof Johansson <olof@lixom.net>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
 alias asb       Alex Bradbury <asb@asbradbury.org>
+alias darius    Darius Rad <darius@bluespec.com>
 
 # Mailing Lists
-alias binutils     binutils@sourceware.org
-alias gcc-patches  gcc-patches@gcc.gnu.org
-alias riscv-sw     sw-dev@groups.riscv.org
+alias binutils-patches binutils@sourceware.org
+alias gcc-patches      gcc-patches@gcc.gnu.org
+alias riscv-patches    patches@groups.riscv.org
+alias riscv-sw         sw-dev@groups.riscv.org
 
 alias patch-bin    binutils@sourceware.org
 alias patch-gcc    gcc-patches@gcc.gnu.org
+alias patch-libc   libc-alpha@sourceware.org
