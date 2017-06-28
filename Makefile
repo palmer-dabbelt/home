@@ -702,9 +702,11 @@ CLEAN += .local/var/distfiles/mhng-$(MHNG_VERSION).tar.gz
 
 $(MHNG_INSTALL): .local/src/mhng/bin/mhng-install
 	$(MAKE) -C .local/src/mhng install
+	touch -c $@
 
 .local/src/mhng/bin/mhng-install: .local/src/mhng/Makefile
 	$(MAKE) -C .local/src/mhng
+	touch -c $@
 
 .local/src/mhng/Makefile: \
 		.local/src/mhng/Configfile \
