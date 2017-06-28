@@ -30,6 +30,7 @@
 /.local/lib64/
 /.local/libexec/
 /.local/log/
+/.local/man/
 /.local/run/
 /.local/share/
 /.local/var/
@@ -38,6 +39,7 @@
 /.mozilla/
 /.msmtprc
 /.nano_history
+/.npm/
 /.parallel/tmp/
 /.pulse
 /.pulse-cookie
@@ -49,12 +51,14 @@
 /.snapshot/
 /.ssh/id_*
 /.steam*
+/.swt/
 /.synopsys*
 /.thumbnails
 /.viminfo
 /.vim*
 /.vim/
 /.virtualbox/
+/.VirtualBox/
 /.vnc/
 /.wine*/
 /.x2go/
@@ -63,6 +67,7 @@
 /synopsys*
 /.*_history
 /.wget-hsts
+/Downloads/
 *.swp
 .swo
 *.lock
