@@ -70,6 +70,7 @@ ALL = \
 	$(BIN_DIR)/hfipip \
 	$(BIN_DIR)/whenis \
 	$(BIN_DIR)/mhng-install \
+	$(BIN_DIR)/make.cross \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \
