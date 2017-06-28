@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --image-bg black --bg-max '/home/palmer/.wallpaper' 
+feh  --bg-fill '/home/palmer/.wallpaper'
