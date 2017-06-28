@@ -378,10 +378,11 @@ $(PV): .local/src/pv/build/pv
 endif
 
 # Fetch putil
-ifeq (,$(wildcard /usr/lib/libputil-*.so))
 CLEAN += .local/src/putil
 CLEAN += .local/var/distfiles/putil-$(PUTIL_VERSION).tar.gz
-
+CLEAN += .local/lib/libputil-*.so
+CLEAN += .local/lib/pkgconfig/libputil*.pc
+ifeq (,$(wildcard /usr/lib/libputil-*.so))
 $(LIBPUTIL): .local/src/putil/lib/pkgconfig/libputil.pc
 	$(MAKE) -C .local/src/putil install
 	touch $@
@@ -563,6 +564,7 @@ $(LIBZ): .local/src/zlib-$(ZLIB_VERSION)/libz.so
 
 # Fetch nettle
 CLEAN += .local/src/nettle-$(NETTLE_VERSION)
+ifeq ($(wildcard /usr/lib/libnettle.so),)
 $(LIBNETTLE): .local/src/nettle-$(NETTLE_VERSION)/libnettle.so
 	mkdir -p $(dir $@)
 	$(MAKE) -C .local/src/nettle-$(NETTLE_VERSION) install
@@ -584,9 +586,11 @@ $(LIBNETTLE): .local/src/nettle-$(NETTLE_VERSION)/libnettle.so
 .local/var/distfiles/nettle-$(NETTLE_VERSION).tar.xz:
 	mkdir -p $(dir $@)
 	wget https://ftp.gnu.org/gnu/nettle/nettle-$(NETTLE_VERSION).tar.gz -O $@
+endif
 
 # Fetch gnutls
 CLEAN += .local/src/gnutls-$(GNUTLS_PATCH_VERSION)
+ifeq ($(wildcard /usr/lib/libgnutls.so),)
 $(LIBGNUTLS): .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so
 	mkdir -p $(dir $@)
 	$(MAKE) -C .local/src/gnutls-$(GNUTLS_PATCH_VERSION) install
@@ -610,8 +614,10 @@ $(LIBGNUTLS): .local/src/gnutls-$(GNUTLS_PATCH_VERSION)/lib/.libs/libgnutls.so
 .local/var/distfiles/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz:
 	mkdir -p $(dir $@)
 	wget https://www.gnupg.org/ftp/gcrypt/gnutls/v$(GNUTLS_VERSION)/gnutls-$(GNUTLS_PATCH_VERSION).tar.xz -O $@
+endif
 
 # Fetch libbase64
+ifeq ($(wildcard /usr/lib/libbase64.so),)
 CLEAN += .local/src/libbase64-$(LIBBASE64_VERSION)
 $(LIBBASE64): .local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so
 	mkdir -p $(dir $@)
@@ -636,9 +642,11 @@ $(LIBBASE64): .local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so
 .local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget https://github.com/palmer-dabbelt/libbase64/archive/v$(LIBBASE64_VERSION).tar.gz -O $@
+endif
 
 # Fetch sqlite3
 CLEAN += .local/src/sqlite3-$(SQLITE_VERSION)
+ifeq ($(wildcard /usr/lib/libsqlite3.so),)
 $(LIBSQLITE): .local/src/sqlite3-$(SQLITE_VERSION)/.libs/libsqlite3.so
 	mkdir -p $(dir $@)
 	$(MAKE) -C .local/src/sqlite3-$(SQLITE_VERSION) install
@@ -662,12 +670,13 @@ $(LIBSQLITE): .local/src/sqlite3-$(SQLITE_VERSION)/.libs/libsqlite3.so
 .local/var/distfiles/sqlite3-$(SQLITE_VERSION).tar.gz:
 	mkdir -p $(dir $@)
 	wget https://sqlite.org/2017/sqlite-autoconf-$(SQLITE_VERSION).tar.gz -O $@
+endif
 
 # Fetch psqlite
-ifeq (,$(wildcard /usr/lib/libpsqlite.so))
 CLEAN += .local/src/psqlite
 CLEAN += .local/var/distfiles/psqlite-$(PSQLITE_VERSION).tar.gz
-
+CLEAN += .local/lib/libpsqlite.so
+ifeq (,$(wildcard /usr/lib/libpsqlite.so))
 $(LIBPSQLITE): .local/src/psqlite/lib/libpsqlite.so
 	$(MAKE) -C .local/src/psqlite install
 
