@@ -99,7 +99,7 @@ CLEAN = \
 	$(CONFIG_PP)
 .PHONY: clean
 clean:
-	rm -rf $(CLEAN)
+	rm -rf $(CLEAN) .local/bin .local/lib .local/libexec .local/include
 
 # I want to use the tools I build
 PATH:="$(abspath .local/bin):$(PATH)"
