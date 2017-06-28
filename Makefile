@@ -631,7 +631,9 @@ $(LIBBASE64): .local/src/libbase64-$(LIBBASE64_VERSION)/src/.libs/libbase64.so
 .local/src/libbase64-$(LIBBASE64_VERSION)/Makefile: \
 		.local/src/libbase64-$(LIBBASE64_VERSION)/configure \
 		$(LIBNETTLE)
-	cd $(dir $@); autoreconf -i; ./configure --prefix=$(abspath .local)
+	cd $(dir $@); autoreconf -i
+	chmod +x $(dir $@)/configure
+	cd $(dir $@); ./configure --prefix=$(abspath .local)
 	touch $@
 
 .local/src/libbase64-$(LIBBASE64_VERSION)/configure: .local/var/distfiles/libbase64-$(LIBBASE64_VERSION).tar.gz
