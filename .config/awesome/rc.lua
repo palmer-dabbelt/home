@@ -255,7 +255,7 @@ globalkeys = awful.util.table.join(
     		awful.client.focus.bydirection('left')
 		focus = client.focus
 		if old_focus == focus then
-		  awful.screen.focus_relative(1)
+		  awful.screen.focus_relative(-1)
 		  old_focus = nil
 		  focus = client.focus
 		  while focus ~= nil and focus ~= old_focus do
@@ -270,7 +270,7 @@ globalkeys = awful.util.table.join(
     		awful.client.focus.bydirection('right')
 		focus = client.focus
 		if old_focus == focus then
-		  awful.screen.focus_relative(-1)
+		  awful.screen.focus_relative(1)
 		  old_focus = nil
 		  focus = client.focus
 		  while focus ~= nil and focus ~= old_focus do
