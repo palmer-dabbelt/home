@@ -48,6 +48,11 @@ function STYLE_andrew()
   set autoindent
 endfunction
 
+" Editing text files
+function STYLE_text()
+  setlocal spell
+endfunction
+
 " I like to write mail
 au BufNewFile,BufRead /tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
 
@@ -68,3 +73,6 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call STYLE_mygit()
 
 " Andrew's file needs to be set for some files
 au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
+
+" Text files
+au BufNewFile,BufRead *.txt call STYLE_text()
