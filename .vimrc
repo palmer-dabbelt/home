@@ -22,6 +22,13 @@ function STYLE_mybash()
   setlocal shiftwidth=4
 endfunction
 
+function STYLE_mypython()
+  setlocal ts=4
+  setlocal expandtab
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+endfunction
+
 function STYLE_mylatex()
   setlocal ts=4
   setlocal expandtab
@@ -76,3 +83,5 @@ au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
 
 " Text files
 au BufNewFile,BufRead *.txt call STYLE_text()
+
+au FileType python call STYLE_mypython()
