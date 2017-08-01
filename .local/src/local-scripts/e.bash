@@ -9,7 +9,11 @@ then
 	done
 elif [[ "$TMUX" != "" ]]
 then
-	tmux split-window -h "exec vim $(readlink -f $1)"
+	while [[ "$1" != "" ]]
+	do
+		tmux split-window -h "exec vim $(readlink -f $1)"
+		shift
+	done
 else
 	vim "$@"
 fi
