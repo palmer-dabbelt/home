@@ -72,6 +72,7 @@ ALL = \
 	$(BIN_DIR)/whenis \
 	$(BIN_DIR)/mhng-install \
 	$(BIN_DIR)/make.cross \
+	$(BIN_DIR)/sps \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \

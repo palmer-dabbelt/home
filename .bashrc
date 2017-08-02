@@ -80,8 +80,6 @@ export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
 # Zathura doesn't support GDK_SCALE
 alias zathura='GDK_SCALE=1 zathura'
 
-alias sps='sleep 10s; sudo pm-suspend'
-
 # Setup my environment variables for this tree
 alias enter='source $(findenter)'
 
