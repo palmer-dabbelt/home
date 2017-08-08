@@ -73,6 +73,7 @@ ALL = \
 	$(BIN_DIR)/mhng-install \
 	$(BIN_DIR)/make.cross \
 	$(BIN_DIR)/sps \
+	$(BIN_DIR)/notd \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \
