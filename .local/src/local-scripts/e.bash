@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 # Command-line argument parsing
 background="true"
 args="true"
