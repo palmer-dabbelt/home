@@ -46,6 +46,14 @@ function STYLE_mygit()
   call setpos('.', [0, 1, 1, 0])
 endfunction
 
+function STYLE_myblog()
+  setlocal ts=4
+  setlocal expandtab
+  setlocal tabstop=4
+  setlocal shiftwidth=4
+  setlocal tw=72
+endfunction
+
 " This is Andrew's style
 function STYLE_andrew()
   setlocal ts=2
@@ -85,3 +93,6 @@ au BufNewFile,BufRead /home/palmer/work/*/riscv-pk call STYLE_andrew()
 au BufNewFile,BufRead *.txt call STYLE_text()
 
 au FileType python call STYLE_mypython()
+
+" My blog needs to match pandoc's output
+au BufNewFile,BufRead *.md call STYLE_myblog()
