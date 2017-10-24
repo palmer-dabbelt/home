@@ -74,6 +74,8 @@ ALL = \
 	$(BIN_DIR)/make.cross \
 	$(BIN_DIR)/sps \
 	$(BIN_DIR)/notd \
+	$(BIN_DIR)/notw \
+	$(BIN_DIR)/pnotw \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \

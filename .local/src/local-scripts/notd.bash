@@ -25,7 +25,7 @@ palmer) fullname="Palmer Dabbelt";;
 *) echo "Unknown human $human" >&2; exit 1;;
 esac
 
-note="$(date -d "$date" "+%Y-%m-%d")".md
+note=day-"$(date -d "$date" "+%Y-%m-%d")".md
 
 cd "$FOLDER"
 
