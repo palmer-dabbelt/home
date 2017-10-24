@@ -9,6 +9,9 @@
 [push]
 	default = simple
 
+[pull]
+	ff = only
+
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	fap = fetch --all --prune --verbose
