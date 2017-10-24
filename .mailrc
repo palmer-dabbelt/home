@@ -2,6 +2,7 @@ local Palmer Dabbelt <palmer@dabbelt.com>
 local Palmer Dabbelt <palmer@gnu.org>
 local Palmer Dabbelt <palmer@gnupg.net>
 local Palmer Dabbelt <palmer@sifive.com>
+local Palmer Dabbelt <palmerandlulu@dabbelt.com>
 
 address         BoA Bill Pay <billpay@billpay.bankofamerica.com>
 
@@ -14,7 +15,7 @@ alias eric      Eric Love <ericlove@gmail.com>
 # Family
 alias dad       Dan Dabbelt <dan@dabbelt.com>
 alias mom       Mary Jane Kennedy <mjk@dabbelt.com>
-alias unclejohn John Kennedy <johnwkennedy009@comcast.net>
+alias jwk       John Kennedy <johnwkennedy009@comcast.net>
 
 # SiFive
 alias si        Palmer Dabbelt <palmer@sifive.com>
@@ -24,17 +25,20 @@ alias yunsup    Yunsup Lee <yunsup@sifive.com>
 alias megan     Megan Wachs <megan@sifive.com>
 alias renxin    Renxin Xia <renxin@sifive.com>
 alias wes       Wesley Terpstra <wesley@sifive.com>
+alias jack      Jack Kang <jack@sifive.com>
+alias drew      Drew Barbier <drew@sifive.com>
+alias krste     Krste Asanovic <krste@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
-alias bin-2.28  Tristan Gingold <gingold@adacore.com>
-alias nickc     Nick Clifton <nickc@redhat.com>
 alias olof      Olof Johansson <olof@lixom.net>
+alias hjl       H.J. Lu <hjl.tools@gmail.com>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
 alias asb       Alex Bradbury <asb@asbradbury.org>
 alias darius    Darius Rad <darius@bluespec.com>
+alias khem      Khem Raj <raj.khem@gmail.com>
 
 # Mailing Lists
 alias binutils-patches binutils@sourceware.org
