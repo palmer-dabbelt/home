@@ -30,6 +30,7 @@ export BROWSER="chromium"
 export GIT_EDITOR="vim"
 export MHNG_EDITOR="vim"
 alias no=ls
+alias caly='cal -Y'
 
 # MH aliases
 alias hscan="mhng-scan | head"
