@@ -3,10 +3,9 @@
 FOLDER="$HOME/work/palmer-notes"
 
 date="now"
-copies="3"
 from="si"
-to=("drew" "yunsup")
-cc=("renxin")
+to=("drew" "yunsup" "jim" "mjc" "hisen")
+copies="$(($(echo "${to[*]}" | wc -w) - 2))"
 while [[ "$1" != "" ]]
 do
   case "$1" in
@@ -42,7 +41,6 @@ zathura "$tempdir"/output.pdf
 cat >>"$tempdir"/mail <<EOF
 From: $from
 To: $(echo "${to[*]}" | sed 's/ /,/g')
-CC: $(echo "${cc[*]}" | sed 's/ /,/g')
 Subject: Software Meeting Weekly Notes for $(date -d "$date" "+%A %B %e, %Y")
 MIME-Version: 1.0
 Content-Type: multipart/alternative; boundary="----=__pnotw_MIME"

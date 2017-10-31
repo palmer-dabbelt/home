@@ -28,24 +28,32 @@ alias wes       Wesley Terpstra <wesley@sifive.com>
 alias jack      Jack Kang <jack@sifive.com>
 alias drew      Drew Barbier <drew@sifive.com>
 alias krste     Krste Asanovic <krste@sifive.com>
+alias jim       Jim Wilson <jimw@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
 alias olof      Olof Johansson <olof@lixom.net>
 alias hjl       H.J. Lu <hjl.tools@gmail.com>
+alias nickc     Nick Clifton <nickc@redhat.com>
+alias sfr       Stephen Rothwell <sfr@canb.auug.org.au>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
 alias asb       Alex Bradbury <asb@asbradbury.org>
 alias darius    Darius Rad <darius@bluespec.com>
 alias khem      Khem Raj <raj.khem@gmail.com>
+alias mjc       Michael Clark <michaeljclark@mac.com>
+alias hisen     Hisen Woo <hcwoo@me.com>
 
 # Mailing Lists
 alias binutils-patches binutils@sourceware.org
 alias gcc-patches      gcc-patches@gcc.gnu.org
+alias libc-patches     libc-alpha@sourceware.org
+alias linux-patches    linux-kernel@vger.kernel.org
 alias riscv-patches    patches@groups.riscv.org
 alias riscv-sw         sw-dev@groups.riscv.org
 
 alias patch-bin    binutils@sourceware.org
 alias patch-gcc    gcc-patches@gcc.gnu.org
 alias patch-libc   libc-alpha@sourceware.org
+alias patch-linux  linux-kernel@vger.kernel.org
