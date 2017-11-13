@@ -133,6 +133,11 @@ work:
 	cp $^ $@
 	chmod +x $@
 
+.local/bin/%: work/software-weekly-notes/scripts/%.bash
+	mkdir -p $(dir $@)
+	cp $^ $@
+	chmod +x $@
+
 .local/bin/%: /usr/bin/%
 	mkdir -p $(dir $@)
 	cp -Lf $< $@
