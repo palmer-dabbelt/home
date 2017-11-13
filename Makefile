@@ -76,6 +76,7 @@ ALL = \
 	$(BIN_DIR)/notd \
 	$(BIN_DIR)/notw \
 	$(BIN_DIR)/pnotw \
+	$(BIN_DIR)/git-send-pull \
 	$(KEYCHAIN) \
 	$(TMUX_BIN) \
 	$(GMAKE) \
