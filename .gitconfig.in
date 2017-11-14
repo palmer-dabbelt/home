@@ -1,6 +1,7 @@
 [user]
 	name = Palmer Dabbelt
 	email = palmer@dabbelt.com
+	signingkey = palmer@dabbelt.com
 
 [sendemail]
 	smtpencryption = tls
