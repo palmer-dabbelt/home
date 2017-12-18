@@ -3,6 +3,7 @@
 # Command-line argument parsing
 background="true"
 args="true"
+window="true"
 position=()
 while [[ "$args" == "true" ]]
 do
@@ -15,6 +16,10 @@ do
     position=("+normal GA")
     shift
     ;;
+  --fullscreen)
+    window="false"
+    shift
+    ;;
   --*)
     echo "unknown argument $1" >&2
     exit 1
@@ -24,6 +29,12 @@ do
     ;;
   esac
 done
+
+if [[ "$window" == "false" ]]
+then
+  unset DISPLAY
+  unset TMUX
+fi
 
 # The actual meat of the file: opens the given list of files
 if [[ "$DISPLAY" != "" ]]
@@ -41,7 +52,11 @@ then
   shift
   done
 else
-  vim "$@"
+  while [[ "$1" != "" ]]
+  do
+    vim "$1"
+    shift
+  done
 fi
 
 # Check to see if we should be joining the files
