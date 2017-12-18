@@ -83,6 +83,7 @@ alias zathura='GDK_SCALE=1 zathura'
 
 # Setup my environment variables for this tree
 alias enter='source $(findenter)'
+alias renter='source $(findrenter)'
 
 # A nicer-looking prompt
 if test -S $HOME/.mhng/daemon.socket
