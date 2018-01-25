@@ -40,7 +40,7 @@ install_packages()
 	[[ ! -x /usr/bin/xz || ! -x /usr/bin/lftp ]] && {
 		if [[ -x /usr/bin/apt-get ]]; then
 			echo apt-get install xz-utils lftp
-			sudo apt-get install xz-utils lftp
+			apt-get install xz-utils lftp
 		else
 			echo Please install: xz-utils lftp
 			exit 1
@@ -57,7 +57,7 @@ download_extract()
 
 	local file="$(basename $URL)"
 	echo tar Jxf $file -C $GCC_INSTALL_PATH
-	sudo tar Jxf $file -C $GCC_INSTALL_PATH
+	tar Jxf $file -C $GCC_INSTALL_PATH
 }
 
 install_crosstool()
@@ -99,9 +99,9 @@ install_linaro()
 	local cross_gcc_version=${cross_gcc_version##*-}
 
 	echo mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
-	sudo mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
+	mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
 	echo mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
-	sudo mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
+	mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
 }
 
 install_openrisc()
@@ -116,9 +116,9 @@ install_openrisc()
 	local cross_gcc_version=${cross_gcc_version##*-}
 
 	echo mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
-	sudo mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
+	mkdir -p $GCC_INSTALL_PATH/gcc-$cross_gcc_version
 	echo mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
-	sudo mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
+	mv $dir  $GCC_INSTALL_PATH/gcc-$cross_gcc_version/$gcc_arch
 }
 
 install_cross_compiler()
