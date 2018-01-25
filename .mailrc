@@ -3,6 +3,7 @@ local Palmer Dabbelt <palmer@gnu.org>
 local Palmer Dabbelt <palmer@gnupg.net>
 local Palmer Dabbelt <palmer@sifive.com>
 local Palmer Dabbelt <palmerandlulu@dabbelt.com>
+bcc   palmer@dabbelt.com
 
 address         BoA Bill Pay <billpay@billpay.bankofamerica.com>
 
@@ -29,6 +30,11 @@ alias jack      Jack Kang <jack@sifive.com>
 alias drew      Drew Barbier <drew@sifive.com>
 alias krste     Krste Asanovic <krste@sifive.com>
 alias jim       Jim Wilson <jimw@sifive.com>
+alias jimw      Jim Wilson <jimw@sifive.com>
+alias davidlt   David Abdurachmanov <David.Abdurachmanov@cern.ch>
+alias allenl    Allen Leibovitch <allenl@sifive.com>
+alias sunil     Sunil Shenoy <sunil@sifive.com>
+alias tim       Tim Newsome <tim@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
@@ -36,24 +42,29 @@ alias olof      Olof Johansson <olof@lixom.net>
 alias hjl       H.J. Lu <hjl.tools@gmail.com>
 alias nickc     Nick Clifton <nickc@redhat.com>
 alias sfr       Stephen Rothwell <sfr@canb.auug.org.au>
+alias linus     Linus Torvalds <torvalds@linux-foundation.org>
+alias will      Will Deacon <will.deacon@arm.com>
+alias hch       Christoph Hellwig <hch@infradead.org>
+address         Christoph Hellwig <hch@lst.de>
+alias gregkh    Greg KH <gregkh@linuxfoundation.org>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
 alias asb       Alex Bradbury <asb@asbradbury.org>
 alias darius    Darius Rad <darius@bluespec.com>
 alias khem      Khem Raj <raj.khem@gmail.com>
-alias mjc       Michael Clark <michaeljclark@mac.com>
+alias mjc       Michael Clark <mjc@sifive.com>
 alias hisen     Hisen Woo <hcwoo@me.com>
+alias davidlt   David Abdurachmanov <David.Abdurachmanov@cern.ch>
+alias kito      Kito Cheng <kito.cheng@gmail.com>
+alias lustig    Daniel Lustig <dlustig@nvidia.com>
+alias ronnie    Ronnie King <ronnie@zerosvn.com>
 
 # Mailing Lists
-alias binutils-patches binutils@sourceware.org
-alias gcc-patches      gcc-patches@gcc.gnu.org
-alias libc-patches     libc-alpha@sourceware.org
-alias linux-patches    linux-kernel@vger.kernel.org
+alias libc-alpha       libc-alpha@sourceware.org
+
 alias riscv-patches    patches@groups.riscv.org
 alias riscv-sw         sw-dev@groups.riscv.org
 
-alias patch-bin    binutils@sourceware.org
-alias patch-gcc    gcc-patches@gcc.gnu.org
-alias patch-libc   libc-alpha@sourceware.org
-alias patch-linux  linux-kernel@vger.kernel.org
+alias linux-kernel     linux-kernel@vger.kernel.org
+alias linux-riscv      linux-riscv@lists.infradead.org
