@@ -3,6 +3,7 @@ function STYLE_mhng_comp()
   normal! $
   startinsert
   setlocal spell
+  setlocal formatoptions+=w
 endfunction
 
 " This is my style: 4-space indent, no tab characters
