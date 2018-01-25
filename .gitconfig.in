@@ -23,6 +23,25 @@
 [pretty]
 	fixes = Fixes: %h (\"%s\")
 
+[rerere]
+	enabled = true
+
+[log]
+	showSignature = true
+
+[commit]
+	gpgsign = true
+
 [merge "merge-changelog"]
 	name = GNU-style ChangeLog merge driver
 	driver = /usr/bin/git-merge-changelog %O %A %B
+
+[url "ssh://git@gitolite.kernel.org"]
+	insteadOf = https://git.kernel.org
+	insteadOf = http://git.kernel.org
+	insteadOf = git://git.kernel.org
+
+[url "ssh://git@github.com"]
+	insteadOf = https://github.com
+	insteadOf = http://github.com
+	insteadOf = git://github.com
