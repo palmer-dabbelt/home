@@ -16,7 +16,7 @@
 # Author: Fengguang Wu <fengguang.wu@intel.com>
 # Credit: Tony Breeds <tony@bakeyournoodle.com> for crosstool
 
-GCC_INSTALL_PATH=/opt
+GCC_INSTALL_PATH=$HOME/.local/opt
 
 if [[ ! "$0" =~ 'make.cross' && "$0" =~ make\.([a-z0-9_]+) ]]; then
 	export ARCH="${BASH_REMATCH[1]}"
