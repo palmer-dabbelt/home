@@ -2,26 +2,6 @@ SHELL=/bin/bash
 
 # Configuration variables
 KEYCHAIN_VERSION ?= 2.8.1
-TMUX_BIN_VERSION ?= 2.2
-LIBEVENT_VERSION ?= 2.0.22
-GMAKE_VERSION ?= 3.82
-GIT_VERSION ?= 2.4.10
-PCONFIGURE_VERSION ?= 0.12.4
-PSHS_VERSION ?= 0.3
-PV_VERSION ?= 1.6.0
-PUTIL_VERSION ?= 0.0.4
-GITDATE_VERSION ?= 0.0.3
-UNITS_VERSION ?= 2.12
-VCDDIFF_VERSION ?= 0.0.5
-NCURSES_VERSION ?= 5.9
-ZLIB_VERSION ?= 1.2.11
-MHNG_VERSION ?= 0.2.5
-GNUTLS_VERSION ?= 3.3
-GNUTLS_PATCH_VERSION ?= 3.3.26
-NETTLE_VERSION ?= 3.2
-LIBBASE64_VERSION ?= 1.0.0_p4
-PSQLITE_VERSION ?= 0.0.5
-SQLITE_VERSION ?= 3170000
 
 # These variables should be used to refer to programs that get run, so we can
 # install them if necessary.
@@ -30,30 +10,7 @@ LIB_DIR ?= .local/lib
 HDR_DIR ?= .local/include
 PC_DIR ?= .local/lib/pkgconfig
 
-CONFIG_PP ?= $(BIN_DIR)/config_pp
 KEYCHAIN ?= $(BIN_DIR)/keychain
-TMUX_BIN ?= $(BIN_DIR)/tmux
-LIBEVENT ?= $(LIB_DIR)/libevent.so
-GMAKE ?= $(BIN_DIR)/make
-GIT ?= $(BIN_DIR)/git
-PCONFIGURE ?= $(BIN_DIR)/pconfigure
-PSHS ?= $(BIN_DIR)/pshs
-PV ?= $(BIN_DIR)/pv
-LIBPUTIL ?= $(LIB_DIR)/pkgconfig/libputil.pc
-LIBGITDATE ?= $(LIB_DIR)/libgitdate.so
-UNITS ?= $(BIN_DIR)/units
-VIMURA ?= $(BIN_DIR)/vimura
-LIBCURSES ?= $(LIB_DIR)/libncurses.so
-LIBZ ?= $(LIB_DIR)/libz.so
-MHNG_INSTALL ?= $(BIN_DIR)/mhng-install
-LIBGNUTLS ?= $(LIB_DIR)/libgnutls.so
-LIBNETTLE ?= $(LIB_DIR)/libnettle.so
-LIBBASE64 ?= $(LIB_DIR)/libbase64.so
-LIBPSQLITE ?= $(LIB_DIR)/libpsqlite.so
-LIBSQLITE ?= $(LIB_DIR)/libsqlite3.so
-PHC ?= $(BIN_DIR)/phc
-PPKG_CONFIG ?= $(BIN_DIR)/ppkg-config
-
 LOOKUP_PASSWORDS ?= .local/src/helper-scripts/lookup_passwords
 
 # "make all"
@@ -66,12 +23,8 @@ ALL = \
 	$(BIN_DIR)/findenter \
 	$(BIN_DIR)/findrenter \
 	$(BIN_DIR)/fixhttpssubmodules \
-	$(BIN_DIR)/vimura \
-	$(BIN_DIR)/pmake \
-	$(BIN_DIR)/speedtest-cli \
 	$(BIN_DIR)/hfipip \
 	$(BIN_DIR)/whenis \
-	$(BIN_DIR)/mhng-install \
 	$(BIN_DIR)/make.cross \
 	$(BIN_DIR)/sps \
 	$(BIN_DIR)/notd \
@@ -80,14 +33,6 @@ ALL = \
 	$(BIN_DIR)/git-send-pull \
 	$(BIN_DIR)/git-readd-from \
 	$(KEYCHAIN) \
-	$(TMUX_BIN) \
-	$(GMAKE) \
-	$(GIT) \
-	$(PCONFIGURE) \
-	$(PSHS) \
-	$(PV) \
-	$(UNITS) \
-	$(VCDDIFF) \
 	.megarc \
 	.ssh/config \
 	.parallel/will-cite \
