@@ -32,6 +32,7 @@ ALL = \
 	$(BIN_DIR)/pnotw \
 	$(BIN_DIR)/git-send-pull \
 	$(BIN_DIR)/git-readd-from \
+	$(BIN_DIR)/linux-ccm \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
