@@ -5,4 +5,4 @@ do
   git add -f "$file"
 done
 
-git commit -m "git-readd-from: $(git show "$@" --oneline | head -n1)"
+git commit -m "git-readd-from: $(git show "$@" --oneline --no-show-signature | head -n1)"
