@@ -33,8 +33,9 @@ alias no=ls
 alias caly='cal -Y'
 
 # MH aliases
-alias hscan="mhng-scan | head"
+alias hscan="mhng-scan | head -50"
 alias scan="mhng-scan"
+alias scanl="mhng-scan | less"
 alias inbox="mhng-scan inbox"
 alias rss="mhng-scan rss"
 alias lists="mhng-scan lists"
@@ -77,6 +78,9 @@ alias ......="cd ../../../../.."
 # Other aliases
 alias todo='$GIT_EDITOR ~/TODO'
 alias bwrcfont='printf '"'"'\33]50;%s\007'"'"' "xft:Liberation Mono-7"'
+alias bigfont='printf '"'"'\33]50;%s\007'"'"' "xft:Liberation Mono-20"'
+alias startw='weston-launch -- --modules=xwayland.so'
+alias ix="curl -F 'f:1=<-' ix.io"
 
 # Some shell variables are different on different machines
 export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
