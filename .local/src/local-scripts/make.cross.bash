@@ -209,11 +209,6 @@ setup_crosstool()
 
 setup_crosstool
 
-[[ "$*" =~ (-j|--jobs) ]] || {
-	nr_cpu=$(getconf _NPROCESSORS_CONF)
-	opt_jobs="--jobs=$((nr_cpu * 2))"
-}
-
 [[ "$*" =~ "ARCH=$ARCH" ]] || {
 	opt_arch="ARCH=$ARCH"
 }
