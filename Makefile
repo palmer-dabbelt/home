@@ -30,9 +30,14 @@ ALL = \
 	$(BIN_DIR)/notd \
 	$(BIN_DIR)/notw \
 	$(BIN_DIR)/pnotw \
+	$(BIN_DIR)/mhnotd \
 	$(BIN_DIR)/git-send-pull \
 	$(BIN_DIR)/git-readd-from \
+	$(BIN_DIR)/git-archive-branch \
 	$(BIN_DIR)/linux-ccm \
+	$(BIN_DIR)/lwirv \
+	$(BIN_DIR)/slwirv \
+	$(BIN_DIR)/giteditcat \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
@@ -49,8 +54,7 @@ all: $(ALL) $(ALL_NOCLEAN)
 
 # "make clean" -- use CLEAN, so your output gets in .gitignore
 CLEAN = \
-	$(ALL) \
-	$(CONFIG_PP)
+	$(ALL)
 .PHONY: clean
 clean:
 	rm -rf $(CLEAN) .local/bin .local/lib .local/libexec .local/include
@@ -83,6 +87,11 @@ work:
 	chmod +x $@
 
 .local/bin/%: work/software-weekly-notes/scripts/%.bash
+	mkdir -p $(dir $@)
+	cp $^ $@
+	chmod +x $@
+
+.local/bin/%: work/last-week-in-risc-v/scripts/%.bash
 	mkdir -p $(dir $@)
 	cp $^ $@
 	chmod +x $@
@@ -401,10 +410,10 @@ $(LIBGITDATE): .local/src/gitdate/lib/libgitdate.so
 endif
 
 # Many files should be processed by some internal scripts
-%: %.in $(CONFIG_PP)
+%: %.in
 	mkdir -p $(dir $@)
 	rm -f $@
-	$(CONFIG_PP) $< | $(LOOKUP_PASSWORDS) > $@
+	cat $< > $@
 	chmod oug-w $@
 
 # This particular file is actually generated from a make variable
