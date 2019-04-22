@@ -19,7 +19,7 @@ fi
 if [[ "$HOSTNAME" == "palmer-si-x1c4" ]]
 then
     xbacklight -set 30
-#    xrandr --dpi 105
+    xrandr --dpi 158
 fi
 
 # There's a bunch of directories that I want to always have 

@@ -6,10 +6,8 @@ Xft.hinting:   1
 Xft.hintstyle: full
 
 URxvt.scrollBar: false
-URxvt.font: xft:Liberation Mono:size=9
+URxvt.font: xft:Liberation Mono:size=6
 URxvt.letterSpace: -2
-
-Emacs.font: Liberation Mono-8.9
 
 !URxvt.termName: rxvt-unicode-256color
 URxvt*color0:  #000000
