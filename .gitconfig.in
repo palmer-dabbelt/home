@@ -14,8 +14,10 @@
 	ff = only
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --no-show-signature
 	fap = fetch --all --prune --verbose
+	oneline = log --oneline --no-show-signature
+	fixes = log --pretty=fixes --no-show-signature
 
 [core]
 	abbrev = 12
@@ -37,11 +39,11 @@
 	driver = /usr/bin/git-merge-changelog %O %A %B
 
 [url "ssh://git@gitolite.kernel.org"]
+	insteadOf = git://git.kernel.org
 	insteadOf = https://git.kernel.org
 	insteadOf = http://git.kernel.org
-	insteadOf = git://git.kernel.org
 
 [url "ssh://git@github.com"]
+	insteadOf = git://github.com
 	insteadOf = https://github.com
 	insteadOf = http://github.com
-	insteadOf = git://github.com
