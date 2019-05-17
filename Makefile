@@ -38,6 +38,8 @@ ALL = \
 	$(BIN_DIR)/lwirv \
 	$(BIN_DIR)/slwirv \
 	$(BIN_DIR)/giteditcat \
+	$(BIN_DIR)/git-mham \
+	$(BIN_DIR)/slock \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \

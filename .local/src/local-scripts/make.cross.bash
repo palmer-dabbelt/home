@@ -222,8 +222,8 @@ fi
 
 if [[ -d source && -L source ]]; then
 	echo make -C source O=$PWD $opt_arch $opt_cross $subarch $opt_jobs "$@"
-	exec make -C source O=$PWD $opt_arch $opt_cross $subarch $opt_jobs "$@"
+	exec nice -n10 make -C source O=$PWD $opt_arch $opt_cross $subarch $opt_jobs "$@"
 else
 	echo make $O $opt_arch $opt_cross $subarch $opt_jobs "$@"
-	exec make $O $opt_arch $opt_cross $subarch $opt_jobs "$@"
+	exec nice -n10 make $O $opt_arch $opt_cross $subarch $opt_jobs "$@"
 fi

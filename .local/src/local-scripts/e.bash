@@ -41,7 +41,7 @@ if [[ "$DISPLAY" != "" ]]
 then
   while [[ "$1" != "" ]]
   do
-    urxvt -e vim "${position[@]}" "$(readlink -f $1)" &
+    $TERMINAL -e vim "${position[@]}" "$(readlink -f $1)" &
     shift
   done
 elif [[ "$TMUX" != "" ]]

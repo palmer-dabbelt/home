@@ -1,6 +1,6 @@
 #!/bin/bash
 
-slock &
+swaylock &
 
 (
   sleep 10s
