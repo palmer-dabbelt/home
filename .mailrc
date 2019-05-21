@@ -3,6 +3,7 @@ local Palmer Dabbelt <palmer@gnu.org>
 local Palmer Dabbelt <palmer@gnupg.net>
 local Palmer Dabbelt <palmer@sifive.com>
 local Palmer Dabbelt <palmerandlulu@dabbelt.com>
+local Palmer Dabbelt <palmer.dabbelt@open-silicon.com>
 bcc   palmer@dabbelt.com
 
 address         BoA Bill Pay <billpay@billpay.bankofamerica.com>
@@ -32,15 +33,12 @@ alias drew      Drew Barbier <drew@sifive.com>
 alias krste     Krste Asanovic <krste@sifive.com>
 alias jim       Jim Wilson <jimw@sifive.com>
 alias jimw      Jim Wilson <jimw@sifive.com>
-alias davidlt   David Abdurachmanov <David.Abdurachmanov@cern.ch>
 alias allenl    Allen Leibovitch <allenl@sifive.com>
 alias sunil     Sunil Shenoy <sunil@sifive.com>
 alias tim       Tim Newsome <tim@sifive.com>
 alias bsou      Bunnaroath Sou <bsou@sifive.com>
 alias bruce     Bruce Hoult <brucehoult@sifive.com>
 address         Bruce Hoult <bruce@hoult.org>
-alias mjc       Michael Clark <mjc@sifive.com>
-address         Michael Clark <michaeljclark@mac.com>
 alias troy      Troy Benjegerdes <troy.benjegerdes@sifive.com>
 alias carsten   Carsten Gosvig <carsten.gosvig@sifive.com>
 alias nate      Nathaniel Graff <nathaniel.graff@sifive.com>
@@ -49,6 +47,20 @@ alias sachin    Sachin Ghadi <sachin.ghadi@sifive.com>
 alias kevin     Kevin Mills <kevin.mills@sifive.com>
 alias greg      Greg Savin <greg.savin@sifive.com>
 alias rick      Rick Leatherman <rick.leatherman@sifive.com>
+alias jahoor    Jahoor Vohra <jahoor.vohra@sifive.com>
+alias jodie     Jodie Kirby <jodie.kirby@sifive.com>
+alias peter     Peter Liao <peter.liao@sifive.com>
+alias davewen   Dave Wen <dave.wen@sifive.com>
+alias yihsiu    Yi-Hsiu Hwu <yihsiu.hsu@sifive.com>
+alias nick      Nick Knight <nick.knight@sifive.com>
+alias chris     Chris Moezzi <christopher.moezzi@sifive.com>
+alias chihmin   Chih-Min Chao <chihmin.chao@sifive.com>
+alias randy     Randy Allen <randy.allen@sifive.com>
+alias dany      Dany Nativel <dany.nativel@sifive.com>
+alias rae       Rae Parnmukh <rae.parnmukh@sifive.com>
+alias joe       Joe Calif <joe.calif@sifive.com>
+alias yanng     Yann Gaude <yann.gaude@sifive.com>
+alias emmanuel  Emmanuel Puerto <emmanuel.puerto@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
@@ -62,6 +74,7 @@ alias hch       Christoph Hellwig <hch@infradead.org>
 address         Christoph Hellwig <hch@lst.de>
 alias gregkh    Greg KH <gregkh@linuxfoundation.org>
 alias pmm       Peter Maydell <peter.maydell@linaro.org>
+alias mjc       Michael Clark <michaeljclark@mac.com>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
@@ -69,7 +82,6 @@ alias asb       Alex Bradbury <asb@asbradbury.org>
 alias darius    Darius Rad <darius@bluespec.com>
 alias khem      Khem Raj <raj.khem@gmail.com>
 alias hisen     Hisen Woo <hcwoo@me.com>
-alias davidlt   David Abdurachmanov <David.Abdurachmanov@cern.ch>
 alias kito      Kito Cheng <kito.cheng@gmail.com>
 alias lustig    Daniel Lustig <dlustig@nvidia.com>
 alias eager     Michael Eager <eager@eagercon.com>
@@ -77,6 +89,12 @@ address         Rick O'Connor <rickoco@riscv.org>
 alias atish     Atish Patra <Atish.Patra@wdc.com>
 alias alistair  Alistair Francis <Alistair.Francis@wdc.com>
 alias bastian   Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+alias dave      David Patterson <pattrsn@berkeley.edu>
+alias anup      Anup Patel <Anup.Patel@wdc.com>
+alias davidlt   David Abdurachmanov <david.abdurachmanov@gmail.com>
+alias damien    Damien Le Moal <Damien.LeMoal@wdc.com>
+alias jefro     Jeffrey Osier-Mixon <jefro@linuxfoundation.org>
+alias bjorn     Björn Töpel <bjorn.topel@gmail.com>
 
 # Mailing Lists
 alias libc-alpha       libc-alpha@sourceware.org
@@ -91,3 +109,5 @@ alias linux-riscv      linux-riscv@lists.infradead.org
 
 alias qemu-devel       qemu-devel@nongnu.org
 alias qemu-riscv       qemu-riscv@nongnu.org
+
+alias zephyr-silver    silver-members@lists.zephyrproject.org
