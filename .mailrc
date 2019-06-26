@@ -61,6 +61,8 @@ alias rae       Rae Parnmukh <rae.parnmukh@sifive.com>
 alias joe       Joe Calif <joe.calif@sifive.com>
 alias yanng     Yann Gaude <yann.gaude@sifive.com>
 alias emmanuel  Emmanuel Puerto <emmanuel.puerto@sifive.com>
+alias davidlt   David Abdurachmanov <david.abdurachmanov@sifive.com>
+alias mark      Mark Throndson <mark.throndson@sifive.com>
 
 # Upstream
 alias arnd      Arnd Bergmann <arnd@arndb.de>
@@ -91,7 +93,6 @@ alias alistair  Alistair Francis <Alistair.Francis@wdc.com>
 alias bastian   Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 alias dave      David Patterson <pattrsn@berkeley.edu>
 alias anup      Anup Patel <Anup.Patel@wdc.com>
-alias davidlt   David Abdurachmanov <david.abdurachmanov@gmail.com>
 alias damien    Damien Le Moal <Damien.LeMoal@wdc.com>
 alias jefro     Jeffrey Osier-Mixon <jefro@linuxfoundation.org>
 alias bjorn     Björn Töpel <bjorn.topel@gmail.com>
@@ -111,3 +112,5 @@ alias qemu-devel       qemu-devel@nongnu.org
 alias qemu-riscv       qemu-riscv@nongnu.org
 
 alias zephyr-silver    silver-members@lists.zephyrproject.org
+
+alias riscv-platform   tech-unixplatformspec@lists.riscv.org
