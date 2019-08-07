@@ -70,7 +70,7 @@ function STYLE_text()
 endfunction
 
 " I like to write mail
-au BufNewFile,BufRead /tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
+au BufNewFile,BufRead /home/palmer/.mhng/tmp/mhng-comp-*/template.msg call STYLE_mhng_comp()
 
 " My default style for various languages -- these come first, so they can be
 " overridden
