@@ -29,6 +29,7 @@ export EDITOR="e"
 export BROWSER="chromium"
 export GIT_EDITOR="vim"
 export MHNG_EDITOR="vim"
+export TERMINAL="kitty"
 alias no=ls
 alias caly='cal -Y'
 
