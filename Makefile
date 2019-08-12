@@ -40,6 +40,8 @@ ALL = \
 	$(BIN_DIR)/giteditcat \
 	$(BIN_DIR)/git-mham \
 	$(BIN_DIR)/slock \
+	$(BIN_DIR)/pwa \
+	$(BIN_DIR)/pwm \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
