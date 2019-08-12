@@ -68,6 +68,7 @@ alias gmail="$BROWSER \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(
 alias lkml="$BROWSER \"https://lkml.kernel.org/r/\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
 alias mal="mhng-hud"
 alias mhng-log="tail -n40 ~/.mhng/daemon.log"
+alias qpw="$BROWSER \"https://patchwork.kernel.org/patch/$(mhng-pipe-header Message-ID | xargs pwclient list -p qemu-devel -m | grep "^[0-9]" | cut -d' ' -f1)\""
 
 # Aliases to "cd ../../.. ..."
 alias ..="cd .."
