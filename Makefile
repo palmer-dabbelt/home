@@ -42,6 +42,7 @@ ALL = \
 	$(BIN_DIR)/slock \
 	$(BIN_DIR)/pwa \
 	$(BIN_DIR)/pwm \
+	$(BIN_DIR)/git-mhpwam \
 	$(KEYCHAIN) \
 	.megarc \
 	.ssh/config \
