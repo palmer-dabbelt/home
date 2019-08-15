@@ -20,7 +20,7 @@
 	fixes = log --pretty=fixes --no-show-signature
 
 [core]
-	abbrev = 12
+	abbrev = auto
 
 [pretty]
 	fixes = Fixes: %h (\"%s\")
