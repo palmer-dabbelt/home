@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # Attempts to start keychain
 eval `keychain --eval --agents ssh --inherit any --quiet id_rsa`
 
