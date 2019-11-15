@@ -1,0 +1,18 @@
+[submodule ".local/src/pconfigure"]
+	path = .local/src/pconfigure
+	url = git://github.com/palmer-dabbelt/pconfigure.git
+[submodule ".local/src/putil"]
+	path = .local/src/putil
+	url = git://github.com/palmer-dabbelt/putil.git
+[submodule ".local/src/gitdate"]
+	path = .local/src/gitdate
+	url = git://github.com/palmer-dabbelt/gitdate.git
+[submodule ".local/src/psqlite"]
+	path = .local/src/psqlite
+	url = git://github.com/palmer-dabbelt/psqlite.git
+[submodule ".local/src/libbase64"]
+	path = .local/src/libbase64
+	url = git://github.com/palmer-dabbelt/libbase64.git
+[submodule ".local/src/mhng"]
+	path = .local/src/mhng
+	url = git://github.com/palmer-dabbelt/mhng.git

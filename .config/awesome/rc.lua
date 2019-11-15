@@ -44,8 +44,9 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = os.getenv("TERMINAL") or "urxvt"
 editor = os.getenv("EDITOR") or "nano"
+browser = os.getenv("BROWSER") or "google-chrome-stable"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -233,20 +234,28 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "o",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    awful.key({ modkey,           }, "Up",     function ()
+                                                   awful.client.focus.bydirection("up")
+                                               end),
+    awful.key({ modkey,           }, "Down",   function ()
+                                                   awful.client.focus.bydirection("down")
+                                               end),
+    awful.key({ modkey,           }, "Right",  function ()
+                                                   awful.client.focus.bydirection("right")
+                                               end),
+    awful.key({ modkey,           }, "Left",   function ()
+                                                   awful.client.focus.bydirection("left")
+                                               end),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    awful.key({ modkey,           }, "h",
+    awful.key({ modkey,           }, "t",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "t",
+    awful.key({ modkey,           }, "h",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -278,7 +287,7 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "c", function () awful.spawn("chromium") end,
+    awful.key({ modkey,           }, "c", function () awful.spawn(browser) end,
               {description = "open a browser", group = "launcher"}),
     awful.key({ modkey, "Control" }, "p", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -481,10 +490,6 @@ awful.rules.rules = {
     { rule_any = {type = { "dialog" }
       }, properties = { titlebars_enabled = true }
     },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 

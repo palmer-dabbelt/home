@@ -13,6 +13,9 @@ function STYLE_mycxx()
   setlocal tabstop=4
   setlocal shiftwidth=4
   setlocal filetype=cpp
+  setlocal ai
+  setlocal nocompatible
+  syntax on
 endfunction
 
 " The style I use for bash

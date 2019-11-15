@@ -1,10 +1,9 @@
-local Palmer Dabbelt <palmer@dabbelt.com>
-local Palmer Dabbelt <palmer@gnu.org>
-local Palmer Dabbelt <palmer@gnupg.net>
-local Palmer Dabbelt <palmerandlulu@dabbelt.com>
-bcc   palmer@dabbelt.com
-
-address         BoA Bill Pay <billpay@billpay.bankofamerica.com>
+# My local addresses, some of which are actual accounts.
+account  Palmer Dabbelt <palmer@dabbelt.com>
+local    Palmer Dabbelt <palmer@gnu.org>
+local    Palmer Dabbelt <palmer@gnupg.net>
+local    Palmer Dabbelt <palmerandlulu@dabbelt.com>
+account  Palmer Dabbelt <palmerdabbelt@google.com>
 
 # Personal
 alias palmer    Palmer Dabbelt <palmer@dabbelt.com>
