@@ -8,6 +8,7 @@ all: \
 	.local/lib/libbase64.so \
 	.local/lib/libpson.so \
 	.local/bin/mhng-install \
+	.local/bin/msmtp \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash))
 
 clean::
@@ -104,6 +105,19 @@ clean::
 	date > $@
 
 .local/lib/libbase64.so: .local/stamp/libbase64
+	touch -c $@
+
+# msmtp
+.local/src/msmtp/Makefile: .local/src/msmtp/configure.ac
+	env -C $(dir $@) - $(ENV) autoreconf -i
+	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
+
+.local/stamp/msmtp: .local/src/msmtp/Makefile
+	mkdir -p $(dir $@)
+	$(MAKE) -C $(dir $<) install
+	date > $@
+
+.local/bin/msmtp: .local/stamp/msmtp
 	touch -c $@
 
 # MHng
