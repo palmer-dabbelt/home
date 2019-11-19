@@ -31,7 +31,7 @@ alias enter="source enter.bash"
 # MH aliases
 alias hscan="mhng-scan | head -50"
 alias scan="mhng-scan"
-alias scanl="mhng-scan | less"
+alias scanl="mhng-scan | less -R"
 alias inbox="mhng-scan inbox"
 alias rss="mhng-scan rss"
 alias lists="mhng-scan lists"
