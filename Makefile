@@ -56,10 +56,13 @@ clean::
 .local/src/putil/Makefile: \
 		.local/bin/pconfigure \
 		.local/lib/libgitdate++.so \
-		.local/src/putil/Configfile
+		.local/src/putil/Configfile \
+		$(call gitfiles,.local/src/putil/)
 	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
 
-.local/stamp/putil: .local/src/putil/Makefile
+.local/stamp/putil: \
+		.local/src/putil/Makefile \
+		$(call gitfiles,.local/src/putil/)
 	mkdir -p $(dir $@)
 	$(MAKE) -C $(dir $<) install
 	date > $@
