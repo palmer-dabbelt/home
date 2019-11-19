@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -f $HOME/.bashrc_local ]; then
+    . $HOME/.bashrc_local
+fi
+
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
