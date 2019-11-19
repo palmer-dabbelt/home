@@ -1,6 +1,8 @@
 SHELL=/bin/bash
 ENV=PATH="$(abspath .local/bin:$(PATH))" PKG_CONFIG_PATH="$(abspath .local/lib/pkgconfig)"
 
+gitfiles = $(addprefix $(1),$(shell git -C $(1) ls-files))
+
 all: \
 	.local/bin/pconfigure \
 	.local/lib/libputil-chrono.so \
@@ -143,10 +145,12 @@ clean::
 		.local/bin/pbashc \
 		.local/lib/libputil-chrono.so \
 		.local/lib/libpsqlite.so \
-		.local/src/mhng/Configfile
+		$(call gitfiles,.local/src/mhng/)
 	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
 
-.local/stamp/mhng: .local/src/mhng/Makefile
+.local/stamp/mhng: \
+		.local/src/mhng/Makefile \
+		$(call gitfiles,.local/src/mhng/)
 	mkdir -p $(dir $@)
 	$(MAKE) -C $(dir $<) install
 	date > $@
