@@ -16,3 +16,6 @@
 [submodule ".local/src/mhng"]
 	path = .local/src/mhng
 	url = git://github.com/palmer-dabbelt/mhng.git
+[submodule ".local/src/pson"]
+	path = .local/src/pson
+	url = git://github.com/palmer-dabbelt/pson.git

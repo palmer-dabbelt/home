@@ -6,6 +6,7 @@ all: \
 	.local/lib/libputil-chrono.so \
 	.local/lib/libpsqlite.so \
 	.local/lib/libbase64.so \
+	.local/lib/libpson.so \
 	.local/bin/mhng-install \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash))
 
@@ -75,6 +76,21 @@ clean::
 	date > $@
 
 .local/lib/libpsqlite.so: .local/stamp/psqlite
+	touch -c $@
+
+# pson
+.local/src/pson/Makefile: \
+		.local/bin/pconfigure \
+		.local/lib/libgitdate++.so \
+		.local/src/pson/Configfile
+	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
+
+.local/stamp/pson: .local/src/pson/Makefile
+	mkdir -p $(dir $@)
+	$(MAKE) -C $(dir $<) install
+	date > $@
+
+.local/lib/libpson.so: .local/stamp/pson
 	touch -c $@
 
 # libbase64
