@@ -22,3 +22,6 @@
 [submodule ".local/src/msmtp"]
 	path = .local/src/msmtp
 	url = https://git.marlam.de/git/msmtp.git
+[submodule ".local/src/liboauth2"]
+	path = .local/src/liboauth2
+	url = git://github.com/palmer-dabbelt/liboauth2.git
