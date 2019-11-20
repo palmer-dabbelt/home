@@ -41,7 +41,12 @@ if [[ "$DISPLAY" != "" ]]
 then
   while [[ "$1" != "" ]]
   do
-    $TERMINAL -e vim "${position[@]}" "$(readlink -f $1)" &
+    if [[ "$background" == "true" ]]
+    then
+      $TERMINAL -e tmux new-session vim "${position[@]}" "$(readlink -f $1)" &
+    else
+      $TERMINAL -e tmux new-session vim "${position[@]}" "$(readlink -f $1)"
+    fi
     shift
   done
 elif [[ "$TMUX" != "" ]]
