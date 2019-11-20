@@ -35,7 +35,9 @@ clean::
 	$(MAKE) -C .local/src/pconfigure install
 	date > $@
 
-.local/bin/pconfigure: .local/stamp/pconfigure
+.local/bin/pconfigure \
+.local/bin/pbashc \
+		:.local/stamp/pconfigure
 	touch -c $@
 
 # gitdate
