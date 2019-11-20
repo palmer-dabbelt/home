@@ -1,6 +1,7 @@
 # My local addresses, some of which are actual accounts.
 account  Palmer Dabbelt <palmer@dabbelt.com>
 local    Palmer Dabbelt <palmer@gnu.org>
+local    Palmer Dabbelt <palmer@kernel.org>
 local    Palmer Dabbelt <palmer@gnupg.net>
 local    Palmer Dabbelt <palmerandlulu@dabbelt.com>
 account  Palmer Dabbelt <palmerdabbelt@google.com>
@@ -31,6 +32,7 @@ alias pmm       Peter Maydell <peter.maydell@linaro.org>
 alias mjc       Michael Clark <michaeljclark@mac.com>
 alias paul      Paul Walmsley <paul.walmsley@sifive.com>
 address         Paul Walmsley <paul@pwsan.com>
+alias jimw      Jim Wilson <jimw@sifive.com>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
@@ -66,4 +68,5 @@ alias zephyr-silver    silver-members@lists.zephyrproject.org
 alias riscv-platform   tech-unixplatformspec@lists.riscv.org
 
 # Google
+alias go        Palmer Dabbelt <palmerdabbelt@google.com>
 alias sandeep   Sandeep Patil <sspatil@google.com>
