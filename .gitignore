@@ -1,9 +1,14 @@
 *.swp
+*cred*
+*oauth2*
+*cookie*
+*.lock
+*_history
 
 /.ICEauthority
 /.Xauthority
+/.android/
 /.awesome-client_history
-/.bash_history
 /.bash_logout
 /.bashrc_local
 /.cache/
@@ -23,6 +28,8 @@
 /.local/libexec/
 /.local/share/
 /.local/stamp/
+/.nv/
+/.mhng/
 /.pki/
 /.profile
 /.repo_.gitconfig.json
