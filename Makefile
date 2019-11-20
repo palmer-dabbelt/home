@@ -9,7 +9,6 @@ all: \
 	.local/lib/libpsqlite.so \
 	.local/lib/libbase64.so \
 	.local/lib/libpson.so \
-	.local/lib/liboauth2.so \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash))
@@ -124,22 +123,6 @@ clean::
 	date > $@
 
 .local/bin/msmtp: .local/stamp/msmtp
-	touch -c $@
-
-# liboauth2
-.local/src/liboauth2/Makefile: \
-		.local/src/liboauth2/configure.ac \
-		.local/lib/libbase64.so \
-		.local/lib/libpson.so
-	env -C $(dir $@) - $(ENV) autoreconf -i
-	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
-
-.local/stamp/liboauth2: .local/src/liboauth2/Makefile
-	mkdir -p $(dir $@)
-	$(MAKE) -C $(dir $<) install
-	date > $@
-
-.local/lib/liboauth2.so: .local/stamp/liboauth2
 	touch -c $@
 
 # MHng
