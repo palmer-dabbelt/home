@@ -9,7 +9,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Attempts to start keychain
-eval `keychain --eval --agents ssh --inherit any --quiet id_rsa`
+alias kc='eval `keychain --eval --agents ssh,gpg --inherit any id_rsa`'
 
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
@@ -22,7 +22,7 @@ export EDITOR="e"
 export BROWSER="google-chrome-stable"
 export GIT_EDITOR="vim"
 export MHNG_EDITOR="vim"
-export TERMINAL="urxvt"
+export TERMINAL="kitty"
 alias no=ls
 alias ix="curl -F 'f:1=<-' ix.io"
 alias su="sudo --login"
