@@ -43,9 +43,9 @@ then
   do
     if [[ "$background" == "true" ]]
     then
-      $TERMINAL -e tmux new-session vim "${position[@]}" "$(readlink -f $1)" &
+      $TERMINAL vim "${position[@]}" "$(readlink -f $1)" &
     else
-      $TERMINAL -e tmux new-session vim "${position[@]}" "$(readlink -f $1)"
+      $TERMINAL vim "${position[@]}" "$(readlink -f $1)"
     fi
     shift
   done
