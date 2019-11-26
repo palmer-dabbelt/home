@@ -44,10 +44,10 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt -e tmux"
+terminal = "kitty"
 editor = "vim"
 browser = "google-chrome-stable"
-editor_cmd = terminal .. " -c " .. editor
+editor_cmd = terminal .. " " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
