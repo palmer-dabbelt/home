@@ -24,7 +24,6 @@ alias hjl       H.J. Lu <hjl.tools@gmail.com>
 alias nickc     Nick Clifton <nickc@redhat.com>
 alias sfr       Stephen Rothwell <sfr@canb.auug.org.au>
 alias linus     Linus Torvalds <torvalds@linux-foundation.org>
-alias will      Will Deacon <will.deacon@arm.com>
 alias hch       Christoph Hellwig <hch@infradead.org>
 address         Christoph Hellwig <hch@lst.de>
 alias gregkh    Greg KH <gregkh@linuxfoundation.org>
@@ -70,3 +69,5 @@ alias riscv-platform   tech-unixplatformspec@lists.riscv.org
 # Google
 alias go        Palmer Dabbelt <palmerdabbelt@google.com>
 alias sandeep   Sandeep Patil <sspatil@google.com>
+alias todd      Todd Kjos <tkjos@google.com>
+alias will      Will Deacon <willdaecon@google.com>
