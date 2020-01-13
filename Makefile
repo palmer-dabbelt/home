@@ -11,7 +11,7 @@ all: \
 	.local/lib/libpson.so \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
-	.local/bin/gclient .local/bin/fetch .local/bin/gn \
+	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash))
 
 clean::
@@ -148,10 +148,7 @@ clean::
 	touch -c $@
 
 # depot_tools
-.local/bin/gclient \
-.local/bin/fetch \
-.local/bin/gn \
-		: .local/src/depot_tools_wrapper.bash.in
+$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))): .local/src/depot_tools_wrapper.bash.in
 	mkdir -p $(dir $@)
 	cat $^ | sed 's@__TOOL__@$(abspath $(dir $<))/depot_tools/$(notdir $@)@g' > $@
 	chmod +x $@
