@@ -22,3 +22,6 @@
 [submodule ".local/src/msmtp"]
 	path = .local/src/msmtp
 	url = https://git.marlam.de/git/msmtp.git
+[submodule ".local/src/depot_tools"]
+	path = .local/src/depot_tools
+	url = https://chromium.googlesource.com/chromium/tools/depot_tools.git
