@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export DEPOT_TOOLS_UPDATE=0
+exec __TOOL__ "$@"
