@@ -6,7 +6,11 @@ do
     etime="$(($mtime + (18 * 60 * 60)))"
     ntime="$(date +%s)"
     dtime="$(($etime - $ntime))"
-    echo "Sleeping for $dtime seconds (hopefully until $(date -d @$etime))"
-    sleep $dtime
+    if [[ "$dtime" -gt "0" ]]
+    then
+        echo "Sleeping for $dtime seconds (hopefully until $(date -d @$etime))"
+        abssleep $dtime
+        echo "Woke up at $(date)"
+    fi
     kitty wait-for-gcert
 done

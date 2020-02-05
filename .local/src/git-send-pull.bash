@@ -45,6 +45,11 @@ do
         shift
         shift
         ;;
+    --from)
+        from="$2"
+        shift
+        shift
+        ;;
     *)
         echo "unknown argument $1" >&2
         exit 1

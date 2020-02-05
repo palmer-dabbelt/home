@@ -43,9 +43,9 @@ then
   do
     if [[ "$background" == "true" ]]
     then
-      $TERMINAL vim "${position[@]}" "$(readlink -f $1)" &
+      $TERMINAL vim "${position[@]}" "$(readlink -f $1)" >& /dev/null &
     else
-      $TERMINAL vim "${position[@]}" "$(readlink -f $1)"
+      $TERMINAL vim "${position[@]}" "$(readlink -f $1)" >& /dev/null
     fi
     shift
   done
