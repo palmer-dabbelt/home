@@ -1,0 +1,5 @@
+#!/bin/bash
+
+logger "pm-sleep xautolock"
+
+su palmerdabbelt -c xautolock -locknow
