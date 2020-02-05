@@ -78,7 +78,9 @@ au BufNewFile,BufRead /home/palmer/.mhng/tmp/mhng-comp-*/template.msg call STYLE
 " My default style for various languages -- these come first, so they can be
 " overridden
 au BufNewFile,BufRead *.c++ call STYLE_mycxx()
+au BufNewFile,BufRead *.cpp call STYLE_mycxx()
 au BufNewFile,BufRead *.h++ call STYLE_mycxx()
+au BufNewFile,BufRead *.h call STYLE_mycxx()
 
 au BufNewFile,BufRead *.scala call STYLE_andrew()
 
