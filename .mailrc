@@ -32,6 +32,7 @@ alias mjc       Michael Clark <michaeljclark@mac.com>
 alias paul      Paul Walmsley <paul.walmsley@sifive.com>
 address         Paul Walmsley <paul@pwsan.com>
 alias jimw      Jim Wilson <jimw@sifive.com>
+alias maz       Mark Zyngier <maz@kernel.org>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
@@ -50,7 +51,9 @@ alias dave      David Patterson <pattrsn@berkeley.edu>
 alias anup      Anup Patel <Anup.Patel@wdc.com>
 alias damien    Damien Le Moal <Damien.LeMoal@wdc.com>
 alias jefro     Jeffrey Osier-Mixon <jefro@linuxfoundation.org>
-alias bjorn     Björn Töpel <bjorn.topel@gmail.com>
+# FIXME: MHng isn't converting these to UTF-8
+# alias bjorn     Björn Töpel <bjorn.topel@gmail.com>
+alias bjorn     Bjorn Topel <bjorn.topel@gmail.com>
 alias andrew    Andrew Waterman <andrew@sifive.com>
 
 # Mailing Lists
@@ -68,6 +71,10 @@ alias riscv-platform   tech-unixplatformspec@lists.riscv.org
 
 # Google
 alias go        Palmer Dabbelt <palmerdabbelt@google.com>
+alias si        Palmer Dabbelt <palmerdabbelt@google.com>
 alias sandeep   Sandeep Patil <sspatil@google.com>
 alias todd      Todd Kjos <tkjos@google.com>
 alias will      Will Deacon <willdaecon@google.com>
+alias iliyan    Iliyan Malchev <malchev@google.com>
+alias qperet    Quentin Perret <qperret@google.com>
+alias qperret   Quentin Perret <qperret@google.com>
