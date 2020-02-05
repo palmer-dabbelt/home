@@ -1,3 +1,8 @@
+" Allows me to easily insert
+command -nargs=1 T r!tag <f-args>
+command R T r
+command A T a
+
 " Enter email messages in insert mode
 function STYLE_mhng_comp()
   normal! $
