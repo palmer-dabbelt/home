@@ -13,6 +13,8 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+require("awful.remote")
+require("screenful")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -58,8 +60,7 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.fair
+    awful.layout.suit.tile
 }
 -- }}}
 
@@ -221,16 +222,16 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "o",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Up",     function ()
-                                                   awful.client.focus.bydirection("up")
+                                                   awful.client.focus.global_bydirection("up")
                                                end),
     awful.key({ modkey,           }, "Down",   function ()
-                                                   awful.client.focus.bydirection("down")
+                                                   awful.client.focus.global_bydirection("down")
                                                end),
     awful.key({ modkey,           }, "Right",  function ()
-                                                   awful.client.focus.bydirection("right")
+                                                   awful.client.focus.global_bydirection("right")
                                                end),
     awful.key({ modkey,           }, "Left",   function ()
-                                                   awful.client.focus.bydirection("left")
+                                                   awful.client.focus.global_bydirection("left")
                                                end),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
@@ -327,15 +328,24 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
     -- Wibox
-   awful.key({ modkey, "Shift" }, "b", function ()
+    awful.key({ modkey, "Shift" }, "b", function ()
            for s in screen do
                s.mywibox.visible = not s.mywibox.visible
                if s.mybottomwibox then
                    s.mybottomwibox.visible = not s.mybottomwibox.visible
                end
-          end
+           end
        end,
-       {description = "toggle wibox", group = "awesome"})
+       {description = "toggle wibox", group = "awesome"}),
+    awful.key({ modkey, "Shift", "Control" }, "b", function ()
+           for s in screen do
+               s.mywibox.visible = false
+               if s.mybottomwibox then
+                   s.mybottomwibox.visible = false
+               end
+           end
+       end,
+       {description = "hide wibox", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
