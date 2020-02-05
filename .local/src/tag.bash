@@ -8,6 +8,7 @@ do
     in
         a) echo "Acked-by: $whoami";;
         r) echo "Reviewed-by: $whoami";;
+        s) echo "Signed-off-by: $whoami";;
         "");;
         " ");;
         *)
