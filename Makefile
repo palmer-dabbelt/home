@@ -12,7 +12,8 @@ all: \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
 	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
-	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash))
+	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
+	$(patsubst .local/src/%.c,.local/bin/%,$(wildcard .local/src/*.c))
 
 clean::
 	rm -rf .local/bin .local/lib .local/stamp
@@ -23,6 +24,9 @@ clean::
 	mkdir -p $(dir $@)
 	cp $< $@
 	chmod +x $@
+
+.local/bin/%: .local/src/%.c
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
 
 # pconfigure
 .local/src/pconfigure/Configfile.local:
