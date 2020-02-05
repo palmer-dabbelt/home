@@ -1,5 +1,6 @@
 SHELL=/bin/bash
 ENV=PATH="$(abspath .local/bin:$(PATH))" PKG_CONFIG_PATH="$(abspath .local/lib/pkgconfig)"
+CFLAGS += -O3 -Wall -Werror
 
 gitfiles = $(addprefix $(1),$(shell git -C $(1) ls-files))
 
