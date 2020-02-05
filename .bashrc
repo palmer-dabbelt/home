@@ -27,6 +27,8 @@ alias no=ls
 alias ix="curl -F 'f:1=<-' ix.io"
 alias su="sudo --login"
 alias enter="source enter.bash"
+alias gerp=grep
+alias make="nice -n10 ionice -c3 make"
 
 # MH aliases
 alias hscan="mhng-scan | head -50"
