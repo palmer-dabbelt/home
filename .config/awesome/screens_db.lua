@@ -72,8 +72,7 @@ screens = {
 --
 --
 --
-
---    ['000000'] = { -- HDMI-A-1
+--    ['136013613613628'] = { -- HDMI-A-1
 --        ['connected'] = function (xrandrOutput)
 --            if xrandrOutput ~= defaultOutput then
 --                return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
