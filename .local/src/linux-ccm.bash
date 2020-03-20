@@ -4,11 +4,14 @@ to=()
 version=()
 extra_cc=()
 always_cc=(kernel-team@android.com)
+from="palmer@dabbelt.com"
 while [[ "$1" != "" ]]
 do
     case "$1" in
     --to)         to+=("$2");                     shift 2;;
     --no-compose) compose=();                     shift 1;;
+    --edit)       compose=("--annotate");         shift 1;;
+    --annotate)   compose=("--annotate");         shift 1;;
     --version)    version=("-v$2");               shift 2;;
     --cc)         extra_cc=("$2");                shift 2;;
     --parent)     branch="$2";                    shift 2;;
@@ -40,4 +43,4 @@ do
 done
 
 set -x
-git send-email --to "$(join_by , "${to[@]}")" --cc "$(join_by , "${cc[@]}")" "${compose[@]}" "${version[@]}" "$branch"
+git send-email --from "$from" --to "$(join_by , "${to[@]}")" --cc "$(join_by , "${cc[@]}")" "${compose[@]}" "${version[@]}" "$branch"

@@ -48,7 +48,7 @@ in
     # Home desk, which is also 4K but physically smaller and therefor gets a
     # zoom applied to it because DPI-based font scaling doesn't appear to work
     # at all.  This also applies to the smaller Google desk monitors.
-    "226000024")
+    "226000024"|"40171551020")
         case "$style"
         in
             "code")

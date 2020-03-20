@@ -22,7 +22,7 @@ fi
 
 vim +"normal G o" "$file"
 
-while [[ "$(tail -1 "$file")" == "* " ]]
+while [[ "$(tail -1 "$file")" == "* " || "$(tail -1 "$file")" == "" ]]
 do
     sed '$ d' -i "$file"
 done

@@ -29,9 +29,9 @@ alias su="sudo --login"
 alias enter="source enter.bash"
 alias gerp=grep
 alias make="nice -n10 ionice -c3 make"
+alias watch='watch --color'
 
 # MH aliases
-alias hscan="mhng-scan | head -50"
 alias scan="mhng-scan"
 alias scanl="mhng-scan | less -R"
 alias inbox="mhng-scan inbox"
@@ -49,6 +49,7 @@ alias post="mhng-post"
 alias rmm="mhng-rmm"
 alias mime="mhng-mime"
 alias show="mhng-show"
+alias showk="k mhng-show"
 alias next="mhng-next"
 alias prev="mhng-prev"
 alias mtn="mhng-mtn"

@@ -3,19 +3,15 @@
 (
     while true
     do
-        hexchat
+        nheko
         sleep 10s
     done
 ) &
 
 (
-    while true
-    do
-        telegram-desktop
-        sleep 10s
-    done
+    google-chrome --profile-directory="Default" &
+    sleep 10s
+    google-chat
 ) &
-
-( google-chrome --profile-directory="Default" --app=http://chat.google.com ) &
 
 wait
