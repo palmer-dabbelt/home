@@ -32,7 +32,7 @@ alias mjc       Michael Clark <michaeljclark@mac.com>
 alias paul      Paul Walmsley <paul.walmsley@sifive.com>
 address         Paul Walmsley <paul@pwsan.com>
 alias jimw      Jim Wilson <jimw@sifive.com>
-alias maz       Mark Zyngier <maz@kernel.org>
+alias maz       Marc Zyngier <maz@kernel.org>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
