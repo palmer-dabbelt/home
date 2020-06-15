@@ -14,6 +14,7 @@ all: \
 	.local/bin/msmtp \
 	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
+	$(patsubst .local/src/%.pl,.local/bin/%,$(wildcard .local/src/*.pl)) \
 	$(patsubst .local/src/%.c,.local/bin/%,$(wildcard .local/src/*.c))
 
 clean::
@@ -22,6 +23,11 @@ clean::
 
 # I've got a bunch of scripts, this builds them automatically
 .local/bin/%: .local/src/%.bash
+	mkdir -p $(dir $@)
+	cp $< $@
+	chmod +x $@
+
+.local/bin/%: .local/src/%.pl
 	mkdir -p $(dir $@)
 	cp $< $@
 	chmod +x $@
@@ -157,3 +163,18 @@ $(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 
 	mkdir -p $(dir $@)
 	cat $^ | sed 's@__TOOL__@$(abspath $(dir $<))/depot_tools/$(notdir $@)@g' > $@
 	chmod +x $@
+
+## My patchwork client
+#.local/src/git-pw/Makeflie: \
+#		$(call gitfiles,.local/src/git-pw/)
+#	env -C $(dir $@) - $(ENV) $(abspath $(dir $@))/configure --prefix=$(abspath .local)
+#
+#.local/stamp/git-pw: \
+#		.local/src/git-pw/Makefile \
+#		$(call gitfiles,.local/src/git-pw)
+#	mkdir -p $(dir $@)
+#	$(MAKE) -C $(dir $<) install
+#	date > $@
+#
+#.local/bin/git-pw: .local/stamp/git-pw
+#	touch -c $@

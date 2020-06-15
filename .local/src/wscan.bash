@@ -1,8 +1,15 @@
 #!/bin/bash
 
-if [[ "$1" == "" ]]
+unset N
+if [[ "$1" == "-N" ]]
 then
-    exec "$0" inbox
+    N="-N $2"
+    shift 2
 fi
 
-exec watch --no-title --color hscan "${@}"
+if [[ "$1" == "" ]]
+then
+    exec "$0" $N inbox
+fi
+
+exec watch --no-title --color hscan $N "${@}"
