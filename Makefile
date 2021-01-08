@@ -1,8 +1,11 @@
 SHELL=/bin/bash
 ENV=PATH="$(abspath .local/bin:$(PATH))" PKG_CONFIG_PATH="$(abspath .local/lib/pkgconfig)"
 CFLAGS += -O3 -Wall -Werror
+SYSTEM_LIBDIR = /usr/lib/x86_64-linux-gnu
 
+# Some helper functions
 gitfiles = $(addprefix $(1),$(shell git -C $(1) ls-files))
+ppkg-config-deps = $(addprefix .local/lib/pkgconfig/,$(addsuffix .pc,$(shell cat .local/src/$(1)/Configfile |  grep ppkg-config | sed 's/^.*ppkg-config \([A-Za-z0-9-]*\) .*$$/\1/')))
 
 all: \
 	.local/bin/pconfigure \
@@ -35,6 +38,16 @@ clean::
 .local/bin/%: .local/src/%.c
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
 
+# Allow some system
+.local/stamp/apt:
+	@mkdir -p $(dir $@)
+	sudo apt-get install -y build-essential tmux autoconf texinfo pkg-config libtool libtclap-dev libgnutls28-dev libcurl4-gnutls-dev libnotify-dev libncurses-dev libuv1-dev libglib2.0-dev gettext sqlite3
+	touch -c $@
+
+.local/lib/pkgconfig/%.pc: $(SYSTEM_LIBDIR)/pkgconfig/%.pc
+	@mkdir -p $(dir $@)
+	cp $< $@
+
 # pconfigure
 .local/src/pconfigure/Configfile.local:
 	echo "PREFIX = $$HOME/.local" > $@
@@ -49,7 +62,8 @@ clean::
 
 .local/bin/pconfigure \
 .local/bin/pbashc \
-		:.local/stamp/pconfigure
+		: .local/stamp/pconfigure \
+		  /usr/bin/pkg-config
 	touch -c $@
 
 # gitdate
@@ -80,14 +94,17 @@ clean::
 	$(MAKE) -C $(dir $<) install
 	date > $@
 
-.local/lib/libputil-chrono.so: .local/stamp/putil
+.local/lib/libputil-chrono.so \
+.local/lib/pkg-config/libputil-chrono.pc \
+: .local/stamp/putil
 	touch -c $@
 
 # psqlite
 .local/src/psqlite/Makefile: \
 		.local/bin/pconfigure \
 		.local/lib/libgitdate++.so \
-		.local/src/psqlite/Configfile
+		.local/src/psqlite/Configfile \
+		$(call ppkg-config-deps,psqlite) 
 	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
 
 .local/stamp/psqlite: .local/src/psqlite/Makefile
@@ -102,7 +119,8 @@ clean::
 .local/src/pson/Makefile: \
 		.local/bin/pconfigure \
 		.local/lib/libgitdate++.so \
-		.local/src/pson/Configfile
+		.local/src/pson/Configfile \
+		$(call ppkg-config-deps,pson)
 	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
 
 .local/stamp/pson: .local/src/pson/Makefile
@@ -114,7 +132,11 @@ clean::
 	touch -c $@
 
 # libbase64
-.local/src/libbase64/Makefile: .local/src/libbase64/configure.ac
+.local/src/libbase64/Makefile: \
+		.local/src/libbase64/configure.ac \
+		/usr/bin/autoreconf \
+		/usr/bin/makeinfo \
+		/usr/bin/libtoolize
 	env -C $(dir $@) - $(ENV) autoreconf -i
 	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
 
@@ -123,11 +145,14 @@ clean::
 	$(MAKE) -C $(dir $<) install
 	date > $@
 
-.local/lib/libbase64.so: .local/stamp/libbase64
+.local/lib/libbase64.so \
+.local/lib/pkg-config/libbase64-1.pc \
+: .local/stamp/libbase64
 	touch -c $@
 
 # msmtp
-.local/src/msmtp/Makefile: .local/src/msmtp/configure.ac
+.local/src/msmtp/Makefile: \
+		.local/src/msmtp/configure.ac
 	env -C $(dir $@) - $(ENV) autoreconf -i
 	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
 
@@ -145,7 +170,8 @@ clean::
 		.local/bin/pbashc \
 		.local/lib/libputil-chrono.so \
 		.local/lib/libpsqlite.so \
-		$(call gitfiles,.local/src/mhng/)
+		$(call gitfiles,.local/src/mhng/) \
+		$(call ppkg-config-deps,mhng)
 	env -C $(dir $@) - $(ENV) $(abspath $<) "PREFIX = $(abspath .local)"
 
 .local/stamp/mhng: \
@@ -163,18 +189,3 @@ $(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 
 	mkdir -p $(dir $@)
 	cat $^ | sed 's@__TOOL__@$(abspath $(dir $<))/depot_tools/$(notdir $@)@g' > $@
 	chmod +x $@
-
-## My patchwork client
-#.local/src/git-pw/Makeflie: \
-#		$(call gitfiles,.local/src/git-pw/)
-#	env -C $(dir $@) - $(ENV) $(abspath $(dir $@))/configure --prefix=$(abspath .local)
-#
-#.local/stamp/git-pw: \
-#		.local/src/git-pw/Makefile \
-#		$(call gitfiles,.local/src/git-pw)
-#	mkdir -p $(dir $@)
-#	$(MAKE) -C $(dir $<) install
-#	date > $@
-#
-#.local/bin/git-pw: .local/stamp/git-pw
-#	touch -c $@
