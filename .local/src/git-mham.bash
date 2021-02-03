@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 three="3"
 tags=""
 if [[ "$1" == "--reviewed-by" ]]
@@ -22,12 +24,24 @@ mhng-pipe-scan "$@" | sort -k 4 | cut -d' ' -f1 | while read seqnum
 do
     if test -e ./scripts/checkpatch.pl
     then
-        mhng-pipe-show_stdout "$seqnum" | ./scripts/checkpatch.pl
+        mhng-pipe-show_stdout "$seqnum" | ./scripts/checkpatch.pl || true
     fi
 
     mhng-pipe-show_stdout "$seqnum" | grep -ve "^Cc" | git am -${three}S ${reject}
 
     mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Reviewed-by: " | while read tag
+    do
+        echo "Adding $tag"
+        git add-tag "$tag"
+    done
+
+    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Acked-by: " | while read tag
+    do
+        echo "Adding $tag"
+        git add-tag "$tag"
+    done
+
+    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Tested-by: " | while read tag
     do
         echo "Adding $tag"
         git add-tag "$tag"

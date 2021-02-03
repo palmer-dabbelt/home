@@ -52,4 +52,4 @@ cat >> "$tmp"/message <<EOF
 EOF
 
 cat "$tmp"/message | mhng-pipe-comp_stdin
-lp "$tmp"/notes.pdf
+#lp "$tmp"/notes.pdf

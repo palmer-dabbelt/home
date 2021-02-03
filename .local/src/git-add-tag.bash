@@ -5,7 +5,7 @@ unset edit_file
 while [[ "$1" != "" ]]
 do
     case "$1" in
-    "Reviewed-by: "*|"Signed-off-by: "*)
+    "Acked-by: "*|"Reviewed-by: "*|"Signed-off-by: "*|"Tested-by: "*)
         full="$1"
         shift 1
     ;;

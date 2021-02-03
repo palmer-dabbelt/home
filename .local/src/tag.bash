@@ -10,6 +10,8 @@ do
         r) echo "Reviewed-by: $whoami";;
         s) echo "Signed-off-by: $whoami";;
         t) echo "Tested-by: $whoami";;
+        S) echo "Cc: stable@vger.kernel.org";;
+	d) echo "Signed-off-by: Palmer Dabbelt <palmer@dabbelt.com>";;
         "");;
         " ");;
         *)

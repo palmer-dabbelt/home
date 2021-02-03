@@ -6,10 +6,10 @@ then
     style="$1"
 fi
 
-case "$(cat /sys/class/drm/card0-DP-1/edid | edid2id)"
+case "$(cat $(get-monitor-sys edid) | edid2id)"
 in
     # No monitor attached,
-    "")
+    ""|"600001")
         case "$style"
         in
             "code")
@@ -24,8 +24,9 @@ in
         esac
     ;;
 
-    # Google desk monitor, which is 32" 4K
-    "227111110")
+    # Google desk monitor, which is 32" 4K.  My home desk monitor, a slightly
+    # smaller 28" 4K screen is also listed here.
+    "227111110"|"40171551020")
         case "$style"
         in
             "code")
@@ -45,10 +46,8 @@ in
         esac
     ;;
 
-    # Home desk, which is also 4K but physically smaller and therefor gets a
-    # zoom applied to it because DPI-based font scaling doesn't appear to work
-    # at all.  This also applies to the smaller Google desk monitors.
-    "226000024"|"40171551020")
+    # Smaller Google desk monitors.
+    "226000024")
         case "$style"
         in
             "code")
@@ -58,7 +57,7 @@ in
 
             b*)
                 awesome-client 'require("awful").tag.setnmaster(1)'
-                awesome-client 'require("awful").tag.setncol(1)'
+                awesome-client 'require("awful").tag.setncol(2)'
             ;;
 
             *)
@@ -70,7 +69,7 @@ in
 
 
     *)
-        echo "Unknown monitor: $(cat /sys/class/drm/card0-DP-1/edid | edid2id)"
+        echo "Unknown monitor: $(cat $(get-monitor-sys edid) | edid2id)"
         exit 1
     ;;
 esac
