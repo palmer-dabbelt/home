@@ -25,3 +25,6 @@
 [submodule ".local/src/depot_tools"]
 	path = .local/src/depot_tools
 	url = https://chromium.googlesource.com/chromium/tools/depot_tools.git
+[submodule ".local/src/pshs"]
+	path = .local/src/pshs
+	url = git://github.com/mgorny/pshs.git
