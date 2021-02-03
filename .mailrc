@@ -33,6 +33,7 @@ alias paul      Paul Walmsley <paul.walmsley@sifive.com>
 address         Paul Walmsley <paul@pwsan.com>
 alias jimw      Jim Wilson <jimw@sifive.com>
 alias maz       Marc Zyngier <maz@kernel.org>
+alias marc      Marc Zyngier <maz@kernel.org>
 
 # RISC-V
 alias arun      Arun Thomas <arun.thomas@gmail.com>
@@ -81,3 +82,5 @@ alias qperet    Quentin Perret <qperret@google.com>
 alias qperret   Quentin Perret <qperret@google.com>
 alias lime      Lulu Li <lululime@google.com>
 alias nick      Nick Desaulniers <ndesaulniers@google.com>
+alias david     David Anderson <dvander@google.com>
+alias akilesh   Akilesh Kailash <akailash@google.com>
