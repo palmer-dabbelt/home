@@ -41,7 +41,7 @@ clean::
 # Allow some system
 .local/stamp/apt:
 	@mkdir -p $(dir $@)
-	sudo apt-get install -y build-essential tmux autoconf texinfo pkg-config libtool libtclap-dev libgnutls28-dev libcurl4-gnutls-dev libnotify-dev libncurses-dev libuv1-dev libglib2.0-dev gettext sqlite3
+	sudo apt-get install -y build-essential tmux autoconf texinfo pkg-config libtool libtclap-dev libgnutls28-dev libcurl4-gnutls-dev libnotify-dev libncurses-dev libuv1-dev libglib2.0-dev gettext sqlite3 libsqlite3-dev
 	touch -c $@
 
 .local/lib/pkgconfig/%.pc: $(SYSTEM_LIBDIR)/pkgconfig/%.pc
