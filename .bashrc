@@ -4,10 +4,6 @@ if [ -f $HOME/.bashrc_local ]; then
     . $HOME/.bashrc_local
 fi
 
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-
 # Attempts to start keychain
 alias kc='eval `keychain --eval --agents ssh,gpg --inherit any id_rsa`'
 
