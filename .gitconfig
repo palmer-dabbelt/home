@@ -18,6 +18,7 @@
 	fap = fetch --all --prune --verbose
 	oneline = log --oneline --no-show-signature
 	fixes = log --pretty=fixes --no-show-signature
+	ff = merge --ff-only
 
 [core]
 	abbrev = auto
