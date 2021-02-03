@@ -143,6 +143,7 @@ local function appendConfiguration(screenId, xrandrOut)
 end
 
 local function setupScreen(xrandrParams)
+        -- log("xrandr " .. xrandrParams)
 	os.execute('xrandr ' .. xrandrParams)
 end
 

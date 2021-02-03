@@ -38,7 +38,7 @@ screens = {
     ['40171551020'] = { -- Home desk monitor
         ['connected'] = function (xrandrOutput)
             if xrandrOutput ~= defaultOutput then
-                return '--output ' .. xrandrOutput .. ' --primary --auto --scale 0.75x0.75 --same-as ' .. defaultOutput
+                return '--output ' .. xrandrOutput .. ' --primary --auto --above ' .. defaultOutput .. ' --output ' .. defaultOutput .. ' --pos 960x2160'
             end
             return nil
         end,
@@ -72,7 +72,7 @@ screens = {
 --
 --
 --
---    ['136013613613628'] = { -- HDMI-A-1
+--    ['600001'] = { -- /sys/class/drm/card0/card0-eDP-1
 --        ['connected'] = function (xrandrOutput)
 --            if xrandrOutput ~= defaultOutput then
 --                return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
