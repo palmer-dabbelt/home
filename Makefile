@@ -38,6 +38,9 @@ clean::
 .local/bin/%: .local/src/%.c
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
 
+.local/bin/poly: .local/src/poly.c
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -lhidapi-hidraw -o $@
+
 # Allow some system
 .local/stamp/apt:
 	@mkdir -p $(dir $@)

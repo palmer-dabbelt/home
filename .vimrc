@@ -11,4 +11,8 @@ set ai
 au FileType gitcommit setlocal tw=72
 au FileType gitcommit setlocal cc=+1
 
-" Selects between C and C++ by file extension
+" Edit email in a way that's compatible with format=flowed
+au FileType mail setlocal comments=n:>
+au FileType mail setlocal formatoptions+=w
+au FileType mail setlocal textwidth=72
+au BufRead,BufNewFile *.msg set filetype=mail

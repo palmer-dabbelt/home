@@ -28,3 +28,9 @@
 [submodule ".local/src/pshs"]
 	path = .local/src/pshs
 	url = git://github.com/mgorny/pshs.git
+[submodule ".local/src/pipewire"]
+	path = .local/src/pipewire
+	url = https://gitlab.freedesktop.org/pipewire/pipewire.git
+[submodule ".local/src/wireplumber"]
+	path = .local/src/wireplumber
+	url = https://gitlab.freedesktop.org/pipewire/wireplumber.git

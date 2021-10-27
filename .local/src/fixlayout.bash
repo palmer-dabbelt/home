@@ -6,15 +6,22 @@ then
     style="$1"
 fi
 
-case "$(cat $(get-monitor-sys edid) | edid2id)"
+monitor="$(get-monitor-sys edid | while read f; do cat $f | edid2id ; done | sort -h | sed 's/$/;/g' | xargs echo | sed 's/; /;/g' | sed 's/;$//')"
+
+case "$monitor"
 in
-    # No monitor attached,
-    ""|"600001")
+    # Just my laptop monitor, in case I'm on the couch
+    "700001")
         case "$style"
         in
             "code")
                 awesome-client 'require("awful").tag.setnmaster(0)'
                 awesome-client 'require("awful").tag.setncol(2)'
+            ;;
+
+            b*)
+                awesome-client 'require("awful").tag.setnmaster(1)'
+                awesome-client 'require("awful").tag.setncol(1)'
             ;;
 
             *)
@@ -24,9 +31,10 @@ in
         esac
     ;;
 
+
     # Google desk monitor, which is 32" 4K.  My home desk monitor, a slightly
     # smaller 28" 4K screen is also listed here.
-    "227111110"|"40171551020")
+    "700001;1000049;40171551020"|"700001;40171551020"|"700001;227111110")
         case "$style"
         in
             "code")
@@ -46,30 +54,8 @@ in
         esac
     ;;
 
-    # Smaller Google desk monitors.
-    "226000024")
-        case "$style"
-        in
-            "code")
-                awesome-client 'require("awful").tag.setnmaster(0)'
-                awesome-client 'require("awful").tag.setncol(3)'
-            ;;
-
-            b*)
-                awesome-client 'require("awful").tag.setnmaster(1)'
-                awesome-client 'require("awful").tag.setncol(2)'
-            ;;
-
-            *)
-                echo "Unknown style: $style"
-                exit 1
-            ;;
-        esac
-    ;;
-
-
     *)
-        echo "Unknown monitor: $(cat $(get-monitor-sys edid) | edid2id)"
+        echo "Unknown monitor configuration: $monitor"
         exit 1
     ;;
 esac

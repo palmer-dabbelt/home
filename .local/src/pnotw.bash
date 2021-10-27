@@ -3,8 +3,17 @@
 repo="$HOME/work/notes/"
 
 project=boss
+datestr="now"
+if [[ "$1" != "" ]]
+then
+    project="$1"
+fi
+if [[ "$2" != "" ]]
+then
+    datestr="$2"
+fi
 
-file="$repo"/"$project"-"$(date +%Y-%m-%d)".md
+file="$repo"/"$project"-"$(date +%Y-%m-%d -d"$datestr")".md
 headers="$repo"/"$project".headers
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]

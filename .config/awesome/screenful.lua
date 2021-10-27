@@ -93,6 +93,8 @@ end
 local function getXrandrOutput(outputPath, outCard)
 	local regex = dev .. outCard .. '/' .. outCard .. '[-]'
 	local drmName = string.gsub(outputPath, regex, '')
+	info("outputPath: " .. outputPath)
+	info("drmName:    " .. drmName)
 
 	if outputMapping[drmName] then
 		return outputMapping[drmName]
@@ -143,7 +145,7 @@ local function appendConfiguration(screenId, xrandrOut)
 end
 
 local function setupScreen(xrandrParams)
-        -- log("xrandr " .. xrandrParams)
+        log("xrandr " .. xrandrParams)
 	os.execute('xrandr ' .. xrandrParams)
 end
 

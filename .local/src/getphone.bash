@@ -1,4 +1,4 @@
 #!/bin/bash
 
 bluetoothctl power on
-bluetoothctl connect 3C:28:6D:FA:B2:62
+bluetoothctl connect 08:9E:08:35:CF:BF

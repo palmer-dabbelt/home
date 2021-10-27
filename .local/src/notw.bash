@@ -3,7 +3,12 @@
 repo="$HOME/work/notes/"
 
 project=boss
+if [[ "$1" != "" ]]
+then
+    project="$1"
+fi
 
+date="$(date +%s)"
 file="$repo"/"$project"-"$(date +%Y-%m-%d)".md
 
 if test ! -f "$repo"/"$project".keywords
@@ -13,6 +18,13 @@ fi
 keywords=()
 readarray -t keywords < "$repo"/"$project".keywords
 
+if test ! -f "$repo"/"$project".parents
+then
+    echo "Unknown project parents: $repo/$project.parents"
+fi
+parents=()
+readarray -t parents < "$repo"/"$project".parents
+
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then
     git -C "$repo" pull --rebase
@@ -21,7 +33,7 @@ fi
 if ! test -f "$file"
 then
     cat >"$file" <<EOF
-# Weekly Notes for $(date "+%B %e, %Y")
+# $(cat "$repo"/"$project".title) for $(date "+%B %e, %Y")
 
 EOF
 fi
@@ -30,22 +42,30 @@ fi
     (
         for keyword in "${keywords[@]}"
         do
-            for delta in $(seq -w 0 22)
+            for delta in $(seq -w 0 500)
             do
                 day="$(date -d "$delta days ago" +%Y-%m-%d)"
+		for parent in "${parents[@]}"
+		do
+                    find "$repo" -name "${parent}"-"${day}".md | xargs grep -l "$keyword"
+		done
+
+		if test "$delta" -eq "0"
+		then
+		    continue
+		fi
+
                 if test -f "$repo"/"$project"-"$day".md
                 then
-                    continue
+                    break
                 fi
-        
-                find "$repo" -name "*-$day.md" | xargs grep -l "$keyword"
             done
         done
     ) | sort | while read note
     do
-        kitty less "$note"
+        cat "$note" >> "$file"
     done
-) &
+)
 
 vim +"normal o" "$file"
 
