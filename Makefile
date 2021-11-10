@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 ENV=PATH="$(abspath .local/bin:$(PATH))" PKG_CONFIG_PATH="$(abspath .local/lib/pkgconfig)"
 CFLAGS += -O3 -Wall -Werror
-SYSTEM_LIBDIR = /usr/lib/x86_64-linux-gnu
+SYSTEM_LIBDIR = /usr/lib64
 
 # Some helper functions
 gitfiles = $(addprefix $(1),$(shell git -C $(1) ls-files))
@@ -131,7 +131,7 @@ clean::
 	$(MAKE) -C $(dir $<) install
 	date > $@
 
-.local/lib/libpson.so: .local/stamp/pson
+.local/lib/libpson.so .local/lib/pkgconfig/pson.pc: .local/stamp/pson
 	touch -c $@
 
 # libbase64
