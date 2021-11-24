@@ -40,3 +40,6 @@
 [submodule ".local/src/curl"]
 	path = .local/src/curl
 	url = https://github.com/curl/curl.git
+[submodule ".local/src/dt-schema"]
+	path = .local/src/dt-schema
+	url = https://github.com/devicetree-org/dt-schema.git

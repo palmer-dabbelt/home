@@ -16,6 +16,7 @@ all: \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
 	.local/bin/openssl \
+	.local/bin/dt-doc-validate \
 	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
 	$(patsubst .local/src/%.pl,.local/bin/%,$(wildcard .local/src/*.pl)) \
@@ -222,3 +223,14 @@ $(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 
 
 .local/bin/curl: .local/stamp/curl
 	touch -c $@
+
+# Device Tree tools
+.local/stamp/dt-schema: .local/src/dt-schema/setup.py
+	mkdir -p $(dir $@)
+	env -C $(dir $<) $(abspath $<) install --prefix=$(abspath .local/)
+	date > $@
+
+.local/bin/dt-schema: .local/stamp/dt-schema
+	touch -c $@
+
+
