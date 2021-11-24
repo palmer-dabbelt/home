@@ -34,3 +34,9 @@
 [submodule ".local/src/wireplumber"]
 	path = .local/src/wireplumber
 	url = https://gitlab.freedesktop.org/pipewire/wireplumber.git
+[submodule ".local/src/openssl"]
+	path = .local/src/openssl
+	url = git://git.openssl.org/openssl.git
+[submodule ".local/src/curl"]
+	path = .local/src/curl
+	url = https://github.com/curl/curl.git

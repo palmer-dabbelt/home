@@ -15,6 +15,7 @@ all: \
 	.local/lib/libpson.so \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
+	.local/bin/openssl \
 	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
 	$(patsubst .local/src/%.pl,.local/bin/%,$(wildcard .local/src/*.pl)) \
@@ -192,3 +193,32 @@ $(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 
 	mkdir -p $(dir $@)
 	cat $^ | sed 's@__TOOL__@$(abspath $(dir $<))/depot_tools/$(notdir $@)@g' > $@
 	chmod +x $@
+
+# openssl
+.local/src/openssl/Makefile: \
+		.local/src/openssl/Configure
+	env -C $(dir $@) - $(ENV) ./config --prefix=$(abspath .local) --openssldir=$(abspath .local)  -Wl,-rpath=$(abspath .local)/lib -Wl,--enable-new-dtags
+
+.local/stamp/openssl: .local/src/openssl/Makefile
+	mkdir -p $(dir $@)
+	$(MAKE) -C $(dir $<)
+	$(MAKE) -C $(dir $<) install
+	date > $@
+
+.local/bin/openssl: .local/stamp/openssl
+	touch -c $@
+
+# curl
+.local/src/curl/Makefile: \
+		$(call gitfiles,.local/src/curl/)
+	env -C $(dir $@) - $(ENV) autoreconf -i
+	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local/) --with-openssl
+
+.local/stamp/curl: .local/src/curl/Makefile
+	mkdir -p $(dir $@)
+	$(MAKE) -C $(dir $<)
+	$(MAKE) -C $(dir $<) install
+	date > $@
+
+.local/bin/curl: .local/stamp/curl
+	touch -c $@
