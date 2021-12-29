@@ -1,11 +1,11 @@
 [user]
 	name = Palmer Dabbelt
-	email = palmerdabbelt@google.com
+	email = palmer@rivosinc.com
 	signingkey = palmer@dabbelt.com
 
 [sendemail]
 	smtpencryption = tls
-	smtpserver = /home/palmerdabbelt/.local/bin/mhng-pipe-comp_stdin
+	smtpserver = /home/palmer/.local/bin/mhng-pipe-comp_stdin
 
 [push]
 	default = simple
@@ -48,5 +48,8 @@
 	insteadOf = git://github.com
 	insteadOf = https://github.com
 	insteadOf = http://github.com
+
 [color]
 	ui = auto
+[http]
+	cookiefile = /home/palmer/.gitcookies

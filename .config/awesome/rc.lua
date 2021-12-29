@@ -48,7 +48,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
 editor = "vim"
-browser = "google-chrome-stable"
+browser = "browser"
 editor_cmd = terminal .. " " .. editor
 
 -- Default modkey.
@@ -274,7 +274,9 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "c", function () awful.spawn(browser) end,
+    awful.key({ modkey,           }, "c", function () awful.spawn(browser .. " --user palmer@dabbelt.com") end,
+              {description = "open a browser", group = "launcher"}),
+    awful.key({ modkey,           }, "g", function () awful.spawn(browser .. " --user palmer@rivosinc.com") end,
               {description = "open a browser", group = "launcher"}),
     awful.key({ modkey, "Control" }, "p", awesome.restart,
               {description = "reload awesome", group = "awesome"}),

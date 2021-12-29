@@ -2,7 +2,7 @@
 
 repo="$HOME/work/notes/"
 
-ldap=palmerdabbelt
+ldap=palmer
 human="Palmer Dabbelt"
 
 file="$repo"/"$ldap"-"$(date +%Y-%m-%d)".md

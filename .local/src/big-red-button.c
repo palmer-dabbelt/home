@@ -59,7 +59,8 @@ int main(int argc, char **argv)
     if (res >= 0) {
       if (prior == LID_CLOSED && buf[0] == LID_OPEN) {
       } else if (prior != BUTTON_PRESSED && buf[0] == BUTTON_PRESSED) {
-	system("toggle-meet-mute");
+	if (system("toggle-meet-mute") != 0)
+	  fprintf(stderr, "toggle-meet-mute error\n");
       } else if (prior != LID_CLOSED && buf[0] == LID_CLOSED) {
       }
       prior = buf[0];

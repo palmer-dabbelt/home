@@ -4,19 +4,16 @@ monitor="$(get-monitor-sys edid | while read f; do cat $f | edid2id ; done | sor
 
 case "$monitor"
 in
-    "700001")
-    	xrandr --output DP-1 --off --output DP-2 --off --output DP-1-2 --off --output DP-2-2 --off
-	xrandr --output eDP-1 --auto --primary --scale 0.5x0.5
+    "2000000")
+       xrandr --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output eDP-1 --primary
     ;;
 
-    "700001;227111110")
-    	xrandr --output DP-1 --auto --primary --left-of eDP-1
+    "2000000;40171551020;40173541020")
+        xrandr --output DP-4 --auto --right-of eDP-1 --primary --output DP-3 --auto --right-of DP-4
     ;;
 
-    "700001;1000049;40171551020")
-        xrandr --output eDP-1 --scale 0.5x0.5 --pos 3840x0 --output DP-1-2 --auto --pos 0x540 --scale 1x1 --primary --output DP-2 --auto --pos 3840x1620 --scale 0.5x0.5
-        xrandr --output eDP-1 --scale 0.5x0.5 --pos 3840x0 --output DP-2-2 --auto --pos 0x540 --scale 1x1 --primary --output DP-1 --auto --pos 3840x1620 --scale 0.5x0.5
-	xautolock -disable
+    "2000000;168555574824;168555574831")
+    	xrandr --output DP-4 --auto --right-of eDP-1 --primary --output DP-3 --auto --right-of DP-4
     ;;
 
     *)

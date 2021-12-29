@@ -11,7 +11,7 @@ monitor="$(get-monitor-sys edid | while read f; do cat $f | edid2id ; done | sor
 case "$monitor"
 in
     # Just my laptop monitor, in case I'm on the couch
-    "700001")
+    "2000000")
         case "$style"
         in
             "code")
@@ -31,10 +31,9 @@ in
         esac
     ;;
 
-
-    # Google desk monitor, which is 32" 4K.  My home desk monitor, a slightly
-    # smaller 28" 4K screen is also listed here.
-    "700001;1000049;40171551020"|"700001;40171551020"|"700001;227111110")
+    # My laptop when plugged into my desk at home or work -- they're exactly
+    # the same size/resolution, so they should just match.
+    "2000000;40171551020;40173541020"|"2000000;168555574824;168555574831")
         case "$style"
         in
             "code")

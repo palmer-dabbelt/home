@@ -3,8 +3,8 @@ compose=("--compose")
 to=()
 version=()
 extra_cc=()
-always_cc=(kernel-team@android.com)
-from="palmer@dabbelt.com"
+always_cc=()
+from="palmer@rivosinc.com"
 while [[ "$1" != "" ]]
 do
     case "$1" in

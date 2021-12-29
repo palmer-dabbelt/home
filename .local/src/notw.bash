@@ -11,9 +11,16 @@ fi
 date="$(date +%s)"
 file="$repo"/"$project"-"$(date +%Y-%m-%d)".md
 
+if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
+then
+    git -C "$repo" pull --rebase
+fi
+
+# Check for all the necessary files
 if test ! -f "$repo"/"$project".keywords
 then
     echo "Unknown project keywords: $repo/$project.keywords"
+    exit 1
 fi
 keywords=()
 readarray -t keywords < "$repo"/"$project".keywords
@@ -21,19 +28,22 @@ readarray -t keywords < "$repo"/"$project".keywords
 if test ! -f "$repo"/"$project".parents
 then
     echo "Unknown project parents: $repo/$project.parents"
+    exit 1
 fi
 parents=()
 readarray -t parents < "$repo"/"$project".parents
 
-if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
+if test ! -f "$repo"/"$project".title
 then
-    git -C "$repo" pull --rebase
+    echo "Unknown project title: $repo/$project.title"
+    exit 1
 fi
+title="$(cat "$repo"/"$project".title)"
 
 if ! test -f "$file"
 then
     cat >"$file" <<EOF
-# $(cat "$repo"/"$project".title) for $(date "+%B %e, %Y")
+# ${title} for $(date "+%B %e, %Y")
 
 EOF
 fi
@@ -63,7 +73,7 @@ fi
         done
     ) | sort | while read note
     do
-        cat "$note" >> "$file"
+        cat "$note" | sed 's/^#/##/' >> "$file"
     done
 )
 
