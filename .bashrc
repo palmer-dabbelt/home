@@ -15,7 +15,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Setup my personal shell variables that are the same everywhere
 export EDITOR="e"
-export BROWSER="google-chrome-stable"
+export BROWSER="browser"
 export GIT_EDITOR="vim"
 export MHNG_EDITOR="vim"
 export TERMINAL="kitty"
@@ -56,7 +56,7 @@ alias comp="mhng-comp"
 alias forw="mhng-forw"
 alias repl="mhng-repl"
 alias detach="mhng-detach"
-alias gmail="$BROWSER \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
+alias gmail="$BROWSER --user \$(mhng-pipe-imap_account_name) -- \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
 alias lkml="$BROWSER \"https://lore.kernel.org/linux-kernel/\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
 
 # Aliases to "cd ../../.. ..."

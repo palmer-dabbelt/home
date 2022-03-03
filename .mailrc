@@ -4,13 +4,24 @@ local    Palmer Dabbelt <palmer@gnu.org>
 local    Palmer Dabbelt <palmer@kernel.org>
 local    Palmer Dabbelt <palmer@gnupg.net>
 local    Palmer Dabbelt <palmerandlulu@dabbelt.com>
-account  Palmer Dabbelt <palmerdabbelt@google.com>
+account  Palmer Dabbelt <palmer@rivosinc.com>
+
+# Defunct addresses
+old     jim.wilson.gcc@gmail.com      jimw@sifive.com
+old     atishp@rivosinc.com           atish.patra@wdc.com
+old     palmer@rivosinc.com           palmer@sifive.com
+old     palmer@rivosinc.com           palmer.dabbelt@google.com
+old     anup@brainfault.org           anup.patel@wdc.com
 
 # Personal
 alias palmer    Palmer Dabbelt <palmer@dabbelt.com>
 alias lulu      Lulu Li <lilulu6@gmail.com>
 alias cma       Charlie Ma <cma1681@gmail.com>
 alias eric      Eric Love <ericlove@gmail.com>
+alias lime      Lulu Li <lululime@google.com>
+alias dom       Dominic Rizzo <domrizzo@google.com>
+alias keith     Keith Witek <keithwitek@google.com>
+alias andrew    Andrew Waterman <andrew@sifive.com>
 
 # Family
 alias dad       Dan Dabbelt <dan@dabbelt.com>
@@ -31,49 +42,40 @@ alias pmm       Peter Maydell <peter.maydell@linaro.org>
 alias mjc       Michael Clark <michaeljclark@mac.com>
 alias paul      Paul Walmsley <paul.walmsley@sifive.com>
 address         Paul Walmsley <paul@pwsan.com>
-alias jimw      Jim Wilson <jimw@sifive.com>
 alias maz       Marc Zyngier <maz@kernel.org>
 alias marc      Marc Zyngier <maz@kernel.org>
-
-# RISC-V
-alias arun      Arun Thomas <arun.thomas@gmail.com>
+alias jim       Jim Wilson <jim.wilson.gcc@gmail.com>
+alias jimw      Jim Wilson <jim.wilson.gcc@gmail.com>
 alias asb       Alex Bradbury <asb@asbradbury.org>
 alias darius    Darius Rad <darius@bluespec.com>
 alias khem      Khem Raj <raj.khem@gmail.com>
-alias hisen     Hisen Woo <hcwoo@me.com>
 alias kito      Kito Cheng <kito.cheng@gmail.com>
 alias lustig    Daniel Lustig <dlustig@nvidia.com>
-alias eager     Michael Eager <eager@eagercon.com>
-address         Rick O'Connor <rickoco@riscv.org>
-alias atish     Atish Patra <Atish.Patra@wdc.com>
 alias alistair  Alistair Francis <Alistair.Francis@wdc.com>
-alias bastian   Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-alias dave      David Patterson <pattrsn@berkeley.edu>
-alias anup      Anup Patel <Anup.Patel@wdc.com>
-alias damien    Damien Le Moal <Damien.LeMoal@wdc.com>
-alias jefro     Jeffrey Osier-Mixon <jefro@linuxfoundation.org>
-# FIXME: MHng isn't converting these to UTF-8
-# alias bjorn     Björn Töpel <bjorn.topel@gmail.com>
 alias bjorn     Bjorn Topel <bjorn.topel@gmail.com>
-alias andrew    Andrew Waterman <andrew@sifive.com>
+alias nelson    Nelson Chu <nelson.chu@sifive.com>
+alias will      Will Deacon <will@kernel.org>
+alias bin       Bin Meng <bmeng.cn@gmail.com>
+
+# Rivos
+alias ri        Palmer Dabbelt <palmer@rivosinc.com>
+alias adlr      Andrew de los Reyes <adlr@rivosinc.com>
+alias ved       Vedvyas Shanbhogue <ved@rivosinc.com>
+alias ken       Ken Dockser <kad@rivosinc.com>
+alias dylan     Dylan Reid <dylan@rivosinc.com>
+alias aaron     Aaron Durbin <adurbin@rivosinc.com>
+alias vineet    Vineet Gupta <vineetg@rivosinc.com>
+alias atish     Atish Patra <atishp@rivosinc.com>
+alias puneet    Puneet Kumar <puneet@rivosinc.com>
+alias patrick   Patrick O'Neill <patrick@rivosinc.com>
 
 # Mailing Lists
 alias libc-alpha          libc-alpha@sourceware.org
+alias glibc-patches       libc-alpha@sourceware.org
 alias gcc-patches         gcc-patches@gcc.gnu.org
 alias binutils-patches    binutils@sourceware.org
-alias riscv-patches       patches@groups.riscv.org
-alias riscv-sw            sw-dev@groups.riscv.org
 alias linux-kernel        linux-kernel@vger.kernel.org
 alias linux-riscv         linux-riscv@lists.infradead.org
-alias qemu-devel          qemu-devel@nongnu.org
+alias linux-patches       linux-riscv@lists.infradead.org
 alias qemu-riscv          qemu-riscv@nongnu.org
-alias zephyr-silver       silver-members@lists.zephyrproject.org
-alias riscv-platform      tech-unixplatformspec@lists.riscv.org
-alias android-kernel-team kernel-team@android.com
-
-# Google
-alias go        Palmer Dabbelt <palmerdabbelt@google.com>
-alias lime      Lulu Li <lululime@google.com>
-alias george    George Hines <ghines@google.com>
-alias dom       Dominic Rizzo <domrizzo@google.com>
-alias keith     Keith Witek <keithwitek@google.com>
+alias qemu-devel          qemu-devel@nongnu.org
