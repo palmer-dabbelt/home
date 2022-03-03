@@ -1,3 +1,3 @@
 #!/bin/bash
 
-google-chrome --profile-directory="Profile 2" --app=http://music.youtube.com
+browser --user palmer@dabbelt.com -- --app=http://music.youtube.com
