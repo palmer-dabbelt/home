@@ -1,3 +1,3 @@
 #!/bin/bash
 
-google-chrome --profile-directory="Profile 2" --app=http://podcasts.google.com
+browser --user palmer@dabbelt.com -- --app=http://podcasts.google.com

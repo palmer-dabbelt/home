@@ -3,8 +3,9 @@ compose=("--compose")
 to=()
 version=()
 extra_cc=()
-always_cc=()
+always_cc=("linux@rivosinc.com")
 from="palmer@rivosinc.com"
+thread=()
 while [[ "$1" != "" ]]
 do
     case "$1" in
@@ -15,6 +16,7 @@ do
     --version)    version=("-v$2");               shift 2;;
     --cc)         extra_cc=("$2");                shift 2;;
     --parent)     branch="$2";                    shift 2;;
+    --no-thread)  thread=("--no-thread");         shift 1;;
     *)         echo "$0: unknown argument $1";    exit 1;;
     esac
 done
@@ -43,4 +45,4 @@ do
 done
 
 set -x
-git send-email --from "$from" --to "$(join_by , "${to[@]}")" --cc "$(join_by , "${cc[@]}")" "${compose[@]}" "${version[@]}" "$branch"
+git send-email --from "$from" --to "$(join_by , "${to[@]}")" --cc "$(join_by , "${cc[@]}")" "${compose[@]}" "${version[@]}" "${thread[@]}" "$branch"

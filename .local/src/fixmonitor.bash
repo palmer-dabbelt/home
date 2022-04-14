@@ -15,7 +15,7 @@ in
 
     # Rivos Desk
     "2000000;168555574824;168555574831")
-    	xrandr --output DP-2 --auto --right-of eDP-1 --primary --output DP-1 --auto --right-of DP-2
+    	xrandr --output DP-4 --auto --right-of eDP-1 --primary --output DP-3 --auto --right-of DP-4
     ;;
 
     *)

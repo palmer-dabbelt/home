@@ -53,3 +53,7 @@
 	ui = auto
 [http]
 	cookiefile = /home/palmer/.gitcookies
+
+[merge]
+	log = true
+	verifySignatures = true
