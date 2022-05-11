@@ -57,7 +57,8 @@ alias forw="mhng-forw"
 alias repl="mhng-repl"
 alias detach="mhng-detach"
 alias gmail="$BROWSER --user \$(mhng-pipe-imap_account_name) -- \"https://mail.google.com/mail/u/0/#search/rfc822msgid=\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
-alias lkml="$BROWSER \"https://lore.kernel.org/linux-kernel/\$(mhng-pipe-header message-id | sed 's/<\(.*\)>/\1/' | sed 's/\+/%2B/g' | sed 's@/@%2F@g')\""
+alias lkml="$BROWSER \$(make-lore-link)"
+alias ctp='ssh palmer.ba.rivosinc.com "cat patch"'
 
 # Aliases to "cd ../../.. ..."
 alias ..="cd .."

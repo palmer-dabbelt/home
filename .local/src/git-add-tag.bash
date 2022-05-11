@@ -5,7 +5,7 @@ unset edit_file
 while [[ "$1" != "" ]]
 do
     case "$1" in
-    "Acked-by: "*|"Reviewed-by: "*|"Signed-off-by: "*|"Tested-by: "*)
+    "Acked-by: "*|"Reviewed-by: "*|"Signed-off-by: "*|"Tested-by: "*|"Link: "*)
         full="$1"
         shift 1
     ;;
@@ -13,6 +13,11 @@ do
     "--edit-file")
         edit_file="$2"
         shift 2
+    ;;
+
+    *)
+        echo "unknown argument $1" >&2
+	exit 1
     ;;
     esac
 done

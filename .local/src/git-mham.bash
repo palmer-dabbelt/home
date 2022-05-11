@@ -53,6 +53,8 @@ do
         git add-tag "$tag"
     done
 
+    git add-tag "Link: $(make-lore-link "$seqnum")"
+
     (
         export GIT_EDITOR=true
         git commit --amend -s --quiet
