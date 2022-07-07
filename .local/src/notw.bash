@@ -16,6 +16,18 @@ then
     git -C "$repo" pull --rebase
 fi
 
+if ! test -f "$repo"/"$project".children
+then
+    echo "Unknown project children: $repo/$project.children"
+    exit 1
+fi
+children="$repo"/"$project".children
+
+cat "$children" | while read c
+do
+    $TERMINAL $0 $c
+done
+
 # Check for all the necessary files
 if test ! -f "$repo"/"$project".keywords
 then

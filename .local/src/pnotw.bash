@@ -62,3 +62,15 @@ EOF
 
 cat "$tmp"/message | mhng-pipe-comp_stdin
 #lp "$tmp"/notes.pdf
+
+if ! test -f "$repo"/"$project".children
+then
+    echo "Unknown project children: $repo/$project.children"
+    exit 1
+fi
+children="$repo"/"$project".children
+
+cat "$children" | while read c
+do
+   $0 $c
+done

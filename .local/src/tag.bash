@@ -12,6 +12,7 @@ do
         t) echo "Tested-by: $whoami";;
         S) echo "Cc: stable@vger.kernel.org";;
 	d) echo "Signed-off-by: Palmer Dabbelt <palmer@dabbelt.com>";;
+	L) echo "Link: $(make-lore-link)";;
         "");;
         " ");;
         *)

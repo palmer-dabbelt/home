@@ -1,3 +1,3 @@
 #!/bin/bash
 
-browser --user palmer@rivosinc.com -- --app=http://chat.google.com
+browser --user palmer@dabbelt.com -- --app=http://chat.google.com
