@@ -29,25 +29,25 @@ do
 
     mhng-pipe-show_stdout "$seqnum" | grep -ve "^Cc" | git am -${three}S ${reject}
 
-    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Reviewed-by: " | while read tag
+    mhng-pipe-show_stdout "$seqnum" --thread --nowrap | grep -e "^Reviewed-by: " | while read tag
     do
         echo "Adding $tag"
         git add-tag "$tag"
     done
 
-    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Acked-by: " | while read tag
+    mhng-pipe-show_stdout "$seqnum" --thread --nowrap | grep -e "^Acked-by: " | while read tag
     do
         echo "Adding $tag"
         git add-tag "$tag"
     done
 
-    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Tested-by: " | while read tag
+    mhng-pipe-show_stdout "$seqnum" --thread --nowrap | grep -e "^Tested-by: " | while read tag
     do
         echo "Adding $tag"
         git add-tag "$tag"
     done
 
-    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Fixes: " | while read tag
+    mhng-pipe-show_stdout "$seqnum" --thread --nowrap | grep -e "^Fixes: " | while read tag
     do
         echo "Adding $tag"
         git add-tag "$tag"
