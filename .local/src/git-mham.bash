@@ -47,6 +47,13 @@ do
         git add-tag "$tag"
     done
 
+    mhng-pipe-show_stdout "$seqnum" --thread | grep -e "^Fixes: " | while read tag
+    do
+        echo "Adding $tag"
+        git add-tag "$tag"
+	git add-tag "Cc: stable@vger.kernel.org"
+    done
+
     tag "$tags" | while read tag
     do
         echo "Adding $tag"
