@@ -56,4 +56,4 @@
 
 [merge]
 	log = true
-	verifySignatures = true
+	#verifySignatures = true
