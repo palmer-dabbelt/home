@@ -7,9 +7,15 @@ then
     shift 2
 fi
 
-if [[ "$1" == "" ]]
+if [[ "$1" == "--fixes" ]]
 then
-    exec "$0" $N riscv
+   G="--grep fix"
+   shift 1
 fi
 
-exec watch --no-title --color hscan $N "${@}"
+if [[ "$1" == "" ]]
+then
+    exec "$0" $N $G riscv
+fi
+
+exec watch --no-title --color hscan $N $G "${@}"

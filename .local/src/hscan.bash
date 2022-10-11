@@ -7,4 +7,11 @@ then
     shift 2
 fi
 
-exec mhng-pipe-scan_pretty "$@" | tail -n+$N |  head -n$(tput lines)
+G="cat"
+if [[ "$1" == "--grep" ]]
+then
+    G="grep -i $2"
+    shift 2
+fi
+
+exec mhng-pipe-scan_pretty "$@" | tail -n+$N | $G | head -n$(tput lines)

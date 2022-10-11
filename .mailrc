@@ -5,6 +5,7 @@ local    Palmer Dabbelt <palmer@kernel.org>
 local    Palmer Dabbelt <palmer@gnupg.net>
 local    Palmer Dabbelt <palmerandlulu@dabbelt.com>
 account  Palmer Dabbelt <palmer@rivosinc.com>
+account  Palmer Dabbelt <palmer@kernel.org>
 
 # Defunct addresses
 old     jim.wilson.gcc@gmail.com      jimw@sifive.com
@@ -52,10 +53,13 @@ alias khem      Khem Raj <raj.khem@gmail.com>
 alias kito      Kito Cheng <kito.cheng@gmail.com>
 alias lustig    Daniel Lustig <dlustig@nvidia.com>
 alias alistair  Alistair Francis <Alistair.Francis@wdc.com>
-alias bjorn     Bjorn Topel <bjorn.topel@gmail.com>
+alias bjorn     Bjorn Topel <bjorn@rivosinc.com>
+address         Bjorn Topel <bjorn.topel@gmail.com>
 alias nelson    Nelson Chu <nelson.chu@sifive.com>
 alias will      Will Deacon <will@kernel.org>
 alias bin       Bin Meng <bmeng.cn@gmail.com>
+alias rth       Richard Henderson <richard.henderson@linaro.org>
+alias conor     Conor Dooley <conor@kernel.org>
 
 # Rivos
 alias ri        Palmer Dabbelt <palmer@rivosinc.com>
@@ -73,6 +77,7 @@ alias kip       Kip Walker <kip@rivosinc.com>
 alias duncan    Duncan Laurie <duncan@rivosinc.com>
 alias barna     Barna Ibrahim <barna@rivosinc.com>
 alias reames    Philip Reames <preames@rivosinc.com>
+alias andrea    Andrea Parri <andrea@rivosinc.com>
 
 # Mailing Lists
 alias libc-alpha          libc-alpha@sourceware.org
@@ -82,5 +87,7 @@ alias binutils-patches    binutils@sourceware.org
 alias linux-kernel        linux-kernel@vger.kernel.org
 alias linux-riscv         linux-riscv@lists.infradead.org
 alias linux-patches       linux-riscv@lists.infradead.org
+alias linux-arch          linux-arch@vger.kernel.org
 alias qemu-riscv          qemu-riscv@nongnu.org
 alias qemu-devel          qemu-devel@nongnu.org
+alias newlib-patches      newlib@sourceware.org
