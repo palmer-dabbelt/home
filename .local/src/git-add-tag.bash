@@ -16,8 +16,8 @@ do
     ;;
 
     *)
-        echo "unknown argument $1" >&2
-	exit 1
+    	full="$(tag $1)"
+	shift 1
     ;;
     esac
 done
