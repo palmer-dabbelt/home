@@ -43,3 +43,6 @@
 [submodule ".local/src/dt-schema"]
 	path = .local/src/dt-schema
 	url = https://github.com/devicetree-org/dt-schema.git
+[submodule ".local/src/b4"]
+	path = .local/src/b4
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/palmer/b4.git
