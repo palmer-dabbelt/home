@@ -8,9 +8,9 @@ link="-l"
 while [[ "$1" != "" ]]
 do
     case "$1" in
-    "--merge")      merge="-M";    continue;;
-    "--no-merge")   merge="";      continue;;
-    [A-za-z0-9]*|"--")                   break;;
+    "--merge")      merge="-M --merge-base $2";    shift 2;;
+    "--no-merge")   merge="";                      shift 1;;
+    [A-za-z0-9]*|"--")                             break;;
     esac
 done
 
