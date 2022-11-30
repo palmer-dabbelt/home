@@ -44,6 +44,11 @@
 	insteadOf = https://git.kernel.org
 	insteadOf = http://git.kernel.org
 
+[url "ssh://gitolite.kernel.org"]
+	insteadOf = git://git.kernel.org
+	insteadOf = https://git.kernel.org
+	insteadOf = http://git.kernel.org
+
 [url "ssh://git@github.com"]
 	insteadOf = git://github.com
 	insteadOf = https://github.com
@@ -53,6 +58,9 @@
 	ui = auto
 [http]
 	cookiefile = /home/palmer/.gitcookies
+
+[b4]
+	thanks-commit-url-mask = https://git.kernel.org/palmer/c/%.12s
 
 [merge]
 	log = true

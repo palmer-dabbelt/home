@@ -60,6 +60,8 @@ alias will      Will Deacon <will@kernel.org>
 alias bin       Bin Meng <bmeng.cn@gmail.com>
 alias rth       Richard Henderson <richard.henderson@linaro.org>
 alias conor     Conor Dooley <conor@kernel.org>
+address         Conor Dooley <conor.dooley@microchip.com>
+alias dj        DJ Delorie <dj@redhat.com>
 
 # Rivos
 alias ri        Palmer Dabbelt <palmer@rivosinc.com>
@@ -78,6 +80,7 @@ alias duncan    Duncan Laurie <duncan@rivosinc.com>
 alias barna     Barna Ibrahim <barna@rivosinc.com>
 alias reames    Philip Reames <preames@rivosinc.com>
 alias andrea    Andrea Parri <andrea@rivosinc.com>
+alias mev       Matt Evans <mev@rivosinc.com>
 
 # Mailing Lists
 alias libc-alpha          libc-alpha@sourceware.org
@@ -91,3 +94,4 @@ alias linux-arch          linux-arch@vger.kernel.org
 alias qemu-riscv          qemu-riscv@nongnu.org
 alias qemu-devel          qemu-devel@nongnu.org
 alias newlib-patches      newlib@sourceware.org
+alias b4-patches          tools@linux.kernel.org

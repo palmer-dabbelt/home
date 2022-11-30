@@ -16,7 +16,6 @@ all: \
 	.local/bin/mhng-install \
 	.local/bin/msmtp \
 	.local/bin/openssl \
-	.local/bin/dt-doc-validate \
 	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
 	$(patsubst .local/src/%.pl,.local/bin/%,$(wildcard .local/src/*.pl)) \

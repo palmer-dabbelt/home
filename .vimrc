@@ -16,3 +16,4 @@ au FileType mail setlocal comments=n:>
 au FileType mail setlocal formatoptions+=w
 au FileType mail setlocal textwidth=72
 au BufRead,BufNewFile *.msg set filetype=mail
+au BufRead,BufNewFile *.h++ set filetype=cpp
