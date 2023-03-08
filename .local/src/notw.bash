@@ -1,6 +1,7 @@
 #!/bin/bash
 
-repo="$HOME/work/notes/"
+in_repo="$HOME/work/palmer-notes/"
+ot_repo="$HOME/work/rivos-notes/"
 
 project=boss
 if [[ "$1" != "" ]]
@@ -9,19 +10,20 @@ then
 fi
 
 date="$(date +%s)"
-file="$repo"/"$project"-"$(date +%Y-%m-%d)".md
+file="$ot_repo"/"$project"-"$(date +%Y-%m-%d)".md
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then
-    git -C "$repo" pull --rebase
+    git -C "$in_repo" pull --rebase
+    git -C "$ot_repo" pull --rebase
 fi
 
-if ! test -f "$repo"/"$project".children
+if ! test -f "$ot_repo"/"$project".children
 then
     echo "Unknown project children: $repo/$project.children"
     exit 1
 fi
-children="$repo"/"$project".children
+children="$ot_repo"/"$project".children
 
 cat "$children" | while read c
 do
@@ -29,28 +31,28 @@ do
 done
 
 # Check for all the necessary files
-if test ! -f "$repo"/"$project".keywords
+if test ! -f "$ot_repo"/"$project".keywords
 then
-    echo "Unknown project keywords: $repo/$project.keywords"
+    echo "Unknown project keywords: $ot_repo/$project.keywords"
     exit 1
 fi
 keywords=()
-readarray -t keywords < "$repo"/"$project".keywords
+readarray -t keywords < "$ot_repo"/"$project".keywords
 
-if test ! -f "$repo"/"$project".parents
+if test ! -f "$ot_repo"/"$project".parents
 then
-    echo "Unknown project parents: $repo/$project.parents"
+    echo "Unknown project parents: $ot_repo/$project.parents"
     exit 1
 fi
 parents=()
-readarray -t parents < "$repo"/"$project".parents
+readarray -t parents < "$ot_repo"/"$project".parents
 
-if test ! -f "$repo"/"$project".title
+if test ! -f "$ot_repo"/"$project".title
 then
-    echo "Unknown project title: $repo/$project.title"
+    echo "Unknown project title: $ot_repo/$project.title"
     exit 1
 fi
-title="$(cat "$repo"/"$project".title)"
+title="$(cat "$ot_repo"/"$project".title)"
 
 if ! test -f "$file"
 then
@@ -69,7 +71,7 @@ fi
                 day="$(date -d "$delta days ago" +%Y-%m-%d)"
 		for parent in "${parents[@]}"
 		do
-                    find "$repo" -name "${parent}"-"${day}".md | xargs grep -l "$keyword"
+                    find "$in_repo" -name "${parent}"-"${day}".md | xargs grep -l "$keyword"
 		done
 
 		if test "$delta" -eq "0"
@@ -77,7 +79,7 @@ fi
 		    continue
 		fi
 
-                if test -f "$repo"/"$project"-"$day".md
+                if test -f "$ot_repo"/"$project"-"$day".md
                 then
                     break
                 fi
@@ -105,10 +107,10 @@ then
     exit 1
 fi
 
-git -C "$repo" add "$(basename "$file")"
-git -C "$repo" commit --no-gpg-sign "$(basename "$file")" -m "automatic commit from $0"
+git -C "$ot_repo" add "$(basename "$file")"
+git -C "$ot_repo" commit --no-gpg-sign "$(basename "$file")" -m "automatic commit from $0"
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then
-    git -C "$repo" pull --rebase
-    git -C "$repo" push
+    git -C "$ot_repo" pull --rebase
+    git -C "$ot_repo" push
 fi

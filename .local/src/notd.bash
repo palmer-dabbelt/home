@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo="$HOME/work/notes/"
+repo="$HOME/work/palmer-notes/"
 
 ldap=palmer
 human="Palmer Dabbelt"
