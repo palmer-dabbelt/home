@@ -2,8 +2,23 @@
 
 repo="$HOME/work/palmer-notes/"
 
-ldap=palmer
-human="Palmer Dabbelt"
+ldap="$1"
+if [[ "$ldap" == "" ]]
+then
+    echo "no LDAP provided"
+    exit 1
+fi
+
+case "$ldap"
+in
+    palmer)    human="Palmer Dabbelt" ;;
+    preames)   human="Philip Reames" ;;
+    collison)  human="Michael Collison" ;;
+    gkm)       human="Greg McGary" ;;
+    vineet)    human="Vineet Gupta" ;;
+    nelson)    human="Nelson Chu" ;;
+    *) echo "u  nknown human $ldap"; exit 1;;
+esac
 
 file="$repo"/"$ldap"-"$(date +%Y-%m-%d)".md
 
