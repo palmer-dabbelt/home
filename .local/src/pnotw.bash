@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo="$HOME/work/notes/"
+repo="$HOME/work/rivos-notes/"
 
 project=boss
 datestr="now"
@@ -11,6 +11,11 @@ fi
 if [[ "$2" != "" ]]
 then
     datestr="$2"
+fi
+
+if [[ "$project" == "boss" ]]
+then
+    repo="$HOME/work/palmer-notes/"
 fi
 
 file="$repo"/"$project"-"$(date +%Y-%m-%d -d"$datestr")".md
@@ -62,15 +67,3 @@ EOF
 
 cat "$tmp"/message | mhng-pipe-comp_stdin
 #lp "$tmp"/notes.pdf
-
-if ! test -f "$repo"/"$project".children
-then
-    echo "Unknown project children: $repo/$project.children"
-    exit 1
-fi
-children="$repo"/"$project".children
-
-cat "$children" | while read c
-do
-   $0 $c
-done

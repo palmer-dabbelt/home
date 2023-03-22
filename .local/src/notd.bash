@@ -11,6 +11,11 @@ fi
 
 case "$ldap"
 in
+    greg)     ldap="gkm";;
+esac
+
+case "$ldap"
+in
     palmer)    human="Palmer Dabbelt" ;;
     preames)   human="Philip Reames" ;;
     collison)  human="Michael Collison" ;;

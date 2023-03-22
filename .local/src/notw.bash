@@ -3,13 +3,31 @@
 in_repo="$HOME/work/palmer-notes/"
 ot_repo="$HOME/work/rivos-notes/"
 
-project=boss
-if [[ "$1" != "" ]]
+project="$1"
+if [[ "$project" == "" ]]
 then
-    project="$1"
+    echo "no project provided"
+    exit 1
 fi
 
-date="$(date +%s)"
+case "$project"
+in
+    t*)     project="toolchain" ;;
+    b*)     project="boss" ;;
+    *) echo "unknown project $project"; exit 1;;
+esac
+
+if [[ "$project" == "boss" ]]
+then
+    ot_repo="$in_repo"
+fi
+
+case "$project"
+in
+    toolchain)    date="$(date +%s -d "9am this thursday")" ;;
+    boss)         date="$(date +%s -d "9am this friday")" ;;
+    *)            date="$(date +%s)" ;;
+esac
 file="$ot_repo"/"$project"-"$(date +%Y-%m-%d)".md
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
@@ -20,7 +38,7 @@ fi
 
 if ! test -f "$ot_repo"/"$project".children
 then
-    echo "Unknown project children: $repo/$project.children"
+    echo "Unknown project children: $ot_repo/$project.children"
     exit 1
 fi
 children="$ot_repo"/"$project".children
