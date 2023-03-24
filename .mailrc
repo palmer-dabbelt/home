@@ -13,6 +13,8 @@ old     atishp@rivosinc.com           atish.patra@wdc.com
 old     palmer@rivosinc.com           palmer@sifive.com
 old     palmer@rivosinc.com           palmer.dabbelt@google.com
 old     anup@brainfault.org           anup.patel@wdc.com
+old     alex@ghiti.fr                 alexandre.ghiti@canonical.com
+old     nelson@rivosinc.com           nelson.chu@sifive.com
 
 # Personal
 alias palmer    Palmer Dabbelt <palmer@dabbelt.com>
@@ -62,6 +64,12 @@ alias rth       Richard Henderson <richard.henderson@linaro.org>
 alias conor     Conor Dooley <conor@kernel.org>
 address         Conor Dooley <conor.dooley@microchip.com>
 alias dj        DJ Delorie <dj@redhat.com>
+alias ard       Ard Biesheuvel <ardb@kernel.org>
+alias jlaw      Jeff Law <jlaw@ventanamicro.com>
+alias rutland   Mark Rutland <mark.rutland@arm.com>
+alias catalin   Catalin Marinas <catalin.marinas@arm.com>
+alias burgess   Andrew Burgess <aburgess@redhat.com>
+alias carlos    Carlos O'Donell <carlos@redhat.com>
 
 # Rivos
 alias ri        Palmer Dabbelt <palmer@rivosinc.com>
@@ -71,6 +79,7 @@ alias ken       Ken Dockser <kad@rivosinc.com>
 alias dylan     Dylan Reid <dylan@rivosinc.com>
 alias aaron     Aaron Durbin <adurbin@rivosinc.com>
 alias vineet    Vineet Gupta <vineetg@rivosinc.com>
+alias vineetg   Vineet Gupta <vineetg@rivosinc.com>
 alias atish     Atish Patra <atishp@rivosinc.com>
 alias puneet    Puneet Kumar <puneet@rivosinc.com>
 alias patrick   Patrick O'Neill <patrick@rivosinc.com>
@@ -81,6 +90,8 @@ alias barna     Barna Ibrahim <barna@rivosinc.com>
 alias reames    Philip Reames <preames@rivosinc.com>
 alias andrea    Andrea Parri <andrea@rivosinc.com>
 alias mev       Matt Evans <mev@rivosinc.com>
+alias evan      Evan Green <evan@rivosinc.com>
+alias preames   Philip Reames <preames@rivosinc.com>
 
 # Mailing Lists
 alias libc-alpha          libc-alpha@sourceware.org
@@ -95,3 +106,4 @@ alias qemu-riscv          qemu-riscv@nongnu.org
 alias qemu-devel          qemu-devel@nongnu.org
 alias newlib-patches      newlib@sourceware.org
 alias b4-patches          tools@linux.kernel.org
+alias gdb-patches         gdb-patches@sourceware.org
