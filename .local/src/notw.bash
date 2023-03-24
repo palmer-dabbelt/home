@@ -22,13 +22,14 @@ then
     ot_repo="$in_repo"
 fi
 
+date=""
 case "$project"
 in
-    toolchain)    date="$(date +%s -d "9am this thursday")" ;;
-    boss)         date="$(date +%s -d "9am this friday")" ;;
-    *)            date="$(date +%s)" ;;
+    toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
+    boss)         date="@$(date +%s -d "9am this friday")" ;;
+    *)            date="@$(date +%s)" ;;
 esac
-file="$ot_repo"/"$project"-"$(date +%Y-%m-%d)".md
+file="$ot_repo"/"$project"-"$(date +%Y-%m-%d -d "$date")".md
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then

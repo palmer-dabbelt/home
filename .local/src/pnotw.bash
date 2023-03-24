@@ -2,24 +2,44 @@
 
 repo="$HOME/work/rivos-notes/"
 
-project=boss
-datestr="now"
-if [[ "$1" != "" ]]
+headersext="headers"
+prefix=""
+if [[ "$1" == "--draft" ]]
 then
-    project="$1"
+    headersext="draft-headers"
+    prefix="[DRAFT] "
+    shift
 fi
-if [[ "$2" != "" ]]
+
+project="$1"
+if [[ "$1" == "" ]]
 then
-    datestr="$2"
+    echo "no project provided"
+    exit 1
 fi
+
+case "$project"
+in
+    t*)     project="toolchain" ;;
+    b*)     project="boss" ;;
+    *) echo "unknown project $project"; exit 1;;
+esac
+
+date=""
+case "$project"
+in
+    toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
+    boss)         date="@$(date +%s -d "9am this friday")" ;;
+    *)            date="@$(date +%s)" ;;
+esac
 
 if [[ "$project" == "boss" ]]
 then
     repo="$HOME/work/palmer-notes/"
 fi
 
-file="$repo"/"$project"-"$(date +%Y-%m-%d -d"$datestr")".md
-headers="$repo"/"$project".headers
+file="$repo"/"$project"-"$(date +%Y-%m-%d -d "$date")".md
+headers="$repo"/"$project"."$headersext"
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then
@@ -41,7 +61,7 @@ pandoc -o "$tmp"/notes.html "$file"
 zathura "$tmp"/notes.pdf >& /dev/null
 
 cat "$headers" > "$tmp"/message
-cat "$file" | grep ^# | head -n1 | sed 's/^# /Subject: /' >> "$tmp"/message
+cat "$file" | grep ^# | head -n1 | sed "s/^# /Subject: $prefix/" >> "$tmp"/message
 cat >> "$tmp"/message <<EOF
 MIME-Version: 1.0
 Content-Type: multipart/alternative; boundary=notw
