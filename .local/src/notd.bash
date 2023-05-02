@@ -11,7 +11,7 @@ fi
 
 case "$ldap"
 in
-    greg)     ldap="gkm";;
+    greg)    ldap="gkm";;
     vineet)  ldap="vineetg";;
 esac
 
@@ -23,6 +23,7 @@ in
     gkm)       human="Greg McGary" ;;
     vineetg)   human="Vineet Gupta" ;;
     nelson)    human="Nelson Chu" ;;
+    patrick)   human="Patrick O'Neill" ;;
     *) echo "u  nknown human $ldap"; exit 1;;
 esac
 

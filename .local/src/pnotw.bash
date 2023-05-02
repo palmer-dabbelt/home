@@ -55,6 +55,14 @@ fi
 tmp="$(mktemp -d)"
 trap "rm -rf $tmp" EXIT
 
+if [[ "$headersext" == "draft-headers" ]]
+then
+    echo "[Edit Link on Rivos Gitlab](https://gitlab.ba.rivosinc.com/rv/sandbox/palmer/rivos-notes/-/edit/master/$project-$(date +%Y-%m-%d -d "$date").md)" > "$tmp"/notesfile.md
+    echo "" >> "$tmp"/notesfile.md
+    cat "$file" >> "$tmp"/notesfile.md
+    file="$tmp"/notesfile.md
+fi
+
 pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
 pandoc -o "$tmp"/notes.html "$file"
 

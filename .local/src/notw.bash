@@ -76,7 +76,7 @@ title="$(cat "$ot_repo"/"$project".title)"
 if ! test -f "$file"
 then
     cat >"$file" <<EOF
-# ${title} for $(date "+%B %e, %Y")
+# ${title} for $(date "+%B %e, %Y" -d "$date")
 
 EOF
 fi
