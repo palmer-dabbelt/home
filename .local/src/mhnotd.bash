@@ -11,6 +11,11 @@ then
     exit 1
 fi
 
+case "$ldap"
+in
+    *@embecosm.com)  ldap="embecosm";;
+esac
+
 date="$(date +@%s -d"$(mhng-pipe-header Date "$@")")"
 
 case "$ldap"
@@ -22,6 +27,8 @@ in
     vineetg)   human="Vineet Gupta" ;;
     nelson)    human="Nelson Chu" ;;
     kevinl)    human="Kevin Lee" ;;
+    patrick)   human="Patrick O'Neill" ;;
+    embecosm)  human="Embecosm";;
     *) echo "u  nknown human $ldap"; exit 1;;
 esac
 
