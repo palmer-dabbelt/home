@@ -16,7 +16,7 @@ profile_directory="Default"
 case "$user"
 in
     "palmer@dabbelt.com")   profile_directory="Default"   ;;
-    "palmer@rivosinc.com")  profile_directory="Profile 2" ;;
+    "palmer@rivosinc.com")  profile_directory="Profile 1" ;;
 esac
 
 exec google-chrome-stable --profile-directory="$profile_directory" "$@"

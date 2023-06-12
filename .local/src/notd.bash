@@ -13,6 +13,7 @@ case "$ldap"
 in
     greg)    ldap="gkm";;
     vineet)  ldap="vineetg";;
+    michael) ldap="collison";;
 esac
 
 case "$ldap"
@@ -24,6 +25,8 @@ in
     vineetg)   human="Vineet Gupta" ;;
     nelson)    human="Nelson Chu" ;;
     patrick)   human="Patrick O'Neill" ;;
+    kevinl)    human="Kevin Lee" ;;
+    david)     human="David Abdurachmanov" ;;
     *) echo "u  nknown human $ldap"; exit 1;;
 esac
 
