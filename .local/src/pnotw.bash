@@ -63,7 +63,7 @@ then
     file="$tmp"/notesfile.md
 fi
 
-pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
+#pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
 pandoc -o "$tmp"/notes.html "$file"
 
 zathura "$tmp"/notes.pdf >& /dev/null
