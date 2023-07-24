@@ -11,23 +11,28 @@ fi
 
 case "$ldap"
 in
-    greg)    ldap="gkm";;
-    vineet)  ldap="vineetg";;
-    michael) ldap="collison";;
+    greg)    ldap="gkm"       ;;
+    vineet)  ldap="vineetg"   ;;
+    kevin)   ldap="kevinl"    ;;
+    clement) ldap="cleger"    ;;
+    alex)    ldap="alexghiti" ;;
 esac
 
 case "$ldap"
 in
-    palmer)    human="Palmer Dabbelt" ;;
-    preames)   human="Philip Reames" ;;
-    collison)  human="Michael Collison" ;;
-    gkm)       human="Greg McGary" ;;
-    vineetg)   human="Vineet Gupta" ;;
-    nelson)    human="Nelson Chu" ;;
-    patrick)   human="Patrick O'Neill" ;;
-    kevinl)    human="Kevin Lee" ;;
-    david)     human="David Abdurachmanov" ;;
-    *) echo "u  nknown human $ldap"; exit 1;;
+    palmer)    human="Palmer Dabbelt"     ;;
+    preames)   human="Philip Reames"      ;;
+    gkm)       human="Greg McGary"        ;;
+    vineetg)   human="Vineet Gupta"       ;;
+    nelson)    human="Nelson Chu"         ;;
+    patrick)   human="Patrick O'Neill"    ;;
+    andrea)    human="Andrea Parri"       ;;
+    edwin)     human="Edwin Lu"           ;;
+    kevinl)    human="Kevin Lee"          ;;
+    charlie)   human="Charlie Jenkins"    ;;
+    cleger)    human="Clément Léger"      ;;
+    alexghiti) human="Alexandre Ghiti"    ;;
+    *) echo "unknown human $ldap"; exit 1 ;;
 esac
 
 file="$repo"/"$ldap"-"$(date +%Y-%m-%d)".md

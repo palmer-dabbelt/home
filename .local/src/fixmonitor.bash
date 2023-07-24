@@ -21,6 +21,16 @@ in
         xrandr --output DP-1 --auto --right-of eDP-1 --primary --output DP-2 --auto --right-of DP-1
     ;;
 
+    "card0-DP-3:40173541020;card0-DP-4:40171551020;card0-eDP-1:2000000")
+    	xrandr --output DP-1 --off --output DP-2 --off
+        xrandr --output DP-4 --auto --right-of eDP-1 --primary --output DP-3 --auto --right-of DP-4
+    ;;
+
+    "card0-DP-4:40173541020;card0-DP-3:40171551020;card0-eDP-1:2000000")
+    	xrandr --output DP-1 --off --output DP-2 --off
+        xrandr --output DP-3 --auto --right-of eDP-1 --primary --output DP-4 --auto --right-of DP-3
+    ;;
+
     # Rivos Desk
     "card0-DP-1:168555574831;card0-DP-2:168555574824;card0-eDP-1:2000000")
         xrandr --output DP-1 --auto --right-of eDP-1 --primary --output DP-2 --auto --right-of DP-1
