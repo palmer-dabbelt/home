@@ -57,7 +57,7 @@ alias lustig    Daniel Lustig <dlustig@nvidia.com>
 alias alistair  Alistair Francis <Alistair.Francis@wdc.com>
 alias bjorn     Bjorn Topel <bjorn@rivosinc.com>
 address         Bjorn Topel <bjorn.topel@gmail.com>
-alias nelson    Nelson Chu <nelson.chu@sifive.com>
+alias nelson    Nelson Chu <nelson@rivosinc.com>
 alias will      Will Deacon <will@kernel.org>
 alias bin       Bin Meng <bmeng.cn@gmail.com>
 alias rth       Richard Henderson <richard.henderson@linaro.org>
