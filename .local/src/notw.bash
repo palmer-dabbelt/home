@@ -14,6 +14,7 @@ case "$project"
 in
     t*)     project="toolchain" ;;
     b*)     project="boss" ;;
+    k*)     project="kernel" ;;
     *) echo "unknown project $project"; exit 1;;
 esac
 
@@ -26,6 +27,7 @@ date=""
 case "$project"
 in
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
+    kernel)       date="@$(date +%s -d "8am this thursday")" ;;
     boss)         date="@$(date +%s -d "9am this friday")" ;;
     *)            date="@$(date +%s)" ;;
 esac
@@ -100,6 +102,9 @@ fi
 
                 if test -f "$ot_repo"/"$project"-"$day".md
                 then
+		    echo "=========================================================================" >> "$file"
+		    cat "$ot_repo"/"$project"-"$day".md >> "$file"
+		    echo "=========================================================================" >> "$file"
                     break
                 fi
             done
