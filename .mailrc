@@ -65,11 +65,16 @@ alias conor     Conor Dooley <conor@kernel.org>
 address         Conor Dooley <conor.dooley@microchip.com>
 alias dj        DJ Delorie <dj@redhat.com>
 alias ard       Ard Biesheuvel <ardb@kernel.org>
+alias jeff      Jeff Law <jlaw@ventanamicro.com>
 alias jlaw      Jeff Law <jlaw@ventanamicro.com>
 alias rutland   Mark Rutland <mark.rutland@arm.com>
 alias catalin   Catalin Marinas <catalin.marinas@arm.com>
 alias burgess   Andrew Burgess <aburgess@redhat.com>
 alias carlos    Carlos O'Donell <carlos@redhat.com>
+alias sunil     Sunil V L <sunilvl@ventanamicro.com>
+alias heiko     Heiko Stuebner <heiko@sntech.de>
+alias robin     Robin Dapp <rdapp.gcc@gmail.com>
+alias rdapp     Robin Dapp <rdapp.gcc@gmail.com>
 
 # Rivos
 alias ri        Palmer Dabbelt <palmer@rivosinc.com>
@@ -93,6 +98,7 @@ alias mev       Matt Evans <mev@rivosinc.com>
 alias evan      Evan Green <evan@rivosinc.com>
 alias preames   Philip Reames <preames@rivosinc.com>
 alias george    George K Chen <george@rivosinc.com>
+alias charlie   Charlie Jenkins <charlie@rivosinc.com>
 
 # Mailing Lists
 alias libc-alpha          libc-alpha@sourceware.org
@@ -108,3 +114,5 @@ alias qemu-devel          qemu-devel@nongnu.org
 alias newlib-patches      newlib@sourceware.org
 alias b4-patches          tools@linux.kernel.org
 alias gdb-patches         gdb-patches@sourceware.org
+alias linux-acpi          linux-acpi@vger.kernel.org
+alias linux-dt            devicetree@vger.kernel.org
