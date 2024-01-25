@@ -21,6 +21,7 @@ fi
 case "$project"
 in
     t*)     project="toolchain" ;;
+    k*)     project="kernel" ;;
     b*)     project="boss" ;;
     *) echo "unknown project $project"; exit 1;;
 esac
@@ -29,6 +30,7 @@ date=""
 case "$project"
 in
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
+    kernel)       date="@$(date +%s -d "8am this thursday")" ;;
     boss)         date="@$(date +%s -d "9am this friday")" ;;
     *)            date="@$(date +%s)" ;;
 esac
@@ -64,9 +66,14 @@ then
 fi
 
 #pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
-pandoc -o "$tmp"/notes.html "$file"
+#pandoc -o "$tmp"/notes.html "$file"
+markdown_py <"$file" >"$tmp"/notes.html
 
-zathura "$tmp"/notes.pdf >& /dev/null
+#zathura "$tmp"/notes.pdf >& /dev/null
+(
+	$BROWSER --user palmer@rivosin.com "$tmp"/notes.html
+	sleep 5s
+) &
 
 cat "$headers" > "$tmp"/message
 cat "$file" | grep ^# | head -n1 | sed "s/^# /Subject: $prefix/" >> "$tmp"/message
@@ -95,3 +102,5 @@ EOF
 
 cat "$tmp"/message | mhng-pipe-comp_stdin
 #lp "$tmp"/notes.pdf
+
+wait

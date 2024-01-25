@@ -11,25 +11,34 @@ then
     exit 1
 fi
 
-case "$ldap"
-in
-    *@embecosm.com)  ldap="embecosm";;
-esac
-
 date="$(date +@%s -d"$(mhng-pipe-header Date "$@")")"
 
 case "$ldap"
 in
-    palmer)    human="Palmer Dabbelt" ;;
-    preames)   human="Philip Reames" ;;
-    collison)  human="Michael Collison" ;;
-    gkm)       human="Greg McGary" ;;
-    vineetg)   human="Vineet Gupta" ;;
-    nelson)    human="Nelson Chu" ;;
-    kevinl)    human="Kevin Lee" ;;
-    patrick)   human="Patrick O'Neill" ;;
-    embecosm)  human="Embecosm";;
-    *) echo "u  nknown human $ldap"; exit 1;;
+    greg)            ldap="gkm"       ;;
+    vineet)          ldap="vineetg"   ;;
+    kevin)           ldap="kevinl"    ;;
+    clement)         ldap="cleger"    ;;
+    alex)            ldap="alexghiti" ;;
+    edwin)           ldap="ewlu"      ;;
+    *@embecosm.com)  ldap="embecosm";;
+esac
+
+case "$ldap"
+in
+    palmer)    human="Palmer Dabbelt"     ;;
+    preames)   human="Philip Reames"      ;;
+    gkm)       human="Greg McGary"        ;;
+    vineetg)   human="Vineet Gupta"       ;;
+    nelson)    human="Nelson Chu"         ;;
+    patrick)   human="Patrick O'Neill"    ;;
+    andrea)    human="Andrea Parri"       ;;
+    ewlu)      human="Edwin Lu"           ;;
+    kevinl)    human="Kevin Lee"          ;;
+    charlie)   human="Charlie Jenkins"    ;;
+    cleger)    human="Clément Léger"      ;;
+    alexghiti) human="Alexandre Ghiti"    ;;
+    *) echo "unknown human $ldap"; exit 1 ;;
 esac
 
 file="$repo"/"$ldap"-"$(date +%Y-%m-%d -d"$date")".md
@@ -56,3 +65,5 @@ then
     git -C "$repo" pull --rebase
     git -C "$repo" push
 fi
+
+mhng-repl "$@"

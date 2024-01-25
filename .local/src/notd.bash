@@ -2,6 +2,18 @@
 
 repo="$HOME/work/palmer-notes/"
 
+when="@$(date +%s)"
+vim="true"
+while [[ "$1" != "" ]]
+do
+    case "$1"
+    in
+        "--when")  when="$2";     shift 2;;
+        "--novim") vim="false";   shift 1;;
+        *) break;;
+    esac
+done
+
 ldap="$1"
 if [[ "$ldap" == "" ]]
 then
@@ -11,11 +23,13 @@ fi
 
 case "$ldap"
 in
-    greg)    ldap="gkm"       ;;
-    vineet)  ldap="vineetg"   ;;
-    kevin)   ldap="kevinl"    ;;
-    clement) ldap="cleger"    ;;
-    alex)    ldap="alexghiti" ;;
+    greg)            ldap="gkm"       ;;
+    vineet)          ldap="vineetg"   ;;
+    kevin)           ldap="kevinl"    ;;
+    clement)         ldap="cleger"    ;;
+    alex)            ldap="alexghiti" ;;
+    edwin)           ldap="ewlu"      ;;
+    *@embecosm.com)  ldap="embecosm"  ;;
 esac
 
 case "$ldap"
@@ -27,7 +41,7 @@ in
     nelson)    human="Nelson Chu"         ;;
     patrick)   human="Patrick O'Neill"    ;;
     andrea)    human="Andrea Parri"       ;;
-    edwin)     human="Edwin Lu"           ;;
+    ewlu)      human="Edwin Lu"           ;;
     kevinl)    human="Kevin Lee"          ;;
     charlie)   human="Charlie Jenkins"    ;;
     cleger)    human="Clément Léger"      ;;
@@ -35,7 +49,7 @@ in
     *) echo "unknown human $ldap"; exit 1 ;;
 esac
 
-file="$repo"/"$ldap"-"$(date +%Y-%m-%d)".md
+file="$repo"/"$ldap"-"$(date +%Y-%m-%d -d$when)".md
 
 if [[ "$(nmcli g | grep ^connected | wc -l)" == "1" ]]
 then
@@ -45,12 +59,17 @@ fi
 if ! test -f "$file"
 then
     cat >"$file" <<EOF
-# ${human}'s Notes for $(date "+%B %e, %Y")
+# ${human}'s Notes for $(date "+%B %e, %Y" -d$when)
 
 EOF
 fi
 
-vim +"normal G o" "$file"
+if [[ "$vim" == true ]]
+then
+    vim +"normal G o" "$file"
+else
+    cat >> "$file"
+fi
 
 while [[ "$(tail -1 "$file")" == "* " || "$(tail -1 "$file")" == "" ]]
 do
