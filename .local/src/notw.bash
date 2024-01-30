@@ -15,6 +15,7 @@ in
     t*)     project="toolchain" ;;
     b*)     project="boss" ;;
     k*)     project="kernel" ;;
+    d*)     project="distro" ;;
     *) echo "unknown project $project"; exit 1;;
 esac
 
@@ -27,8 +28,9 @@ date=""
 case "$project"
 in
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
-    kernel)       date="@$(date +%s -d "8am this thursday")" ;;
+    kernel)       date="@$(date +%s -d "9am this thursday")" ;;
     boss)         date="@$(date +%s -d "9am this friday")" ;;
+    distro)       date="@$(date +%s -d "8am this thursday")" ;;
     *)            date="@$(date +%s)" ;;
 esac
 file="$ot_repo"/"$project"-"$(date +%Y-%m-%d -d "$date")".md
