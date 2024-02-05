@@ -28,12 +28,17 @@ in
     kevin)           ldap="kevinl"    ;;
     clement)         ldap="cleger"    ;;
     alex)            ldap="alexghiti" ;;
+<<<<<<< Updated upstream
     edwin)           ldap="ewlu"      ;;
+=======
+    david)           ldap="davidltl"  ;;
+>>>>>>> Stashed changes
     *@embecosm.com)  ldap="embecosm"  ;;
 esac
 
 case "$ldap"
 in
+<<<<<<< Updated upstream
     palmer)    human="Palmer Dabbelt"     ;;
     preames)   human="Philip Reames"      ;;
     gkm)       human="Greg McGary"        ;;
@@ -46,6 +51,22 @@ in
     charlie)   human="Charlie Jenkins"    ;;
     cleger)    human="Clément Léger"      ;;
     alexghiti) human="Alexandre Ghiti"    ;;
+=======
+    palmer)    human="Palmer Dabbelt"      ;;
+    preames)   human="Philip Reames"       ;;
+    gkm)       human="Greg McGary"         ;;
+    vineetg)   human="Vineet Gupta"        ;;
+    nelson)    human="Nelson Chu"          ;;
+    patrick)   human="Patrick O'Neill"     ;;
+    andrea)    human="Andrea Parri"        ;;
+    edwin)     human="Edwin Lu"            ;;
+    kevinl)    human="Kevin Lee"           ;;
+    charlie)   human="Charlie Jenkins"     ;;
+    cleger)    human="Clément Léger"       ;;
+    alexghiti) human="Alexandre Ghiti"     ;;
+    embecosm)  human="Embecosm"            ;;
+    davidlt)   human="David Abdurachmanov" ;;
+>>>>>>> Stashed changes
     *) echo "unknown human $ldap"; exit 1 ;;
 esac
 

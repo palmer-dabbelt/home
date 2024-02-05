@@ -23,6 +23,7 @@ in
     t*)     project="toolchain" ;;
     k*)     project="kernel" ;;
     b*)     project="boss" ;;
+    k*)     project="kernel" ;;
     *) echo "unknown project $project"; exit 1;;
 esac
 
@@ -32,6 +33,7 @@ in
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
     kernel)       date="@$(date +%s -d "8am this thursday")" ;;
     boss)         date="@$(date +%s -d "9am this friday")" ;;
+    kernel)       date="@$(date +%s -d "9am this thursday")" ;;
     *)            date="@$(date +%s)" ;;
 esac
 
@@ -65,6 +67,7 @@ then
     file="$tmp"/notesfile.md
 fi
 
+<<<<<<< Updated upstream
 #pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
 #pandoc -o "$tmp"/notes.html "$file"
 markdown_py <"$file" >"$tmp"/notes.html
@@ -73,6 +76,15 @@ markdown_py <"$file" >"$tmp"/notes.html
 (
 	$BROWSER --user palmer@rivosin.com "$tmp"/notes.html
 	sleep 5s
+=======
+echo "<html><body>" > "$tmp"/notes.html
+markdown_py "$file" >> "$tmp"/notes.html
+echo "</body></html>" >> "$tmp"/notes.html
+
+(
+    $BROWSER "$tmp"/notes.html >& /dev/null
+    sleep 5s
+>>>>>>> Stashed changes
 ) &
 
 cat "$headers" > "$tmp"/message
@@ -100,7 +112,11 @@ cat >> "$tmp"/message <<EOF
 --notw--
 EOF
 
+wait
 cat "$tmp"/message | mhng-pipe-comp_stdin
+<<<<<<< Updated upstream
 #lp "$tmp"/notes.pdf
 
 wait
+=======
+>>>>>>> Stashed changes

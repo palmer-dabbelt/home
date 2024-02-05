@@ -63,6 +63,7 @@ alias gsml="$BROWSER \$(make-gccpatches-link)"
 alias bsml="$BROWSER \$(make-binutils-link)"
 alias lsml="$BROWSER \$(make-libcalpha-link)"
 alias ctp='ssh palmer.ba.rivosinc.com "cat patch"'
+alias gko="$BROWSER \$(make-gitkernelorg-link)"
 
 # Aliases to "cd ../../.. ..."
 alias ..="cd .."

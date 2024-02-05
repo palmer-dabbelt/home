@@ -3,6 +3,15 @@
 in_repo="$HOME/work/palmer-notes/"
 ot_repo="$HOME/work/rivos-notes/"
 
+week="this"
+append="true"
+case "$1"
+in
+    "--noappend")   append="false";   shift 1;;
+    "--nextweek")   week="next";      shift 1;;
+    *)                                break  ;;
+esac
+
 project="$1"
 if [[ "$project" == "" ]]
 then
@@ -14,7 +23,11 @@ case "$project"
 in
     t*)     project="toolchain" ;;
     b*)     project="boss" ;;
+<<<<<<< Updated upstream
     k*)     project="kernel" ;;
+=======
+    k*)     project="kernel";;
+>>>>>>> Stashed changes
     *) echo "unknown project $project"; exit 1;;
 esac
 
@@ -26,9 +39,15 @@ fi
 date=""
 case "$project"
 in
+<<<<<<< Updated upstream
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
     kernel)       date="@$(date +%s -d "8am this thursday")" ;;
     boss)         date="@$(date +%s -d "9am this friday")" ;;
+=======
+    toolchain)    date="@$(date +%s -d "9am $week thursday")" ;;
+    boss)         date="@$(date +%s -d "9am $week friday")" ;;
+    kernel)       date="@$(date +%s -d "9am $week thursday")" ;;
+>>>>>>> Stashed changes
     *)            date="@$(date +%s)" ;;
 esac
 file="$ot_repo"/"$project"-"$(date +%Y-%m-%d -d "$date")".md
@@ -83,12 +102,13 @@ then
 EOF
 fi
 
-(
+if [[ "$append" == "true" ]]
+then
     (
-        for keyword in "${keywords[@]}"
-        do
-            for delta in $(seq -w 0 500)
+        (
+            for keyword in "${keywords[@]}"
             do
+<<<<<<< Updated upstream
                 day="$(date -d "$delta days ago" +%Y-%m-%d)"
 		for parent in "${parents[@]}"
 		do
@@ -107,13 +127,34 @@ fi
 		    echo "=========================================================================" >> "$file"
                     break
                 fi
+=======
+                for delta in $(seq -w 0 500)
+                do
+                    day="$(date -d "$delta days ago" +%Y-%m-%d)"
+    		for parent in "${parents[@]}"
+    		do
+                        find "$in_repo" -name "${parent}"-"${day}".md | xargs grep -l "$keyword"
+    		done
+    
+    		if test "$delta" -eq "0"
+    		then
+    		    continue
+    		fi
+    
+                    if test -f "$ot_repo"/"$project"-"$day".md
+                    then
+    		    echo "$ot_repo"/"$project"-"$day".md
+                        break
+                    fi
+                done
+>>>>>>> Stashed changes
             done
+        ) | sort | while read note
+        do
+            cat "$note" | sed 's/^#/##/' >> "$file"
         done
-    ) | sort | while read note
-    do
-        cat "$note" | sed 's/^#/##/' >> "$file"
-    done
-)
+    )
+fi
 
 vim +"normal o" "$file"
 

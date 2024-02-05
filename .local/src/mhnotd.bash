@@ -20,7 +20,10 @@ in
     kevin)           ldap="kevinl"    ;;
     clement)         ldap="cleger"    ;;
     alex)            ldap="alexghiti" ;;
+<<<<<<< Updated upstream
     edwin)           ldap="ewlu"      ;;
+=======
+>>>>>>> Stashed changes
     *@embecosm.com)  ldap="embecosm";;
 esac
 
@@ -38,6 +41,10 @@ in
     charlie)   human="Charlie Jenkins"    ;;
     cleger)    human="Clément Léger"      ;;
     alexghiti) human="Alexandre Ghiti"    ;;
+<<<<<<< Updated upstream
+=======
+    embecosm)  human="Embecosm";;
+>>>>>>> Stashed changes
     *) echo "unknown human $ldap"; exit 1 ;;
 esac
 
