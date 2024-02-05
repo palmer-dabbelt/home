@@ -23,7 +23,7 @@ in
     t*)     project="toolchain" ;;
     k*)     project="kernel" ;;
     b*)     project="boss" ;;
-    k*)     project="kernel" ;;
+    d*)     project="distro" ;;
     *) echo "unknown project $project"; exit 1;;
 esac
 
@@ -31,9 +31,9 @@ date=""
 case "$project"
 in
     toolchain)    date="@$(date +%s -d "9am this thursday")" ;;
-    kernel)       date="@$(date +%s -d "8am this thursday")" ;;
-    boss)         date="@$(date +%s -d "9am this friday")" ;;
     kernel)       date="@$(date +%s -d "9am this thursday")" ;;
+    boss)         date="@$(date +%s -d "9am this friday")" ;;
+    distro)       date="@$(date +%s -d "8am this thursday")" ;;
     *)            date="@$(date +%s)" ;;
 esac
 
@@ -67,16 +67,6 @@ then
     file="$tmp"/notesfile.md
 fi
 
-<<<<<<< Updated upstream
-#pandoc -o "$tmp"/notes.pdf "$file" -V geometry:margin=1cm
-#pandoc -o "$tmp"/notes.html "$file"
-markdown_py <"$file" >"$tmp"/notes.html
-
-#zathura "$tmp"/notes.pdf >& /dev/null
-(
-	$BROWSER --user palmer@rivosin.com "$tmp"/notes.html
-	sleep 5s
-=======
 echo "<html><body>" > "$tmp"/notes.html
 markdown_py "$file" >> "$tmp"/notes.html
 echo "</body></html>" >> "$tmp"/notes.html
@@ -84,7 +74,6 @@ echo "</body></html>" >> "$tmp"/notes.html
 (
     $BROWSER "$tmp"/notes.html >& /dev/null
     sleep 5s
->>>>>>> Stashed changes
 ) &
 
 cat "$headers" > "$tmp"/message
@@ -114,9 +103,3 @@ EOF
 
 wait
 cat "$tmp"/message | mhng-pipe-comp_stdin
-<<<<<<< Updated upstream
-#lp "$tmp"/notes.pdf
-
-wait
-=======
->>>>>>> Stashed changes

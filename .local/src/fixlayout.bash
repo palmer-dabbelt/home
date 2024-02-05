@@ -53,6 +53,27 @@ in
         esac
     ;;
 
+    # Portland office monitor
+    "2000000;2098668504819")
+        case "$style"
+        in
+            "code")
+                awesome-client 'require("awful").tag.setnmaster(0)'
+                awesome-client 'require("awful").tag.setncol(3)'
+            ;;
+
+            b*)
+                awesome-client 'require("awful").tag.setnmaster(1)'
+                awesome-client 'require("awful").tag.setncol(2)'
+            ;;
+
+            *)
+                echo "Unknown style: $style"
+                exit 1
+            ;;
+        esac
+    ;;
+
     *)
         echo "Unknown monitor configuration: $monitor"
         exit 1
