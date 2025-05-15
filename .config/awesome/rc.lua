@@ -274,9 +274,9 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "c", function () awful.spawn(browser .. " --user palmer@dabbelt.com") end,
+    awful.key({ modkey,           }, "c", function () awful.spawn(browser .. " --user palmer@dabbelt.com --window -- https://www.dabbelt.com/~palmer/start.html") end,
               {description = "open a browser", group = "launcher"}),
-    awful.key({ modkey,           }, "g", function () awful.spawn(browser .. " --user palmer@rivosinc.com") end,
+    awful.key({ modkey,           }, "g", function () awful.spawn(browser .. " --user palmer@rivosinc.com --window -- https://www.dabbelt.com/~palmer/start.html") end,
               {description = "open a browser", group = "launcher"}),
     awful.key({ modkey,           }, "f", function () awful.spawn("fixmonitor") end,
               {description = "fixmonitor", group = "launcher"}),

@@ -5,12 +5,15 @@ ot_repo="$HOME/work/rivos-notes/"
 
 week="this"
 append="true"
-case "$1"
-in
-    "--noappend")   append="false";   shift 1;;
-    "--nextweek")   week="next";      shift 1;;
-    *)                                break  ;;
-esac
+while [[ "$1" != "" ]]
+do
+    case "$1"
+    in
+        "--noappend")   append="false";   shift 1;;
+        "--nextweek")   week="next";      shift 1;;
+        *)                                break  ;;
+    esac
+done
 
 project="$1"
 if [[ "$project" == "" ]]
