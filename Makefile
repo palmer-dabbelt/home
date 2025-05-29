@@ -1,11 +1,11 @@
 SHELL=/bin/bash
 ENV=PATH="$(abspath .local/bin:$(PATH))" PKG_CONFIG_PATH="$(abspath .local/lib/pkgconfig)"
 CFLAGS += -O3 -Wall -Werror
-SYSTEM_LIBDIR = /usr/lib64
+SYSTEM_LIBDIR = /opt/homebrew/lib
 
 # Some helper functions
 gitfiles = $(addprefix $(1),$(shell git -C $(1) ls-files))
-ppkg-config-deps = $(addprefix .local/lib/pkgconfig/,$(addsuffix .pc,$(shell cat .local/src/$(1)/Configfile |  grep ppkg-config | sed 's/^.*ppkg-config \([A-Za-z0-9-]*\) .*$$/\1/')))
+ppkg-config-deps = $(addprefix .local/lib/pkgconfig/,$(addsuffix .pc,$(shell cat .local/src/$(1)/Configfile |  grep ppkg-config | grep -v optional | sed 's/^.*ppkg-config \([A-Za-z0-9-]*\) .*$$/\1/')))
 
 all: \
 	.local/bin/pconfigure \
@@ -14,9 +14,6 @@ all: \
 	.local/lib/libbase64.so \
 	.local/lib/libpson.so \
 	.local/bin/mhng-install \
-	.local/bin/msmtp \
-	.local/bin/openssl \
-	$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))) \
 	$(patsubst .local/src/%.bash,.local/bin/%,$(wildcard .local/src/*.bash)) \
 	$(patsubst .local/src/%.pl,.local/bin/%,$(wildcard .local/src/*.pl)) \
 	$(patsubst .local/src/%.c,.local/bin/%,$(wildcard .local/src/*.c))
@@ -66,8 +63,7 @@ clean::
 
 .local/bin/pconfigure \
 .local/bin/pbashc \
-		: .local/stamp/pconfigure \
-		  /usr/bin/pkg-config
+		: .local/stamp/pconfigure
 	touch -c $@
 
 # gitdate
@@ -99,7 +95,7 @@ clean::
 	date > $@
 
 .local/lib/libputil-chrono.so \
-.local/lib/pkg-config/libputil-chrono.pc \
+.local/lib/pkgconfig/libputil-chrono.pc \
 : .local/stamp/putil
 	touch -c $@
 
@@ -116,7 +112,9 @@ clean::
 	$(MAKE) -C $(dir $<) install
 	date > $@
 
-.local/lib/libpsqlite.so: .local/stamp/psqlite
+.local/lib/libpsqlite.so \
+.local/lib/pkgconfig/psqlite.pc \
+: .local/stamp/psqlite
 	touch -c $@
 
 # pson
@@ -137,10 +135,7 @@ clean::
 
 # libbase64
 .local/src/libbase64/Makefile: \
-		.local/src/libbase64/configure.ac \
-		/usr/bin/autoreconf \
-		/usr/bin/makeinfo \
-		/usr/bin/libtoolize
+		.local/src/libbase64/configure.ac
 	env -C $(dir $@) - $(ENV) autoreconf -i
 	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
 
@@ -150,22 +145,8 @@ clean::
 	date > $@
 
 .local/lib/libbase64.so \
-.local/lib/pkg-config/libbase64-1.pc \
+.local/lib/pkgconfig/libbase64-1.pc \
 : .local/stamp/libbase64
-	touch -c $@
-
-# msmtp
-.local/src/msmtp/Makefile: \
-		.local/src/msmtp/configure.ac
-	env -C $(dir $@) - $(ENV) autoreconf -i
-	env -C $(dir $@) - $(ENV) ./configure --prefix=$(abspath .local)
-
-.local/stamp/msmtp: .local/src/msmtp/Makefile
-	mkdir -p $(dir $@)
-	$(MAKE) -C $(dir $<) install
-	date > $@
-
-.local/bin/msmtp: .local/stamp/msmtp
 	touch -c $@
 
 # MHng
@@ -186,26 +167,6 @@ clean::
 	date > $@
 
 .local/bin/mhng-%: .local/stamp/mhng
-	touch -c $@
-
-# depot_tools
-$(addprefix .local/bin/,$(notdir $(shell find .local/src/depot_tools/ -maxdepth 1 -type f -executable | grep -v ".py$" | grep -v ".bat$"))): .local/src/depot_tools_wrapper.bash.in
-	mkdir -p $(dir $@)
-	cat $^ | sed 's@__TOOL__@$(abspath $(dir $<))/depot_tools/$(notdir $@)@g' > $@
-	chmod +x $@
-
-# openssl
-.local/src/openssl/Makefile: \
-		.local/src/openssl/Configure
-	env -C $(dir $@) - $(ENV) ./config --prefix=$(abspath .local) --openssldir=$(abspath .local)  -Wl,-rpath=$(abspath .local)/lib -Wl,--enable-new-dtags
-
-.local/stamp/openssl: .local/src/openssl/Makefile
-	mkdir -p $(dir $@)
-	$(MAKE) -C $(dir $<)
-	$(MAKE) -C $(dir $<) install
-	date > $@
-
-.local/bin/openssl: .local/stamp/openssl
 	touch -c $@
 
 # curl
