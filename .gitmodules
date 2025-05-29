@@ -22,9 +22,6 @@
 [submodule ".local/src/msmtp"]
 	path = .local/src/msmtp
 	url = https://git.marlam.de/git/msmtp.git
-[submodule ".local/src/depot_tools"]
-	path = .local/src/depot_tools
-	url = https://chromium.googlesource.com/chromium/tools/depot_tools.git
 [submodule ".local/src/pshs"]
 	path = .local/src/pshs
 	url = git://github.com/mgorny/pshs.git
@@ -36,7 +33,7 @@
 	url = https://gitlab.freedesktop.org/pipewire/wireplumber.git
 [submodule ".local/src/openssl"]
 	path = .local/src/openssl
-	url = git://git.openssl.org/openssl.git
+	url = https://github.com/openssl/openssl.git
 [submodule ".local/src/curl"]
 	path = .local/src/curl
 	url = https://github.com/curl/curl.git
