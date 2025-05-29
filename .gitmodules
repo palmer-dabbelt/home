@@ -19,9 +19,6 @@
 [submodule ".local/src/pson"]
 	path = .local/src/pson
 	url = git://github.com/palmer-dabbelt/pson.git
-[submodule ".local/src/msmtp"]
-	path = .local/src/msmtp
-	url = https://git.marlam.de/git/msmtp.git
 [submodule ".local/src/pshs"]
 	path = .local/src/pshs
 	url = git://github.com/mgorny/pshs.git
