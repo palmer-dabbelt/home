@@ -1,11 +1,11 @@
 [user]
 	name = Palmer Dabbelt
-	email = palmer@rivosinc.com
+	email = palmer@dabbelt.com
 	signingkey = palmer@dabbelt.com
 
 [sendemail]
 	smtpencryption = tls
-	smtpserver = /home/palmer/.local/bin/mhng-pipe-comp_stdin
+	smtpserver = /Users/palmerdabbelt/.local/bin/mhng-pipe-comp_stdin
 
 [push]
 	default = simple

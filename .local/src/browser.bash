@@ -17,8 +17,8 @@ done
 profile_directory="Default"
 case "$user"
 in
-    "palmer@dabbelt.com")   profile_directory="Default"   ;;
-    "palmer@rivosinc.com")  profile_directory="Profile 2" ;;
+    "palmer@dabbelt.com")   profile_directory="Profile 3"   ;;
+    "palmerdabbelt@meta.com")  profile_directory="Default" ;;
 esac
 
-exec google-chrome-stable --profile-directory="$profile_directory" $window "$@"
+exec "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --profile-directory="$profile_directory" $window "$@"

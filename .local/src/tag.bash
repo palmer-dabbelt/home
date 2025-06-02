@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whoami="Palmer Dabbelt <palmer@rivosinc.com>";
+whoami="Palmer Dabbelt <palmer@dabbelt.com>";
 
 echo "$@" | sed 's/\(.\)/\1\n/g' | while read c
 do

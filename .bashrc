@@ -11,7 +11,7 @@ alias kc='eval `keychain --eval --agents ssh,gpg --inherit any id_rsa`'
 shopt -s histappend
 
 # I've got a bunch of stuff that's necessary for my own local packages in here.
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 
 # Setup my personal shell variables that are the same everywhere
 export EDITOR="e"
@@ -24,7 +24,7 @@ alias ix="curl -F 'f:1=<-' ix.io"
 alias su="sudo --login"
 alias enter="source enter.bash"
 alias gerp=grep
-alias make="nice -n10 ionice -c3 make"
+alias make="nice -n10 make"
 alias watch='watch --color'
 
 # MH aliases
@@ -74,7 +74,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # Some shell variables are different on different machines
-export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep ^processor | wc -l)"
+export MAKEFLAGS="-j12"
 
 # A nicer-looking prompt
 if test -S $HOME/.mhng/daemon.socket
