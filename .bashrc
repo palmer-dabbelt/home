@@ -12,6 +12,7 @@ shopt -s histappend
 
 # I've got a bunch of stuff that's necessary for my own local packages in here.
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Setup my personal shell variables that are the same everywhere
 export EDITOR="e"
